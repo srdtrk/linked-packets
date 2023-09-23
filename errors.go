@@ -1,4 +1,4 @@
-package example
+package linkedpackets
 
 import "cosmossdk.io/errors"
 

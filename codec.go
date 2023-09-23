@@ -1,4 +1,4 @@
-package example
+package linkedpackets
 
 import (
 	"github.com/cosmos/cosmos-sdk/codec"
@@ -11,8 +11,8 @@ import (
 // RegisterLegacyAminoCodec registers the necessary interfaces and concrete types
 // on the provided LegacyAmino codec. These types are used for Amino JSON serialization.
 func RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
-	legacy.RegisterAminoMsg(cdc, &MsgUpdateParams{}, "example/MsgUpdateParams")
-	legacy.RegisterAminoMsg(cdc, &MsgIncrementCounter{}, "example/MsgIncrementCounter")
+	legacy.RegisterAminoMsg(cdc, &MsgUpdateParams{}, "linkedpackets/MsgUpdateParams")
+	legacy.RegisterAminoMsg(cdc, &MsgIncrementCounter{}, "linkedpackets/MsgIncrementCounter")
 }
 
 // RegisterInterfaces registers the interfaces types with the interface registry.

@@ -1,4 +1,4 @@
-package example
+package linkedpackets
 
 // NewGenesisState creates a new genesis state with default values.
 func NewGenesisState() *GenesisState {

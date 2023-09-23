@@ -1,4 +1,4 @@
-package example
+package linkedpackets
 
 // DefaultParams returns default module parameters.
 func DefaultParams() Params {

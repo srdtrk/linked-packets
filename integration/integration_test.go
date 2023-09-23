@@ -13,7 +13,7 @@ import (
 	_ "github.com/cosmos/cosmos-sdk/x/genutil"
 	_ "github.com/cosmos/cosmos-sdk/x/mint"
 	_ "github.com/cosmos/cosmos-sdk/x/staking"
-	_ "github.com/cosmosregistry/example/module"
+	_ "github.com/srdtrk/linkedpackets/module"
 
 	appv1alpha1 "cosmossdk.io/api/cosmos/app/v1alpha1"
 	"cosmossdk.io/core/appconfig"
@@ -22,17 +22,17 @@ import (
 	"github.com/cosmos/cosmos-sdk/testutil/configurator"
 	simtestutil "github.com/cosmos/cosmos-sdk/testutil/sims"
 
-	"github.com/cosmosregistry/example"
-	examplemodulev1 "github.com/cosmosregistry/example/api/module/v1"
-	"github.com/cosmosregistry/example/keeper"
+	"github.com/srdtrk/linkedpackets"
+	linkedpacketsmodulev1 "github.com/srdtrk/linkedpackets/api/module/v1"
+	"github.com/srdtrk/linkedpackets/keeper"
 )
 
-// ExampleModule is a configurator.ModuleOption that add the example module to the app config.
+// ExampleModule is a configurator.ModuleOption that add the linkedpackets module to the app config.
 var ExampleModule = func() configurator.ModuleOption {
 	return func(config *configurator.Config) {
-		config.ModuleConfigs[example.ModuleName] = &appv1alpha1.ModuleConfig{
-			Name:   example.ModuleName,
-			Config: appconfig.WrapAny(&examplemodulev1.Module{}),
+		config.ModuleConfigs[linkedpackets.ModuleName] = &appv1alpha1.ModuleConfig{
+			Name:   linkedpackets.ModuleName,
+			Config: appconfig.WrapAny(&linkedpacketsmodulev1.Module{}),
 		}
 	}
 }
@@ -58,7 +58,7 @@ func TestIntegration(t *testing.T) {
 				"mint",
 				"genutil",
 				"consensus",
-				example.ModuleName,
+				linkedpackets.ModuleName,
 			),
 		),
 		depinject.Supply(logger))

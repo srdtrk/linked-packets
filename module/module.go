@@ -14,8 +14,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	"github.com/cosmosregistry/example"
-	"github.com/cosmosregistry/example/keeper"
+	"github.com/srdtrk/linkedpackets"
+	"github.com/srdtrk/linkedpackets/keeper"
 )
 
 var (
@@ -44,24 +44,24 @@ func NewAppModuleBasic(m AppModule) module.AppModuleBasic {
 	return module.CoreAppModuleBasicAdaptor(m.Name(), m)
 }
 
-// Name returns the example module's name.
-func (AppModule) Name() string { return example.ModuleName }
+// Name returns the linkedpackets module's name.
+func (AppModule) Name() string { return linkedpackets.ModuleName }
 
-// RegisterLegacyAminoCodec registers the example module's types on the LegacyAmino codec.
+// RegisterLegacyAminoCodec registers the linkedpackets module's types on the LegacyAmino codec.
 func (AppModule) RegisterLegacyAminoCodec(cdc *codec.LegacyAmino) {
-	example.RegisterLegacyAminoCodec(cdc)
+	linkedpackets.RegisterLegacyAminoCodec(cdc)
 }
 
-// RegisterGRPCGatewayRoutes registers the gRPC Gateway routes for the example module.
+// RegisterGRPCGatewayRoutes registers the gRPC Gateway routes for the linkedpackets module.
 func (AppModule) RegisterGRPCGatewayRoutes(clientCtx client.Context, mux *gwruntime.ServeMux) {
-	if err := example.RegisterQueryHandlerClient(context.Background(), mux, example.NewQueryClient(clientCtx)); err != nil {
+	if err := linkedpackets.RegisterQueryHandlerClient(context.Background(), mux, linkedpackets.NewQueryClient(clientCtx)); err != nil {
 		panic(err)
 	}
 }
 
-// RegisterInterfaces registers interfaces and implementations of the example module.
+// RegisterInterfaces registers interfaces and implementations of the linkedpackets module.
 func (AppModule) RegisterInterfaces(registry codectypes.InterfaceRegistry) {
-	example.RegisterInterfaces(registry)
+	linkedpackets.RegisterInterfaces(registry)
 }
 
 // ConsensusVersion implements AppModule/ConsensusVersion.
@@ -69,39 +69,39 @@ func (AppModule) ConsensusVersion() uint64 { return ConsensusVersion }
 
 // RegisterServices registers a gRPC query service to respond to the module-specific gRPC queries.
 func (am AppModule) RegisterServices(cfg module.Configurator) {
-	example.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
-	example.RegisterQueryServer(cfg.QueryServer(), keeper.NewQueryServerImpl(am.keeper))
+	linkedpackets.RegisterMsgServer(cfg.MsgServer(), keeper.NewMsgServerImpl(am.keeper))
+	linkedpackets.RegisterQueryServer(cfg.QueryServer(), keeper.NewQueryServerImpl(am.keeper))
 
 	// Register in place module state migration migrations
 	// m := keeper.NewMigrator(am.keeper)
-	// if err := cfg.RegisterMigration(example.ModuleName, 1, m.Migrate1to2); err != nil {
-	// 	panic(fmt.Sprintf("failed to migrate x/%s from version 1 to 2: %v", example.ModuleName, err))
+	// if err := cfg.RegisterMigration(linkedpackets.ModuleName, 1, m.Migrate1to2); err != nil {
+	// 	panic(fmt.Sprintf("failed to migrate x/%s from version 1 to 2: %v", linkedpackets.ModuleName, err))
 	// }
 }
 
 // DefaultGenesis returns default genesis state as raw bytes for the module.
 func (AppModule) DefaultGenesis(cdc codec.JSONCodec) json.RawMessage {
-	return cdc.MustMarshalJSON(example.NewGenesisState())
+	return cdc.MustMarshalJSON(linkedpackets.NewGenesisState())
 }
 
 // ValidateGenesis performs genesis state validation for the circuit module.
 func (AppModule) ValidateGenesis(cdc codec.JSONCodec, _ client.TxEncodingConfig, bz json.RawMessage) error {
-	var data example.GenesisState
+	var data linkedpackets.GenesisState
 	if err := cdc.UnmarshalJSON(bz, &data); err != nil {
-		return fmt.Errorf("failed to unmarshal %s genesis state: %w", example.ModuleName, err)
+		return fmt.Errorf("failed to unmarshal %s genesis state: %w", linkedpackets.ModuleName, err)
 	}
 
 	return data.Validate()
 }
 
-// InitGenesis performs genesis initialization for the example module.
+// InitGenesis performs genesis initialization for the linkedpackets module.
 // It returns no validator updates.
 func (am AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, data json.RawMessage) {
-	var genesisState example.GenesisState
+	var genesisState linkedpackets.GenesisState
 	cdc.MustUnmarshalJSON(data, &genesisState)
 
 	if err := am.keeper.InitGenesis(ctx, &genesisState); err != nil {
-		panic(fmt.Sprintf("failed to initialize %s genesis state: %v", example.ModuleName, err))
+		panic(fmt.Sprintf("failed to initialize %s genesis state: %v", linkedpackets.ModuleName, err))
 	}
 }
 
@@ -110,7 +110,7 @@ func (am AppModule) InitGenesis(ctx sdk.Context, cdc codec.JSONCodec, data json.
 func (am AppModule) ExportGenesis(ctx sdk.Context, cdc codec.JSONCodec) json.RawMessage {
 	gs, err := am.keeper.ExportGenesis(ctx)
 	if err != nil {
-		panic(fmt.Sprintf("failed to export %s genesis state: %v", example.ModuleName, err))
+		panic(fmt.Sprintf("failed to export %s genesis state: %v", linkedpackets.ModuleName, err))
 	}
 
 	return cdc.MustMarshalJSON(gs)

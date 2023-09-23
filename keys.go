@@ -1,8 +1,8 @@
-package example
+package linkedpackets
 
 import "cosmossdk.io/collections"
 
-const ModuleName = "example"
+const ModuleName = "linkedpackets"
 
 var (
 	ParamsKey  = collections.NewPrefix(0)

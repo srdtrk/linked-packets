@@ -1,9 +1,9 @@
 syntax = "proto3";
-package cosmosregistry.example.v1;
+package srdtrk.linkedpackets.v1;
 
-option go_package = "github.com/cosmosregistry/example";
+option go_package = "github.com/srdtrk/linkedpackets";
 
-import "cosmosregistry/example/v1/types.proto";
+import "srdtrk/linkedpackets/v1/types.proto";
 import "google/api/annotations.proto";
 import "cosmos/query/v1/query.proto";
 import "amino/amino.proto";
@@ -15,12 +15,12 @@ service Query {
   rpc Counter(QueryCounterRequest) returns (QueryCounterResponse) {
     option (cosmos.query.v1.module_query_safe) = true;
     option (google.api.http).get =
-        "/cosmosregistry/example/v1/counter/{address}";
+        "/srdtrk/linkedpackets/v1/counter/{address}";
   }
 
   // Params returns the module parameters.
   rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
-    option (google.api.http).get = "/cosmosregistry/example/v1/params";
+    option (google.api.http).get = "/srdtrk/linkedpackets/v1/params";
   }
 }
 

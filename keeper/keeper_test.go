@@ -11,28 +11,28 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	moduletestutil "github.com/cosmos/cosmos-sdk/types/module/testutil"
 
-	"github.com/cosmosregistry/example"
-	"github.com/cosmosregistry/example/keeper"
+	"github.com/srdtrk/linkedpackets"
+	"github.com/srdtrk/linkedpackets/keeper"
 )
 
 type testFixture struct {
 	ctx         sdk.Context
 	k           keeper.Keeper
-	msgServer   example.MsgServer
-	queryServer example.QueryServer
+	msgServer   linkedpackets.MsgServer
+	queryServer linkedpackets.QueryServer
 
 	addrs []sdk.AccAddress
 }
 
 func initFixture(t *testing.T) *testFixture {
 	encCfg := moduletestutil.MakeTestEncodingConfig()
-	key := storetypes.NewKVStoreKey(example.ModuleName)
+	key := storetypes.NewKVStoreKey(linkedpackets.ModuleName)
 	testCtx := testutil.DefaultContextWithDB(t, key, storetypes.NewTransientStoreKey("transient_test"))
 	storeService := runtime.NewKVStoreService(key)
 	addrs := simtestutil.CreateIncrementalAccounts(3)
 
 	k := keeper.NewKeeper(encCfg.Codec, addresscodec.NewBech32Codec("cosmos"), storeService, addrs[0].String())
-	err := k.InitGenesis(testCtx.Ctx, example.NewGenesisState())
+	err := k.InitGenesis(testCtx.Ctx, linkedpackets.NewGenesisState())
 	if err != nil {
 		panic(err)
 	}
