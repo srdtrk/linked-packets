@@ -13,25 +13,24 @@ import "cosmos_proto/cosmos.proto";
 service Msg {
   option (cosmos.msg.v1.service) = true;
 
-  // IncrementCounter increments the counter.
-  rpc IncrementCounter(MsgIncrementCounter)
-      returns (MsgIncrementCounterResponse);
+  // InitLink starts the packet linking with this Tx.
+  rpc InitLink(MsgInitLink) returns (MsgInitLinkResponse);
 
   // UpdateParams updates the module parameters.
   rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
 }
 
-// MsgIncrementCounter defines the Msg/IncrementCounter request type.
-message MsgIncrementCounter {
+// MsgInitLink defines the message starting packet linking.
+message MsgInitLink {
   option (cosmos.msg.v1.signer) = "sender";
-  option (amino.name) = "srdtrk/linkedpackets/MsgIncrementCounter";
+  option (amino.name) = "srdtrk/linkedpackets/MsgInitLink";
 
   // sender is the message sender.
   string sender = 1;
 }
 
 // MsgIncrementCounterResponse defines the Msg/IncrementCounter response type.
-message MsgIncrementCounterResponse {}
+message MsgInitLinkResponse {}
 
 // MsgUpdateParams is the Msg/UpdateParams request type.
 message MsgUpdateParams {
