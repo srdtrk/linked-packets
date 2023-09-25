@@ -2,7 +2,10 @@ package linkedpackets
 
 import "cosmossdk.io/collections"
 
-const ModuleName = "linkedpackets"
+const (
+	ModuleName = "linkedpackets"
+	Version = "ics29-1"
+)
 
 var (
 	ParamsKey  = collections.NewPrefix(0)
