@@ -6,6 +6,7 @@ import (
 	"cosmossdk.io/collections"
 	"cosmossdk.io/core/address"
 	storetypes "cosmossdk.io/core/store"
+
 	"github.com/cosmos/cosmos-sdk/codec"
 
 	"github.com/srdtrk/linkedpackets"
@@ -22,7 +23,8 @@ type Keeper struct {
 	// state management
 	Schema  collections.Schema
 	Params  collections.Item[linkedpackets.Params]
-	Counter collections.Map[string, uint64]
+	// LinkEnabled is a map of (portID, channelID) -> bool that indicates whether linked packets are enabled for a given channel.
+	LinkEnabled collections.Map[collections.Pair[string, string], bool]
 }
 
 // NewKeeper creates a new Keeper instance
@@ -37,7 +39,9 @@ func NewKeeper(cdc codec.BinaryCodec, addressCodec address.Codec, storeService s
 		addressCodec: addressCodec,
 		authority:    authority,
 		Params:       collections.NewItem(sb, linkedpackets.ParamsKey, "params", codec.CollValue[linkedpackets.Params](cdc)),
-		Counter:      collections.NewMap(sb, linkedpackets.CounterKey, "counter", collections.StringKey, collections.Uint64Value),
+		LinkEnabled:  collections.NewMap(
+			sb, linkedpackets.LinkEnabledKey, "link_enabled", collections.PairKeyCodec(collections.StringKey, collections.StringKey), collections.BoolValue,
+		),
 	}
 
 	schema, err := sb.Build()

@@ -12,12 +12,6 @@ func (k *Keeper) InitGenesis(ctx context.Context, data *linkedpackets.GenesisSta
 		return err
 	}
 
-	for _, counter := range data.Counters {
-		if err := k.Counter.Set(ctx, counter.Address, counter.Count); err != nil {
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -29,16 +23,6 @@ func (k *Keeper) ExportGenesis(ctx context.Context) (*linkedpackets.GenesisState
 	}
 
 	var counters []linkedpackets.Counter
-	if err := k.Counter.Walk(ctx, nil, func(address string, count uint64) (bool, error) {
-		counters = append(counters, linkedpackets.Counter{
-			Address: address,
-			Count:   count,
-		})
-
-		return false, nil
-	}); err != nil {
-		return nil, err
-	}
 
 	return &linkedpackets.GenesisState{
 		Params:   params,

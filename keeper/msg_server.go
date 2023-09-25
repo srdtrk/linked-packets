@@ -2,11 +2,9 @@ package keeper
 
 import (
 	"context"
-	"errors"
 	"fmt"
 	"strings"
 
-	"cosmossdk.io/collections"
 	"github.com/srdtrk/linkedpackets"
 )
 
@@ -27,16 +25,7 @@ func (ms msgServer) InitLink(ctx context.Context, msg *linkedpackets.MsgInitLink
 		return nil, fmt.Errorf("invalid sender address: %w", err)
 	}
 
-	counter, err := ms.k.Counter.Get(ctx, msg.Sender)
-	if err != nil && !errors.Is(err, collections.ErrNotFound) {
-		return nil, err
-	}
-
-	counter++
-
-	if err := ms.k.Counter.Set(ctx, msg.Sender, counter); err != nil {
-		return nil, err
-	}
+	// TODO: add init link logic here
 
 	return &linkedpackets.MsgInitLinkResponse{}, nil
 }

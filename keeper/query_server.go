@@ -29,16 +29,16 @@ func (qs queryServer) Counter(ctx context.Context, req *linkedpackets.QueryCount
 		return nil, fmt.Errorf("invalid sender address: %w", err)
 	}
 
-	counter, err := qs.k.Counter.Get(ctx, req.Address)
-	if err != nil {
-		if errors.Is(err, collections.ErrNotFound) {
-			return &linkedpackets.QueryCounterResponse{Counter: 0}, nil
-		}
+	//counter, err := qs.k.Counter.Get(ctx, req.Address)
+	//if err != nil {
+	//	if errors.Is(err, collections.ErrNotFound) {
+	//		return &linkedpackets.QueryCounterResponse{Counter: 0}, nil
+	//	}
 
-		return nil, status.Error(codes.Internal, err.Error())
-	}
+	//	return nil, status.Error(codes.Internal, err.Error())
+	//}
 
-	return &linkedpackets.QueryCounterResponse{Counter: counter}, nil
+	return &linkedpackets.QueryCounterResponse{Counter: 0}, nil
 }
 
 // Params defines the handler for the Query/Params RPC method.

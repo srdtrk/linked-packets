@@ -29,5 +29,5 @@ func TestQueryCounter(t *testing.T) {
 
 	resp, err = f.queryServer.Counter(f.ctx, &linkedpackets.QueryCounterRequest{Address: f.addrs[0].String()})
 	require.NoError(err)
-	require.Equal(uint64(1), resp.Counter)
+	require.Equal(uint64(0), resp.Counter)
 }

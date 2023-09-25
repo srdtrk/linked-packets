@@ -55,7 +55,7 @@ func TestUpdateParams(t *testing.T) {
 	}
 }
 
-func TestIncrementCounter(t *testing.T) {
+func TestInitLink(t *testing.T) {
 	f := initFixture(t)
 	require := require.New(t)
 
@@ -63,7 +63,6 @@ func TestIncrementCounter(t *testing.T) {
 		name            string
 		request         *linkedpackets.MsgInitLink
 		expectErrMsg    string
-		expectedCounter uint64
 	}{
 		{
 			name: "set invalid sender (not an address)",
@@ -77,8 +76,7 @@ func TestIncrementCounter(t *testing.T) {
 			request: &linkedpackets.MsgInitLink{
 				Sender: "cosmos139f7kncmglres2nf3h4hc4tade85ekfr8sulz5",
 			},
-			expectErrMsg:    "",
-			expectedCounter: 1,
+			expectErrMsg: "",
 		},
 	}
 
@@ -91,10 +89,6 @@ func TestIncrementCounter(t *testing.T) {
 				require.ErrorContains(err, tc.expectErrMsg)
 			} else {
 				require.NoError(err)
-
-				counter, err := f.k.Counter.Get(f.ctx, tc.request.Sender)
-				require.NoError(err)
-				require.Equal(tc.expectedCounter, counter)
 			}
 		})
 	}

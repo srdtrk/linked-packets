@@ -9,5 +9,5 @@ const (
 
 var (
 	ParamsKey  = collections.NewPrefix(0)
-	CounterKey = collections.NewPrefix(1)
+	LinkEnabledKey = collections.NewPrefix(1)
 )
