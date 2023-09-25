@@ -11,9 +11,9 @@ import (
 // IBCMiddleware implements the ICS26 callbacks for linked-packets given the
 // linked-packets keeper and the underlying application.
 type IBCMiddleware struct {
-	app    porttypes.IBCModule
+	app         porttypes.IBCModule
 	ics4Wrapper porttypes.ICS4Wrapper
-	
+
 	keeper keeper.Keeper
 }
 
@@ -28,8 +28,8 @@ func NewIBCMiddleware(app porttypes.IBCModule, ics4Wrapper porttypes.ICS4Wrapper
 	}
 
 	return IBCMiddleware{
-		app:    app,
+		app:         app,
 		ics4Wrapper: ics4Wrapper,
-		keeper: k,
+		keeper:      k,
 	}
 }

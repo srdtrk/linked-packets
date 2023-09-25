@@ -98,5 +98,4 @@ func TestIncrementCounter(t *testing.T) {
 			}
 		})
 	}
-
 }

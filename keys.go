@@ -4,7 +4,7 @@ import "cosmossdk.io/collections"
 
 const (
 	ModuleName = "linkedpackets"
-	Version = "ics29-1"
+	Version    = "ics29-1"
 )
 
 var (

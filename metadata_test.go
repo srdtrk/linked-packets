@@ -7,13 +7,13 @@ import (
 	ibcmock "github.com/cosmos/ibc-go/v8/testing/mock"
 
 	"github.com/stretchr/testify/require"
-	
+
 	"github.com/srdtrk/linkedpackets"
 )
 
 func TestMetadataFromVersion(t *testing.T) {
 	testMetadata := linkedpackets.Metadata{
-		AppVersion: ibcmock.Version,
+		AppVersion:           ibcmock.Version,
 		LinkedPacketsVersion: linkedpackets.Version,
 	}
 
