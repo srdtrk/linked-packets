@@ -8,6 +8,6 @@ const (
 )
 
 var (
-	ParamsKey  = collections.NewPrefix(0)
+	ParamsKey      = collections.NewPrefix(0)
 	LinkEnabledKey = collections.NewPrefix(1)
 )

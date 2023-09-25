@@ -60,9 +60,9 @@ func TestInitLink(t *testing.T) {
 	require := require.New(t)
 
 	testCases := []struct {
-		name            string
-		request         *linkedpackets.MsgInitLink
-		expectErrMsg    string
+		name         string
+		request      *linkedpackets.MsgInitLink
+		expectErrMsg string
 	}{
 		{
 			name: "set invalid sender (not an address)",
