@@ -14,15 +14,15 @@ type msgServer struct {
 	k Keeper
 }
 
-var _ linkedpackets.MsgServer = msgServer{}
+var _ linkedpackets.MsgServer = (*msgServer)(nil)
 
 // NewMsgServerImpl returns an implementation of the module MsgServer interface.
 func NewMsgServerImpl(keeper Keeper) linkedpackets.MsgServer {
 	return &msgServer{k: keeper}
 }
 
-// IncrementCounter defines the handler for the MsgIncrementCounter message.
-func (ms msgServer) IncrementCounter(ctx context.Context, msg *linkedpackets.MsgIncrementCounter) (*linkedpackets.MsgIncrementCounterResponse, error) {
+// InitLink defines the handler for the MsgInitLink message.
+func (ms msgServer) InitLink(ctx context.Context, msg *linkedpackets.MsgInitLink) (*linkedpackets.MsgInitLinkResponse, error) {
 	if _, err := ms.k.addressCodec.StringToBytes(msg.Sender); err != nil {
 		return nil, fmt.Errorf("invalid sender address: %w", err)
 	}
@@ -38,7 +38,7 @@ func (ms msgServer) IncrementCounter(ctx context.Context, msg *linkedpackets.Msg
 		return nil, err
 	}
 
-	return &linkedpackets.MsgIncrementCounterResponse{}, nil
+	return &linkedpackets.MsgInitLinkResponse{}, nil
 }
 
 // UpdateParams params is defining the handler for the MsgUpdateParams message.

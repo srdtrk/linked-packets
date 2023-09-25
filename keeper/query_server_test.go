@@ -24,7 +24,7 @@ func TestQueryCounter(t *testing.T) {
 	require.NoError(err)
 	require.Equal(uint64(0), resp.Counter)
 
-	_, err = f.msgServer.IncrementCounter(f.ctx, &linkedpackets.MsgIncrementCounter{Sender: f.addrs[0].String()})
+	_, err = f.msgServer.InitLink(f.ctx, &linkedpackets.MsgInitLink{Sender: f.addrs[0].String()})
 	require.NoError(err)
 
 	resp, err = f.queryServer.Counter(f.ctx, &linkedpackets.QueryCounterRequest{Address: f.addrs[0].String()})

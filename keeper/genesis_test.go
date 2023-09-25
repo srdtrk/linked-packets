@@ -35,7 +35,7 @@ func TestInitGenesis(t *testing.T) {
 func TestExportGenesis(t *testing.T) {
 	fixture := initFixture(t)
 
-	_, err := fixture.msgServer.IncrementCounter(fixture.ctx, &linkedpackets.MsgIncrementCounter{
+	_, err := fixture.msgServer.InitLink(fixture.ctx, &linkedpackets.MsgInitLink{
 		Sender: fixture.addrs[0].String(),
 	})
 	require.NoError(t, err)

@@ -61,20 +61,20 @@ func TestIncrementCounter(t *testing.T) {
 
 	testCases := []struct {
 		name            string
-		request         *linkedpackets.MsgIncrementCounter
+		request         *linkedpackets.MsgInitLink
 		expectErrMsg    string
 		expectedCounter uint64
 	}{
 		{
 			name: "set invalid sender (not an address)",
-			request: &linkedpackets.MsgIncrementCounter{
+			request: &linkedpackets.MsgInitLink{
 				Sender: "foo",
 			},
 			expectErrMsg: "invalid sender address",
 		},
 		{
 			name: "set valid sender",
-			request: &linkedpackets.MsgIncrementCounter{
+			request: &linkedpackets.MsgInitLink{
 				Sender: "cosmos139f7kncmglres2nf3h4hc4tade85ekfr8sulz5",
 			},
 			expectErrMsg:    "",
@@ -85,7 +85,7 @@ func TestIncrementCounter(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
-			_, err := f.msgServer.IncrementCounter(f.ctx, tc.request)
+			_, err := f.msgServer.InitLink(f.ctx, tc.request)
 			if tc.expectErrMsg != "" {
 				require.Error(err)
 				require.ErrorContains(err, tc.expectErrMsg)
