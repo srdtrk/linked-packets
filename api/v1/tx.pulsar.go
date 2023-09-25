@@ -17,25 +17,25 @@ import (
 )
 
 var (
-	md_MsgIncrementCounter        protoreflect.MessageDescriptor
-	fd_MsgIncrementCounter_sender protoreflect.FieldDescriptor
+	md_MsgInitLink        protoreflect.MessageDescriptor
+	fd_MsgInitLink_sender protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_srdtrk_linkedpackets_v1_tx_proto_init()
-	md_MsgIncrementCounter = File_srdtrk_linkedpackets_v1_tx_proto.Messages().ByName("MsgIncrementCounter")
-	fd_MsgIncrementCounter_sender = md_MsgIncrementCounter.Fields().ByName("sender")
+	md_MsgInitLink = File_srdtrk_linkedpackets_v1_tx_proto.Messages().ByName("MsgInitLink")
+	fd_MsgInitLink_sender = md_MsgInitLink.Fields().ByName("sender")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgIncrementCounter)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgInitLink)(nil)
 
-type fastReflection_MsgIncrementCounter MsgIncrementCounter
+type fastReflection_MsgInitLink MsgInitLink
 
-func (x *MsgIncrementCounter) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgIncrementCounter)(x)
+func (x *MsgInitLink) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgInitLink)(x)
 }
 
-func (x *MsgIncrementCounter) slowProtoReflect() protoreflect.Message {
+func (x *MsgInitLink) slowProtoReflect() protoreflect.Message {
 	mi := &file_srdtrk_linkedpackets_v1_tx_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -47,43 +47,43 @@ func (x *MsgIncrementCounter) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgIncrementCounter_messageType fastReflection_MsgIncrementCounter_messageType
-var _ protoreflect.MessageType = fastReflection_MsgIncrementCounter_messageType{}
+var _fastReflection_MsgInitLink_messageType fastReflection_MsgInitLink_messageType
+var _ protoreflect.MessageType = fastReflection_MsgInitLink_messageType{}
 
-type fastReflection_MsgIncrementCounter_messageType struct{}
+type fastReflection_MsgInitLink_messageType struct{}
 
-func (x fastReflection_MsgIncrementCounter_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgIncrementCounter)(nil)
+func (x fastReflection_MsgInitLink_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgInitLink)(nil)
 }
-func (x fastReflection_MsgIncrementCounter_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgIncrementCounter)
+func (x fastReflection_MsgInitLink_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgInitLink)
 }
-func (x fastReflection_MsgIncrementCounter_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgIncrementCounter
+func (x fastReflection_MsgInitLink_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgInitLink
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgIncrementCounter) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgIncrementCounter
+func (x *fastReflection_MsgInitLink) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgInitLink
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgIncrementCounter) Type() protoreflect.MessageType {
-	return _fastReflection_MsgIncrementCounter_messageType
+func (x *fastReflection_MsgInitLink) Type() protoreflect.MessageType {
+	return _fastReflection_MsgInitLink_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgIncrementCounter) New() protoreflect.Message {
-	return new(fastReflection_MsgIncrementCounter)
+func (x *fastReflection_MsgInitLink) New() protoreflect.Message {
+	return new(fastReflection_MsgInitLink)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgIncrementCounter) Interface() protoreflect.ProtoMessage {
-	return (*MsgIncrementCounter)(x)
+func (x *fastReflection_MsgInitLink) Interface() protoreflect.ProtoMessage {
+	return (*MsgInitLink)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -91,10 +91,10 @@ func (x *fastReflection_MsgIncrementCounter) Interface() protoreflect.ProtoMessa
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgIncrementCounter) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_MsgInitLink) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 	if x.Sender != "" {
 		value := protoreflect.ValueOfString(x.Sender)
-		if !f(fd_MsgIncrementCounter_sender, value) {
+		if !f(fd_MsgInitLink_sender, value) {
 			return
 		}
 	}
@@ -111,15 +111,15 @@ func (x *fastReflection_MsgIncrementCounter) Range(f func(protoreflect.FieldDesc
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgIncrementCounter) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgInitLink) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.MsgIncrementCounter.sender":
+	case "srdtrk.linkedpackets.v1.MsgInitLink.sender":
 		return x.Sender != ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLink"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounter does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLink does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -129,15 +129,15 @@ func (x *fastReflection_MsgIncrementCounter) Has(fd protoreflect.FieldDescriptor
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounter) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgInitLink) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.MsgIncrementCounter.sender":
+	case "srdtrk.linkedpackets.v1.MsgInitLink.sender":
 		x.Sender = ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLink"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounter does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLink does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -147,16 +147,16 @@ func (x *fastReflection_MsgIncrementCounter) Clear(fd protoreflect.FieldDescript
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgIncrementCounter) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgInitLink) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "srdtrk.linkedpackets.v1.MsgIncrementCounter.sender":
+	case "srdtrk.linkedpackets.v1.MsgInitLink.sender":
 		value := x.Sender
 		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLink"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounter does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLink does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -170,15 +170,15 @@ func (x *fastReflection_MsgIncrementCounter) Get(descriptor protoreflect.FieldDe
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounter) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgInitLink) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.MsgIncrementCounter.sender":
+	case "srdtrk.linkedpackets.v1.MsgInitLink.sender":
 		x.Sender = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLink"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounter does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLink does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -192,40 +192,40 @@ func (x *fastReflection_MsgIncrementCounter) Set(fd protoreflect.FieldDescriptor
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounter) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgInitLink) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.MsgIncrementCounter.sender":
-		panic(fmt.Errorf("field sender of message srdtrk.linkedpackets.v1.MsgIncrementCounter is not mutable"))
+	case "srdtrk.linkedpackets.v1.MsgInitLink.sender":
+		panic(fmt.Errorf("field sender of message srdtrk.linkedpackets.v1.MsgInitLink is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLink"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounter does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLink does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgIncrementCounter) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgInitLink) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.MsgIncrementCounter.sender":
+	case "srdtrk.linkedpackets.v1.MsgInitLink.sender":
 		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounter"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLink"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounter does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLink does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgIncrementCounter) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgInitLink) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in srdtrk.linkedpackets.v1.MsgIncrementCounter", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in srdtrk.linkedpackets.v1.MsgInitLink", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -233,7 +233,7 @@ func (x *fastReflection_MsgIncrementCounter) WhichOneof(d protoreflect.OneofDesc
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgIncrementCounter) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgInitLink) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -244,7 +244,7 @@ func (x *fastReflection_MsgIncrementCounter) GetUnknown() protoreflect.RawFields
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounter) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgInitLink) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -256,7 +256,7 @@ func (x *fastReflection_MsgIncrementCounter) SetUnknown(fields protoreflect.RawF
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgIncrementCounter) IsValid() bool {
+func (x *fastReflection_MsgInitLink) IsValid() bool {
 	return x != nil
 }
 
@@ -266,9 +266,9 @@ func (x *fastReflection_MsgIncrementCounter) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgInitLink) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgIncrementCounter)
+		x := input.Message.Interface().(*MsgInitLink)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -294,7 +294,7 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgIncrementCounter)
+		x := input.Message.Interface().(*MsgInitLink)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -331,7 +331,7 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgIncrementCounter)
+		x := input.Message.Interface().(*MsgInitLink)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -363,10 +363,10 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgIncrementCounter: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgInitLink: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgIncrementCounter: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgInitLink: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
@@ -437,23 +437,23 @@ func (x *fastReflection_MsgIncrementCounter) ProtoMethods() *protoiface.Methods 
 }
 
 var (
-	md_MsgIncrementCounterResponse protoreflect.MessageDescriptor
+	md_MsgInitLinkResponse protoreflect.MessageDescriptor
 )
 
 func init() {
 	file_srdtrk_linkedpackets_v1_tx_proto_init()
-	md_MsgIncrementCounterResponse = File_srdtrk_linkedpackets_v1_tx_proto.Messages().ByName("MsgIncrementCounterResponse")
+	md_MsgInitLinkResponse = File_srdtrk_linkedpackets_v1_tx_proto.Messages().ByName("MsgInitLinkResponse")
 }
 
-var _ protoreflect.Message = (*fastReflection_MsgIncrementCounterResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_MsgInitLinkResponse)(nil)
 
-type fastReflection_MsgIncrementCounterResponse MsgIncrementCounterResponse
+type fastReflection_MsgInitLinkResponse MsgInitLinkResponse
 
-func (x *MsgIncrementCounterResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_MsgIncrementCounterResponse)(x)
+func (x *MsgInitLinkResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_MsgInitLinkResponse)(x)
 }
 
-func (x *MsgIncrementCounterResponse) slowProtoReflect() protoreflect.Message {
+func (x *MsgInitLinkResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_srdtrk_linkedpackets_v1_tx_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -465,43 +465,43 @@ func (x *MsgIncrementCounterResponse) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_MsgIncrementCounterResponse_messageType fastReflection_MsgIncrementCounterResponse_messageType
-var _ protoreflect.MessageType = fastReflection_MsgIncrementCounterResponse_messageType{}
+var _fastReflection_MsgInitLinkResponse_messageType fastReflection_MsgInitLinkResponse_messageType
+var _ protoreflect.MessageType = fastReflection_MsgInitLinkResponse_messageType{}
 
-type fastReflection_MsgIncrementCounterResponse_messageType struct{}
+type fastReflection_MsgInitLinkResponse_messageType struct{}
 
-func (x fastReflection_MsgIncrementCounterResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_MsgIncrementCounterResponse)(nil)
+func (x fastReflection_MsgInitLinkResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_MsgInitLinkResponse)(nil)
 }
-func (x fastReflection_MsgIncrementCounterResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_MsgIncrementCounterResponse)
+func (x fastReflection_MsgInitLinkResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_MsgInitLinkResponse)
 }
-func (x fastReflection_MsgIncrementCounterResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgIncrementCounterResponse
+func (x fastReflection_MsgInitLinkResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgInitLinkResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_MsgIncrementCounterResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_MsgIncrementCounterResponse
+func (x *fastReflection_MsgInitLinkResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_MsgInitLinkResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_MsgIncrementCounterResponse) Type() protoreflect.MessageType {
-	return _fastReflection_MsgIncrementCounterResponse_messageType
+func (x *fastReflection_MsgInitLinkResponse) Type() protoreflect.MessageType {
+	return _fastReflection_MsgInitLinkResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_MsgIncrementCounterResponse) New() protoreflect.Message {
-	return new(fastReflection_MsgIncrementCounterResponse)
+func (x *fastReflection_MsgInitLinkResponse) New() protoreflect.Message {
+	return new(fastReflection_MsgInitLinkResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_MsgIncrementCounterResponse) Interface() protoreflect.ProtoMessage {
-	return (*MsgIncrementCounterResponse)(x)
+func (x *fastReflection_MsgInitLinkResponse) Interface() protoreflect.ProtoMessage {
+	return (*MsgInitLinkResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -509,7 +509,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) Interface() protoreflect.Pr
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_MsgIncrementCounterResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+func (x *fastReflection_MsgInitLinkResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
 }
 
 // Has reports whether a field is populated.
@@ -523,13 +523,13 @@ func (x *fastReflection_MsgIncrementCounterResponse) Range(f func(protoreflect.F
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_MsgIncrementCounterResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_MsgInitLinkResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLinkResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLinkResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -539,13 +539,13 @@ func (x *fastReflection_MsgIncrementCounterResponse) Has(fd protoreflect.FieldDe
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounterResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_MsgInitLinkResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLinkResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLinkResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -555,13 +555,13 @@ func (x *fastReflection_MsgIncrementCounterResponse) Clear(fd protoreflect.Field
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_MsgIncrementCounterResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgInitLinkResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLinkResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounterResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLinkResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -575,13 +575,13 @@ func (x *fastReflection_MsgIncrementCounterResponse) Get(descriptor protoreflect
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounterResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_MsgInitLinkResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLinkResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLinkResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -595,36 +595,36 @@ func (x *fastReflection_MsgIncrementCounterResponse) Set(fd protoreflect.FieldDe
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounterResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgInitLinkResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLinkResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLinkResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_MsgIncrementCounterResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_MsgInitLinkResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgIncrementCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.MsgInitLinkResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgIncrementCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.MsgInitLinkResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_MsgIncrementCounterResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_MsgInitLinkResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in srdtrk.linkedpackets.v1.MsgIncrementCounterResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in srdtrk.linkedpackets.v1.MsgInitLinkResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -632,7 +632,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) WhichOneof(d protoreflect.O
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_MsgIncrementCounterResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_MsgInitLinkResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -643,7 +643,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) GetUnknown() protoreflect.R
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_MsgIncrementCounterResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_MsgInitLinkResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -655,7 +655,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) SetUnknown(fields protorefl
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_MsgIncrementCounterResponse) IsValid() bool {
+func (x *fastReflection_MsgInitLinkResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -665,9 +665,9 @@ func (x *fastReflection_MsgIncrementCounterResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_MsgIncrementCounterResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_MsgInitLinkResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*MsgIncrementCounterResponse)
+		x := input.Message.Interface().(*MsgInitLinkResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -689,7 +689,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) ProtoMethods() *protoiface.
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*MsgIncrementCounterResponse)
+		x := input.Message.Interface().(*MsgInitLinkResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -719,7 +719,7 @@ func (x *fastReflection_MsgIncrementCounterResponse) ProtoMethods() *protoiface.
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*MsgIncrementCounterResponse)
+		x := input.Message.Interface().(*MsgInitLinkResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -751,10 +751,10 @@ func (x *fastReflection_MsgIncrementCounterResponse) ProtoMethods() *protoiface.
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgIncrementCounterResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgInitLinkResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgIncrementCounterResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: MsgInitLinkResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			default:
@@ -1660,8 +1660,8 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// MsgIncrementCounter defines the Msg/IncrementCounter request type.
-type MsgIncrementCounter struct {
+// MsgInitLink defines the message starting packet linking.
+type MsgInitLink struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -1670,8 +1670,8 @@ type MsgIncrementCounter struct {
 	Sender string `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
 }
 
-func (x *MsgIncrementCounter) Reset() {
-	*x = MsgIncrementCounter{}
+func (x *MsgInitLink) Reset() {
+	*x = MsgInitLink{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_srdtrk_linkedpackets_v1_tx_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1679,18 +1679,18 @@ func (x *MsgIncrementCounter) Reset() {
 	}
 }
 
-func (x *MsgIncrementCounter) String() string {
+func (x *MsgInitLink) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgIncrementCounter) ProtoMessage() {}
+func (*MsgInitLink) ProtoMessage() {}
 
-// Deprecated: Use MsgIncrementCounter.ProtoReflect.Descriptor instead.
-func (*MsgIncrementCounter) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgInitLink.ProtoReflect.Descriptor instead.
+func (*MsgInitLink) Descriptor() ([]byte, []int) {
 	return file_srdtrk_linkedpackets_v1_tx_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *MsgIncrementCounter) GetSender() string {
+func (x *MsgInitLink) GetSender() string {
 	if x != nil {
 		return x.Sender
 	}
@@ -1698,14 +1698,14 @@ func (x *MsgIncrementCounter) GetSender() string {
 }
 
 // MsgIncrementCounterResponse defines the Msg/IncrementCounter response type.
-type MsgIncrementCounterResponse struct {
+type MsgInitLinkResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *MsgIncrementCounterResponse) Reset() {
-	*x = MsgIncrementCounterResponse{}
+func (x *MsgInitLinkResponse) Reset() {
+	*x = MsgInitLinkResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_srdtrk_linkedpackets_v1_tx_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1713,14 +1713,14 @@ func (x *MsgIncrementCounterResponse) Reset() {
 	}
 }
 
-func (x *MsgIncrementCounterResponse) String() string {
+func (x *MsgInitLinkResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*MsgIncrementCounterResponse) ProtoMessage() {}
+func (*MsgInitLinkResponse) ProtoMessage() {}
 
-// Deprecated: Use MsgIncrementCounterResponse.ProtoReflect.Descriptor instead.
-func (*MsgIncrementCounterResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use MsgInitLinkResponse.ProtoReflect.Descriptor instead.
+func (*MsgInitLinkResponse) Descriptor() ([]byte, []int) {
 	return file_srdtrk_linkedpackets_v1_tx_proto_rawDescGZIP(), []int{1}
 }
 
@@ -1814,38 +1814,35 @@ var file_srdtrk_linkedpackets_v1_tx_proto_rawDesc = []byte{
 	0x72, 0x64, 0x74, 0x72, 0x6b, 0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b,
 	0x65, 0x74, 0x73, 0x2f, 0x76, 0x31, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x1a, 0x19, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x5f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x67, 0x0a,
-	0x13, 0x4d, 0x73, 0x67, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75,
-	0x6e, 0x74, 0x65, 0x72, 0x12, 0x16, 0x0a, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x3a, 0x38, 0x82, 0xe7,
-	0xb0, 0x2a, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x8a, 0xe7, 0xb0, 0x2a, 0x28, 0x73, 0x72,
-	0x64, 0x74, 0x72, 0x6b, 0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65,
-	0x74, 0x73, 0x2f, 0x4d, 0x73, 0x67, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x43,
-	0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x22, 0x1d, 0x0a, 0x1b, 0x4d, 0x73, 0x67, 0x49, 0x6e, 0x63,
-	0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73,
-	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xc6, 0x01, 0x0a, 0x0f, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x36, 0x0a, 0x09, 0x61, 0x75, 0x74,
-	0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4,
-	0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
-	0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74,
-	0x79, 0x12, 0x42, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x0b, 0x32, 0x1f, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65,
-	0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x72, 0x61,
-	0x6d, 0x73, 0x42, 0x09, 0xc8, 0xde, 0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x06, 0x70,
-	0x61, 0x72, 0x61, 0x6d, 0x73, 0x3a, 0x37, 0x82, 0xe7, 0xb0, 0x2a, 0x09, 0x61, 0x75, 0x74, 0x68,
-	0x6f, 0x72, 0x69, 0x74, 0x79, 0x8a, 0xe7, 0xb0, 0x2a, 0x24, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b,
-	0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2f, 0x4d,
-	0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x22, 0x19,
-	0x0a, 0x17, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d,
-	0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xf0, 0x01, 0x0a, 0x03, 0x4d, 0x73,
-	0x67, 0x12, 0x76, 0x0a, 0x10, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f,
-	0x75, 0x6e, 0x74, 0x65, 0x72, 0x12, 0x2c, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c,
+	0x2f, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x57, 0x0a,
+	0x0b, 0x4d, 0x73, 0x67, 0x49, 0x6e, 0x69, 0x74, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x16, 0x0a, 0x06,
+	0x73, 0x65, 0x6e, 0x64, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x73, 0x65,
+	0x6e, 0x64, 0x65, 0x72, 0x3a, 0x30, 0x82, 0xe7, 0xb0, 0x2a, 0x06, 0x73, 0x65, 0x6e, 0x64, 0x65,
+	0x72, 0x8a, 0xe7, 0xb0, 0x2a, 0x20, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2f, 0x6c, 0x69, 0x6e,
+	0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2f, 0x4d, 0x73, 0x67, 0x49, 0x6e,
+	0x69, 0x74, 0x4c, 0x69, 0x6e, 0x6b, 0x22, 0x15, 0x0a, 0x13, 0x4d, 0x73, 0x67, 0x49, 0x6e, 0x69,
+	0x74, 0x4c, 0x69, 0x6e, 0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xc6, 0x01,
+	0x0a, 0x0f, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d,
+	0x73, 0x12, 0x36, 0x0a, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x42, 0x18, 0xd2, 0xb4, 0x2d, 0x14, 0x63, 0x6f, 0x73, 0x6d, 0x6f, 0x73,
+	0x2e, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x09,
+	0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x12, 0x42, 0x0a, 0x06, 0x70, 0x61, 0x72,
+	0x61, 0x6d, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x73, 0x72, 0x64, 0x74,
+	0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73,
+	0x2e, 0x76, 0x31, 0x2e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0x09, 0xc8, 0xde, 0x1f, 0x00,
+	0xa8, 0xe7, 0xb0, 0x2a, 0x01, 0x52, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x3a, 0x37, 0x82,
+	0xe7, 0xb0, 0x2a, 0x09, 0x61, 0x75, 0x74, 0x68, 0x6f, 0x72, 0x69, 0x74, 0x79, 0x8a, 0xe7, 0xb0,
+	0x2a, 0x24, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70,
+	0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2f, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x22, 0x19, 0x0a, 0x17, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x32, 0xd8, 0x01, 0x0a, 0x03, 0x4d, 0x73, 0x67, 0x12, 0x5e, 0x0a, 0x08, 0x49, 0x6e, 0x69,
+	0x74, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x24, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c,
 	0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e,
-	0x4d, 0x73, 0x67, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75, 0x6e,
-	0x74, 0x65, 0x72, 0x1a, 0x34, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e,
-	0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73,
-	0x67, 0x49, 0x6e, 0x63, 0x72, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x65,
-	0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x6a, 0x0a, 0x0c, 0x55, 0x70, 0x64,
+	0x4d, 0x73, 0x67, 0x49, 0x6e, 0x69, 0x74, 0x4c, 0x69, 0x6e, 0x6b, 0x1a, 0x2c, 0x2e, 0x73, 0x72,
+	0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65,
+	0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x49, 0x6e, 0x69, 0x74, 0x4c, 0x69, 0x6e,
+	0x6b, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x6a, 0x0a, 0x0c, 0x55, 0x70, 0x64,
 	0x61, 0x74, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x28, 0x2e, 0x73, 0x72, 0x64, 0x74,
 	0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73,
 	0x2e, 0x76, 0x31, 0x2e, 0x4d, 0x73, 0x67, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x61, 0x72,
@@ -1885,17 +1882,17 @@ func file_srdtrk_linkedpackets_v1_tx_proto_rawDescGZIP() []byte {
 
 var file_srdtrk_linkedpackets_v1_tx_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_srdtrk_linkedpackets_v1_tx_proto_goTypes = []interface{}{
-	(*MsgIncrementCounter)(nil),         // 0: srdtrk.linkedpackets.v1.MsgIncrementCounter
-	(*MsgIncrementCounterResponse)(nil), // 1: srdtrk.linkedpackets.v1.MsgIncrementCounterResponse
-	(*MsgUpdateParams)(nil),             // 2: srdtrk.linkedpackets.v1.MsgUpdateParams
-	(*MsgUpdateParamsResponse)(nil),     // 3: srdtrk.linkedpackets.v1.MsgUpdateParamsResponse
-	(*Params)(nil),                      // 4: srdtrk.linkedpackets.v1.Params
+	(*MsgInitLink)(nil),             // 0: srdtrk.linkedpackets.v1.MsgInitLink
+	(*MsgInitLinkResponse)(nil),     // 1: srdtrk.linkedpackets.v1.MsgInitLinkResponse
+	(*MsgUpdateParams)(nil),         // 2: srdtrk.linkedpackets.v1.MsgUpdateParams
+	(*MsgUpdateParamsResponse)(nil), // 3: srdtrk.linkedpackets.v1.MsgUpdateParamsResponse
+	(*Params)(nil),                  // 4: srdtrk.linkedpackets.v1.Params
 }
 var file_srdtrk_linkedpackets_v1_tx_proto_depIdxs = []int32{
 	4, // 0: srdtrk.linkedpackets.v1.MsgUpdateParams.params:type_name -> srdtrk.linkedpackets.v1.Params
-	0, // 1: srdtrk.linkedpackets.v1.Msg.IncrementCounter:input_type -> srdtrk.linkedpackets.v1.MsgIncrementCounter
+	0, // 1: srdtrk.linkedpackets.v1.Msg.InitLink:input_type -> srdtrk.linkedpackets.v1.MsgInitLink
 	2, // 2: srdtrk.linkedpackets.v1.Msg.UpdateParams:input_type -> srdtrk.linkedpackets.v1.MsgUpdateParams
-	1, // 3: srdtrk.linkedpackets.v1.Msg.IncrementCounter:output_type -> srdtrk.linkedpackets.v1.MsgIncrementCounterResponse
+	1, // 3: srdtrk.linkedpackets.v1.Msg.InitLink:output_type -> srdtrk.linkedpackets.v1.MsgInitLinkResponse
 	3, // 4: srdtrk.linkedpackets.v1.Msg.UpdateParams:output_type -> srdtrk.linkedpackets.v1.MsgUpdateParamsResponse
 	3, // [3:5] is the sub-list for method output_type
 	1, // [1:3] is the sub-list for method input_type
@@ -1912,7 +1909,7 @@ func file_srdtrk_linkedpackets_v1_tx_proto_init() {
 	file_srdtrk_linkedpackets_v1_types_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_srdtrk_linkedpackets_v1_tx_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgIncrementCounter); i {
+			switch v := v.(*MsgInitLink); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1924,7 +1921,7 @@ func file_srdtrk_linkedpackets_v1_tx_proto_init() {
 			}
 		}
 		file_srdtrk_linkedpackets_v1_tx_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MsgIncrementCounterResponse); i {
+			switch v := v.(*MsgInitLinkResponse); i {
 			case 0:
 				return &v.state
 			case 1:

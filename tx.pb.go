@@ -31,24 +31,24 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-// MsgIncrementCounter defines the Msg/IncrementCounter request type.
-type MsgIncrementCounter struct {
+// MsgInitLink defines the message starting packet linking.
+type MsgInitLink struct {
 	// sender is the message sender.
 	Sender string `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
 }
 
-func (m *MsgIncrementCounter) Reset()         { *m = MsgIncrementCounter{} }
-func (m *MsgIncrementCounter) String() string { return proto.CompactTextString(m) }
-func (*MsgIncrementCounter) ProtoMessage()    {}
-func (*MsgIncrementCounter) Descriptor() ([]byte, []int) {
+func (m *MsgInitLink) Reset()         { *m = MsgInitLink{} }
+func (m *MsgInitLink) String() string { return proto.CompactTextString(m) }
+func (*MsgInitLink) ProtoMessage()    {}
+func (*MsgInitLink) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2dd60cf9e8ce3e36, []int{0}
 }
-func (m *MsgIncrementCounter) XXX_Unmarshal(b []byte) error {
+func (m *MsgInitLink) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgIncrementCounter) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgInitLink) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgIncrementCounter.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgInitLink.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -58,19 +58,19 @@ func (m *MsgIncrementCounter) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return b[:n], nil
 	}
 }
-func (m *MsgIncrementCounter) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgIncrementCounter.Merge(m, src)
+func (m *MsgInitLink) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgInitLink.Merge(m, src)
 }
-func (m *MsgIncrementCounter) XXX_Size() int {
+func (m *MsgInitLink) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgIncrementCounter) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgIncrementCounter.DiscardUnknown(m)
+func (m *MsgInitLink) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgInitLink.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgIncrementCounter proto.InternalMessageInfo
+var xxx_messageInfo_MsgInitLink proto.InternalMessageInfo
 
-func (m *MsgIncrementCounter) GetSender() string {
+func (m *MsgInitLink) GetSender() string {
 	if m != nil {
 		return m.Sender
 	}
@@ -78,21 +78,21 @@ func (m *MsgIncrementCounter) GetSender() string {
 }
 
 // MsgIncrementCounterResponse defines the Msg/IncrementCounter response type.
-type MsgIncrementCounterResponse struct {
+type MsgInitLinkResponse struct {
 }
 
-func (m *MsgIncrementCounterResponse) Reset()         { *m = MsgIncrementCounterResponse{} }
-func (m *MsgIncrementCounterResponse) String() string { return proto.CompactTextString(m) }
-func (*MsgIncrementCounterResponse) ProtoMessage()    {}
-func (*MsgIncrementCounterResponse) Descriptor() ([]byte, []int) {
+func (m *MsgInitLinkResponse) Reset()         { *m = MsgInitLinkResponse{} }
+func (m *MsgInitLinkResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgInitLinkResponse) ProtoMessage()    {}
+func (*MsgInitLinkResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_2dd60cf9e8ce3e36, []int{1}
 }
-func (m *MsgIncrementCounterResponse) XXX_Unmarshal(b []byte) error {
+func (m *MsgInitLinkResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *MsgIncrementCounterResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *MsgInitLinkResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_MsgIncrementCounterResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_MsgInitLinkResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -102,17 +102,17 @@ func (m *MsgIncrementCounterResponse) XXX_Marshal(b []byte, deterministic bool) 
 		return b[:n], nil
 	}
 }
-func (m *MsgIncrementCounterResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MsgIncrementCounterResponse.Merge(m, src)
+func (m *MsgInitLinkResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgInitLinkResponse.Merge(m, src)
 }
-func (m *MsgIncrementCounterResponse) XXX_Size() int {
+func (m *MsgInitLinkResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *MsgIncrementCounterResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MsgIncrementCounterResponse.DiscardUnknown(m)
+func (m *MsgInitLinkResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgInitLinkResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MsgIncrementCounterResponse proto.InternalMessageInfo
+var xxx_messageInfo_MsgInitLinkResponse proto.InternalMessageInfo
 
 // MsgUpdateParams is the Msg/UpdateParams request type.
 type MsgUpdateParams struct {
@@ -210,8 +210,8 @@ func (m *MsgUpdateParamsResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_MsgUpdateParamsResponse proto.InternalMessageInfo
 
 func init() {
-	proto.RegisterType((*MsgIncrementCounter)(nil), "srdtrk.linkedpackets.v1.MsgIncrementCounter")
-	proto.RegisterType((*MsgIncrementCounterResponse)(nil), "srdtrk.linkedpackets.v1.MsgIncrementCounterResponse")
+	proto.RegisterType((*MsgInitLink)(nil), "srdtrk.linkedpackets.v1.MsgInitLink")
+	proto.RegisterType((*MsgInitLinkResponse)(nil), "srdtrk.linkedpackets.v1.MsgInitLinkResponse")
 	proto.RegisterType((*MsgUpdateParams)(nil), "srdtrk.linkedpackets.v1.MsgUpdateParams")
 	proto.RegisterType((*MsgUpdateParamsResponse)(nil), "srdtrk.linkedpackets.v1.MsgUpdateParamsResponse")
 }
@@ -219,34 +219,33 @@ func init() {
 func init() { proto.RegisterFile("srdtrk/linkedpackets/v1/tx.proto", fileDescriptor_2dd60cf9e8ce3e36) }
 
 var fileDescriptor_2dd60cf9e8ce3e36 = []byte{
-	// 422 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x52, 0xbf, 0x0f, 0xd2, 0x40,
-	0x14, 0xee, 0x69, 0x24, 0xe1, 0x34, 0x51, 0x2b, 0x11, 0xa8, 0xb1, 0x90, 0xea, 0xd0, 0x10, 0x6d,
-	0x05, 0x8d, 0x3f, 0xd8, 0xac, 0x93, 0x03, 0x89, 0xa9, 0x71, 0x71, 0x31, 0xa5, 0xbd, 0x1c, 0x15,
-	0x7b, 0xd7, 0xdc, 0x3b, 0x88, 0x6c, 0xc6, 0xd1, 0xc9, 0x3f, 0xc3, 0x91, 0xc1, 0xbf, 0xc1, 0x30,
-	0x12, 0x27, 0x27, 0x63, 0x60, 0x60, 0xf5, 0x4f, 0x30, 0xed, 0x95, 0x00, 0xda, 0x1a, 0x5d, 0x9a,
-	0xf7, 0x5e, 0xbf, 0xf7, 0x7d, 0xef, 0xfb, 0x72, 0xb8, 0x0b, 0x22, 0x92, 0x62, 0xea, 0xbe, 0x89,
-	0xd9, 0x94, 0x44, 0x69, 0x10, 0x4e, 0x89, 0x04, 0x77, 0xde, 0x77, 0xe5, 0x5b, 0x27, 0x15, 0x5c,
-	0x72, 0xbd, 0xa9, 0x10, 0xce, 0x09, 0xc2, 0x99, 0xf7, 0x8d, 0x66, 0xc8, 0x21, 0xe1, 0xe0, 0x26,
-	0x40, 0xb3, 0x85, 0x04, 0xa8, 0xda, 0x30, 0x1a, 0x94, 0x53, 0x9e, 0x97, 0x6e, 0x56, 0x15, 0xd3,
-	0xcb, 0x41, 0x12, 0x33, 0xee, 0xe6, 0xdf, 0x62, 0x74, 0xa3, 0x52, 0x7c, 0x91, 0x12, 0x28, 0x40,
-	0x6d, 0x25, 0xf3, 0x4a, 0x11, 0xaa, 0x46, 0xfd, 0xb2, 0x28, 0xbe, 0x32, 0x02, 0xfa, 0x94, 0x85,
-	0x82, 0x24, 0x84, 0xc9, 0x27, 0x7c, 0xc6, 0x24, 0x11, 0xfa, 0x55, 0x5c, 0x03, 0xc2, 0x22, 0x22,
-	0x5a, 0xa8, 0x8b, 0xec, 0xba, 0x5f, 0x74, 0xc3, 0x87, 0xef, 0x77, 0xcb, 0x5e, 0xd1, 0x7c, 0xd8,
-	0x2d, 0x7b, 0x76, 0xa9, 0x7c, 0x09, 0xa3, 0x75, 0x1d, 0x5f, 0x2b, 0x19, 0xfb, 0x04, 0x52, 0xce,
-	0x80, 0x58, 0x5f, 0x10, 0xbe, 0x38, 0x02, 0xfa, 0x22, 0x8d, 0x02, 0x49, 0x9e, 0x05, 0x22, 0x48,
-	0x40, 0xbf, 0x8f, 0xeb, 0xc1, 0x4c, 0x4e, 0xb8, 0x88, 0xe5, 0x42, 0xdd, 0xe1, 0xb5, 0xbe, 0x7e,
-	0xbe, 0xdd, 0x28, 0x0c, 0x3c, 0x8e, 0x22, 0x41, 0x00, 0x9e, 0x4b, 0x11, 0x33, 0xea, 0x1f, 0xa0,
-	0xba, 0x87, 0x6b, 0x69, 0xce, 0xd0, 0x3a, 0xd3, 0x45, 0xf6, 0xf9, 0x41, 0xc7, 0xa9, 0xc8, 0xdf,
-	0x51, 0x42, 0x5e, 0x7d, 0xf5, 0xbd, 0xa3, 0x7d, 0xda, 0x2d, 0x7b, 0xc8, 0x2f, 0x36, 0x87, 0x0f,
-	0x32, 0xa3, 0x07, 0xce, 0xcc, 0xeb, 0xcd, 0x2a, 0xaf, 0xc7, 0x47, 0x5b, 0x6d, 0xdc, 0xfc, 0x6d,
-	0xb4, 0xf7, 0x38, 0xf8, 0x89, 0xf0, 0xd9, 0x11, 0x50, 0x7d, 0x8e, 0x2f, 0xfd, 0x11, 0xf8, 0xad,
-	0xca, 0x1b, 0x4b, 0x52, 0x33, 0xee, 0xfd, 0x0f, 0x7a, 0xaf, 0xaf, 0xbf, 0xc6, 0x17, 0x4e, 0xf2,
-	0xb5, 0xff, 0xc6, 0x72, 0x8c, 0x34, 0xee, 0xfc, 0x2b, 0x72, 0xaf, 0x65, 0x9c, 0x7b, 0x97, 0xc5,
-	0xe9, 0x3d, 0x5a, 0x6d, 0x4c, 0xb4, 0xde, 0x98, 0xe8, 0xc7, 0xc6, 0x44, 0x1f, 0xb7, 0xa6, 0xb6,
-	0xde, 0x9a, 0xda, 0xb7, 0xad, 0xa9, 0xbd, 0xec, 0xd0, 0x58, 0x4e, 0x66, 0x63, 0x27, 0xe4, 0x89,
-	0x5b, 0x16, 0xec, 0xb8, 0x96, 0x3f, 0xd0, 0xbb, 0xbf, 0x02, 0x00, 0x00, 0xff, 0xff, 0x72, 0x63,
-	0x99, 0x96, 0x5f, 0x03, 0x00, 0x00,
+	// 412 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x28, 0x2e, 0x4a, 0x29,
+	0x29, 0xca, 0xd6, 0xcf, 0xc9, 0xcc, 0xcb, 0x4e, 0x4d, 0x29, 0x48, 0x4c, 0xce, 0x4e, 0x2d, 0x29,
+	0xd6, 0x2f, 0x33, 0xd4, 0x2f, 0xa9, 0xd0, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x12, 0x87, 0xa8,
+	0xd0, 0x43, 0x51, 0xa1, 0x57, 0x66, 0x28, 0x25, 0x9e, 0x9c, 0x5f, 0x9c, 0x9b, 0x5f, 0xac, 0x9f,
+	0x5b, 0x9c, 0x0e, 0xd2, 0x90, 0x5b, 0x9c, 0x0e, 0xd1, 0x21, 0x25, 0x92, 0x9e, 0x9f, 0x9e, 0x0f,
+	0x66, 0xea, 0x83, 0x58, 0x50, 0x51, 0xc1, 0xc4, 0xdc, 0xcc, 0xbc, 0x7c, 0x7d, 0x30, 0x09, 0x15,
+	0x52, 0xc6, 0x69, 0x79, 0x65, 0x41, 0x6a, 0x31, 0x54, 0x91, 0x24, 0xc4, 0x9a, 0x78, 0x88, 0x81,
+	0x10, 0x0e, 0x44, 0x4a, 0x29, 0x9c, 0x8b, 0xdb, 0xb7, 0x38, 0xdd, 0x33, 0x2f, 0xb3, 0xc4, 0x27,
+	0x33, 0x2f, 0x5b, 0x48, 0x8c, 0x8b, 0xad, 0x38, 0x35, 0x2f, 0x25, 0xb5, 0x48, 0x82, 0x51, 0x81,
+	0x51, 0x83, 0x33, 0x08, 0xca, 0xb3, 0x32, 0x68, 0x7a, 0xbe, 0x41, 0x0b, 0xca, 0xe9, 0x7a, 0xbe,
+	0x41, 0x0b, 0xbb, 0x9f, 0x91, 0x4c, 0x52, 0x12, 0xe5, 0x12, 0x46, 0xe2, 0x06, 0xa5, 0x16, 0x17,
+	0xe4, 0xe7, 0x15, 0xa7, 0x2a, 0x1d, 0x63, 0xe4, 0xe2, 0xf7, 0x2d, 0x4e, 0x0f, 0x2d, 0x48, 0x49,
+	0x2c, 0x49, 0x0d, 0x48, 0x2c, 0x4a, 0xcc, 0x2d, 0x16, 0x32, 0xe3, 0xe2, 0x4c, 0x2c, 0x2d, 0xc9,
+	0xc8, 0x2f, 0xca, 0x2c, 0xa9, 0x84, 0xd8, 0xeb, 0x24, 0x71, 0x69, 0x8b, 0xae, 0x08, 0xd4, 0xa1,
+	0x8e, 0x29, 0x29, 0x45, 0xa9, 0xc5, 0xc5, 0xc1, 0x25, 0x45, 0x99, 0x79, 0xe9, 0x41, 0x08, 0xa5,
+	0x42, 0x4e, 0x5c, 0x6c, 0x05, 0x60, 0x13, 0x24, 0x98, 0x14, 0x18, 0x35, 0xb8, 0x8d, 0xe4, 0xf5,
+	0x70, 0x84, 0xb3, 0x1e, 0xc4, 0x22, 0x27, 0xce, 0x13, 0xf7, 0xe4, 0x19, 0x56, 0x3c, 0xdf, 0xa0,
+	0xc5, 0x18, 0x04, 0xd5, 0x69, 0x65, 0x0e, 0xf2, 0x18, 0xc2, 0x4c, 0x90, 0xdf, 0x54, 0x70, 0xf9,
+	0x0d, 0xd9, 0xd1, 0x4a, 0x92, 0x5c, 0xe2, 0x68, 0x42, 0x30, 0x3f, 0x1a, 0xdd, 0x60, 0xe4, 0x62,
+	0xf6, 0x2d, 0x4e, 0x17, 0x8a, 0xe3, 0xe2, 0x80, 0x07, 0xac, 0x0a, 0x4e, 0xb7, 0x21, 0x85, 0x92,
+	0x94, 0x0e, 0x31, 0xaa, 0x60, 0xf6, 0x08, 0x65, 0x71, 0xf1, 0xa0, 0x84, 0xa3, 0x06, 0x3e, 0xdd,
+	0xc8, 0x2a, 0xa5, 0x0c, 0x88, 0x55, 0x09, 0xb3, 0x4b, 0x8a, 0xb5, 0x01, 0x14, 0x6c, 0x4e, 0x96,
+	0x27, 0x1e, 0xc9, 0x31, 0x5e, 0x78, 0x24, 0xc7, 0xf8, 0xe0, 0x91, 0x1c, 0xe3, 0x84, 0xc7, 0x72,
+	0x0c, 0x17, 0x1e, 0xcb, 0x31, 0xdc, 0x78, 0x2c, 0xc7, 0x10, 0x25, 0x9f, 0x9e, 0x59, 0x92, 0x51,
+	0x9a, 0xa4, 0x97, 0x9c, 0x9f, 0xab, 0x8f, 0x2d, 0x00, 0x93, 0xd8, 0xc0, 0x09, 0xce, 0x18, 0x10,
+	0x00, 0x00, 0xff, 0xff, 0x9d, 0x95, 0xa4, 0xfe, 0x2f, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -261,8 +260,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
-	// IncrementCounter increments the counter.
-	IncrementCounter(ctx context.Context, in *MsgIncrementCounter, opts ...grpc.CallOption) (*MsgIncrementCounterResponse, error)
+	// InitLink starts the packet linking with this Tx.
+	InitLink(ctx context.Context, in *MsgInitLink, opts ...grpc.CallOption) (*MsgInitLinkResponse, error)
 	// UpdateParams updates the module parameters.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
 }
@@ -275,9 +274,9 @@ func NewMsgClient(cc grpc1.ClientConn) MsgClient {
 	return &msgClient{cc}
 }
 
-func (c *msgClient) IncrementCounter(ctx context.Context, in *MsgIncrementCounter, opts ...grpc.CallOption) (*MsgIncrementCounterResponse, error) {
-	out := new(MsgIncrementCounterResponse)
-	err := c.cc.Invoke(ctx, "/srdtrk.linkedpackets.v1.Msg/IncrementCounter", in, out, opts...)
+func (c *msgClient) InitLink(ctx context.Context, in *MsgInitLink, opts ...grpc.CallOption) (*MsgInitLinkResponse, error) {
+	out := new(MsgInitLinkResponse)
+	err := c.cc.Invoke(ctx, "/srdtrk.linkedpackets.v1.Msg/InitLink", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -295,8 +294,8 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
-	// IncrementCounter increments the counter.
-	IncrementCounter(context.Context, *MsgIncrementCounter) (*MsgIncrementCounterResponse, error)
+	// InitLink starts the packet linking with this Tx.
+	InitLink(context.Context, *MsgInitLink) (*MsgInitLinkResponse, error)
 	// UpdateParams updates the module parameters.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
 }
@@ -305,8 +304,8 @@ type MsgServer interface {
 type UnimplementedMsgServer struct {
 }
 
-func (*UnimplementedMsgServer) IncrementCounter(ctx context.Context, req *MsgIncrementCounter) (*MsgIncrementCounterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method IncrementCounter not implemented")
+func (*UnimplementedMsgServer) InitLink(ctx context.Context, req *MsgInitLink) (*MsgInitLinkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method InitLink not implemented")
 }
 func (*UnimplementedMsgServer) UpdateParams(ctx context.Context, req *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
@@ -316,20 +315,20 @@ func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
 	s.RegisterService(&_Msg_serviceDesc, srv)
 }
 
-func _Msg_IncrementCounter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(MsgIncrementCounter)
+func _Msg_InitLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgInitLink)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(MsgServer).IncrementCounter(ctx, in)
+		return srv.(MsgServer).InitLink(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/srdtrk.linkedpackets.v1.Msg/IncrementCounter",
+		FullMethod: "/srdtrk.linkedpackets.v1.Msg/InitLink",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(MsgServer).IncrementCounter(ctx, req.(*MsgIncrementCounter))
+		return srv.(MsgServer).InitLink(ctx, req.(*MsgInitLink))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -357,8 +356,8 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MsgServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "IncrementCounter",
-			Handler:    _Msg_IncrementCounter_Handler,
+			MethodName: "InitLink",
+			Handler:    _Msg_InitLink_Handler,
 		},
 		{
 			MethodName: "UpdateParams",
@@ -369,7 +368,7 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	Metadata: "srdtrk/linkedpackets/v1/tx.proto",
 }
 
-func (m *MsgIncrementCounter) Marshal() (dAtA []byte, err error) {
+func (m *MsgInitLink) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -379,12 +378,12 @@ func (m *MsgIncrementCounter) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgIncrementCounter) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgInitLink) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgIncrementCounter) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgInitLink) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -399,7 +398,7 @@ func (m *MsgIncrementCounter) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *MsgIncrementCounterResponse) Marshal() (dAtA []byte, err error) {
+func (m *MsgInitLinkResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -409,12 +408,12 @@ func (m *MsgIncrementCounterResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *MsgIncrementCounterResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *MsgInitLinkResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *MsgIncrementCounterResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *MsgInitLinkResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -496,7 +495,7 @@ func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *MsgIncrementCounter) Size() (n int) {
+func (m *MsgInitLink) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -509,7 +508,7 @@ func (m *MsgIncrementCounter) Size() (n int) {
 	return n
 }
 
-func (m *MsgIncrementCounterResponse) Size() (n int) {
+func (m *MsgInitLinkResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -548,7 +547,7 @@ func sovTx(x uint64) (n int) {
 func sozTx(x uint64) (n int) {
 	return sovTx(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *MsgIncrementCounter) Unmarshal(dAtA []byte) error {
+func (m *MsgInitLink) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -571,10 +570,10 @@ func (m *MsgIncrementCounter) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgIncrementCounter: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgInitLink: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgIncrementCounter: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgInitLink: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -630,7 +629,7 @@ func (m *MsgIncrementCounter) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *MsgIncrementCounterResponse) Unmarshal(dAtA []byte) error {
+func (m *MsgInitLinkResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -653,10 +652,10 @@ func (m *MsgIncrementCounterResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: MsgIncrementCounterResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: MsgInitLinkResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: MsgIncrementCounterResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: MsgInitLinkResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:
