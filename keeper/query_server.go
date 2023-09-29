@@ -28,7 +28,7 @@ func (qs queryServer) LinkEnabledChannel(ctx context.Context, req *linkedpackets
 		return nil, status.Error(codes.InvalidArgument, "empty request")
 	}
 
-	isLinkEnabled, err := qs.k.LinkEnabled.Get(ctx, collections.Join(req.PortId, req.ChannelId))
+	isLinkEnabled, err := qs.k.LinkEnabled.Has(ctx, collections.Join(req.PortId, req.ChannelId))
 	if err != nil {
 		isLinkEnabled = false
 	}

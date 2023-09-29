@@ -23,8 +23,8 @@ type Keeper struct {
 	// state management
 	Schema collections.Schema
 	Params collections.Item[linkedpackets.Params]
-	// LinkEnabled is a map of (portID, channelID) -> bool that indicates whether linked packets are enabled for a given channel.
-	LinkEnabled collections.Map[collections.Pair[string, string], bool]
+	// LinkEnabled is a KeySet of (portID, channelID) that indicates whether linked packets are enabled for a given channel.
+	LinkEnabled collections.KeySet[collections.Pair[string, string]]
 }
 
 // NewKeeper creates a new Keeper instance
@@ -39,8 +39,8 @@ func NewKeeper(cdc codec.BinaryCodec, addressCodec address.Codec, storeService s
 		addressCodec: addressCodec,
 		authority:    authority,
 		Params:       collections.NewItem(sb, linkedpackets.ParamsKey, "params", codec.CollValue[linkedpackets.Params](cdc)),
-		LinkEnabled: collections.NewMap(
-			sb, linkedpackets.LinkEnabledKey, "link_enabled", collections.PairKeyCodec(collections.StringKey, collections.StringKey), collections.BoolValue,
+		LinkEnabled: collections.NewKeySet(
+			sb, linkedpackets.LinkEnabledKey, "link_enabled", collections.PairKeyCodec(collections.StringKey, collections.StringKey),
 		),
 	}
 
