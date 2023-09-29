@@ -3,7 +3,6 @@ package keeper
 import (
 	"context"
 	"errors"
-	"fmt"
 
 	"cosmossdk.io/collections"
 	"google.golang.org/grpc/codes"
@@ -23,22 +22,18 @@ type queryServer struct {
 	k Keeper
 }
 
-// Counter defines the handler for the Query/Counter RPC method.
-func (qs queryServer) Counter(ctx context.Context, req *linkedpackets.QueryCounterRequest) (*linkedpackets.QueryCounterResponse, error) {
-	if _, err := qs.k.addressCodec.StringToBytes(req.Address); err != nil {
-		return nil, fmt.Errorf("invalid sender address: %w", err)
+// LinkEnabledChannel defines the handler for the Query/LinkEnabledChannel RPC method.
+func (qs queryServer) LinkEnabledChannel(ctx context.Context, req *linkedpackets.QueryLinkEnabledChannelRequest) (*linkedpackets.QueryLinkEnabledChannelResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "empty request")
 	}
 
-	// counter, err := qs.k.Counter.Get(ctx, req.Address)
-	// if err != nil {
-	//	if errors.Is(err, collections.ErrNotFound) {
-	//		return &linkedpackets.QueryCounterResponse{Counter: 0}, nil
-	//	}
+	isLinkEnabled, err := qs.k.LinkEnabled.Get(ctx, collections.Join(req.PortId, req.ChannelId))
+	if err != nil {
+		isLinkEnabled = false
+	}
 
-	//	return nil, status.Error(codes.Internal, err.Error())
-	//}
-
-	return &linkedpackets.QueryCounterResponse{Counter: 0}, nil
+	return &linkedpackets.QueryLinkEnabledChannelResponse{LinkEnabled: isLinkEnabled}, nil
 }
 
 // Params defines the handler for the Query/Params RPC method.

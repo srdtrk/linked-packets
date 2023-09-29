@@ -16,18 +16,11 @@ func TestQueryParams(t *testing.T) {
 	require.Equal(linkedpackets.Params{}, resp.Params)
 }
 
-func TestQueryCounter(t *testing.T) {
+func TestQueryLinkEnabledChannel(t *testing.T) {
 	f := initFixture(t)
 	require := require.New(t)
 
-	resp, err := f.queryServer.Counter(f.ctx, &linkedpackets.QueryCounterRequest{Address: f.addrs[0].String()})
+	resp, err := f.queryServer.LinkEnabledChannel(f.ctx, &linkedpackets.QueryLinkEnabledChannelRequest{PortId: "transfer", ChannelId: "channel-0"})
 	require.NoError(err)
-	require.Equal(uint64(0), resp.Counter)
-
-	_, err = f.msgServer.InitLink(f.ctx, &linkedpackets.MsgInitLink{Sender: f.addrs[0].String()})
-	require.NoError(err)
-
-	resp, err = f.queryServer.Counter(f.ctx, &linkedpackets.QueryCounterRequest{Address: f.addrs[0].String()})
-	require.NoError(err)
-	require.Equal(uint64(0), resp.Counter)
+	require.Equal(false, resp.LinkEnabled)
 }
