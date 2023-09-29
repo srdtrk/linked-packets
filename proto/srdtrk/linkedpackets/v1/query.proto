@@ -11,11 +11,11 @@ import "gogoproto/gogo.proto";
 
 // Msg defines the module Msg service.
 service Query {
-  // Counter returns the current counter value.
-  rpc Counter(QueryCounterRequest) returns (QueryCounterResponse) {
+  // LinkEnabledChannel returns whether the channel allows linked packets or not.
+  rpc LinkEnabledChannel(QueryLinkEnabledChannelRequest) returns (QueryLinkEnabledChannelResponse) {
     option (cosmos.query.v1.module_query_safe) = true;
     option (google.api.http).get =
-        "/srdtrk/linkedpackets/v1/counter/{address}";
+        "/srdtrk/linkedpackets/v1/channels/{channel_id}/ports/{port_id}/link_enabled";
   }
 
   // Params returns the module parameters.
@@ -24,18 +24,20 @@ service Query {
   }
 }
 
-// QueryCounterRequest is the request type for the Query/Counter RPC
+// QueryLinkEnabledChannelRequest is the request type for the Query/LinkEnabledChannel RPC
 // method.
-message QueryCounterRequest {
-  // address defines the address to query for the counter.
-  string address = 1;
+message QueryLinkEnabledChannelRequest {
+  // unique port identifier
+  string port_id = 1;
+  // unique channel identifier
+  string channel_id = 2;
 }
 
-// QueryCounterResponse is the response type for the Query/Counter RPC
+// QueryLinkEnabledChannelResponse is the response type for the Query/LinkEnabledChannel RPC
 // method.
-message QueryCounterResponse {
-  // counter defines the current counter for the sender.
-  uint64 counter = 1;
+message QueryLinkEnabledChannelResponse {
+  // boolean flag representing the link enabled channel status
+  bool link_enabled = 1;
 }
 
 // QueryParamsRequest is the request type for the Query/Params RPC method.
