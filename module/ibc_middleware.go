@@ -66,8 +66,8 @@ func (im IBCMiddleware) OnChanOpenInit(
 	} else {
 		metadata, err := linkedpackets.MetadataFromVersion(version)
 		if err != nil {
-			// Since it is valid for fee version to not be specified, the above middleware version may be for a middleware
-			// lower down in the stack. Thus, if it is not a fee version we pass the entire version string onto the underlying
+			// Since it is valid for linked packets version to not be specified, the above middleware version may be for a middleware
+			// lower down in the stack. Thus, if it is not a linked packets version we pass the entire version string onto the underlying
 			// application.
 			return im.app.OnChanOpenInit(ctx, order, connectionHops, portID, channelID,
 				chanCap, counterparty, version)
@@ -90,8 +90,56 @@ func (im IBCMiddleware) OnChanOpenInit(
 		return "", err
 	}
 
-	im.keeper.LinkEnabled.Set(ctx, collections.Join(portID, channelID), true)
+	err = im.keeper.LinkEnabled.Set(ctx, collections.Join(portID, channelID))
+	if err != nil {
+		return "", err
+	}
 
 	// call underlying app's OnChanOpenInit callback with the appVersion
+	return string(versionBytes), nil
+}
+
+// OnChanOpenTry implements the IBCMiddleware interface
+// If the channel is not link enabled the underlying application version will be returned
+// If the channel is link enabled we merge the underlying application version with the link version
+func (im IBCMiddleware) OnChanOpenTry(
+	ctx sdk.Context,
+	order channeltypes.Order,
+	connectionHops []string,
+	portID,
+	channelID string,
+	chanCap *capabilitytypes.Capability,
+	counterparty channeltypes.Counterparty,
+	counterpartyVersion string,
+) (string, error) {
+	versionMetadata, err := linkedpackets.MetadataFromVersion(counterpartyVersion)
+	if err != nil {
+		// Since it is valid for linked packets version to not be specified, the above middleware version may be for a middleware
+		// lower down in the stack. Thus, if it is not a linked packets version we pass the entire version string onto the underlying
+		// application.
+		return im.app.OnChanOpenTry(ctx, order, connectionHops, portID, channelID, chanCap, counterparty, counterpartyVersion)
+	}
+
+	if versionMetadata.LinkedPacketsVersion != linkedpackets.Version {
+		return "", errorsmod.Wrapf(linkedpackets.ErrInvalidVersion, "expected %s, got %s", linkedpackets.Version, versionMetadata.LinkedPacketsVersion)
+	}
+
+	err = im.keeper.LinkEnabled.Set(ctx, collections.Join(portID, channelID))
+	if err != nil {
+		return "", err
+	}
+
+	// call underlying app's OnChanOpenTry callback with the app versions
+	appVersion, err := im.app.OnChanOpenTry(ctx, order, connectionHops, portID, channelID, chanCap, counterparty, versionMetadata.AppVersion)
+	if err != nil {
+		return "", err
+	}
+
+	versionMetadata.AppVersion = appVersion
+	versionBytes, err := json.Marshal(&versionMetadata)
+	if err != nil {
+		return "", err
+	}
+
 	return string(versionBytes), nil
 }
