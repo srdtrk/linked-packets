@@ -31,25 +31,27 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-// QueryCounterRequest is the request type for the Query/Counter RPC
+// QueryLinkEnabledChannelRequest is the request type for the Query/LinkEnabledChannel RPC
 // method.
-type QueryCounterRequest struct {
-	// address defines the address to query for the counter.
-	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+type QueryLinkEnabledChannelRequest struct {
+	// unique port identifier
+	PortId string `protobuf:"bytes,1,opt,name=port_id,json=portId,proto3" json:"port_id,omitempty"`
+	// unique channel identifier
+	ChannelId string `protobuf:"bytes,2,opt,name=channel_id,json=channelId,proto3" json:"channel_id,omitempty"`
 }
 
-func (m *QueryCounterRequest) Reset()         { *m = QueryCounterRequest{} }
-func (m *QueryCounterRequest) String() string { return proto.CompactTextString(m) }
-func (*QueryCounterRequest) ProtoMessage()    {}
-func (*QueryCounterRequest) Descriptor() ([]byte, []int) {
+func (m *QueryLinkEnabledChannelRequest) Reset()         { *m = QueryLinkEnabledChannelRequest{} }
+func (m *QueryLinkEnabledChannelRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryLinkEnabledChannelRequest) ProtoMessage()    {}
+func (*QueryLinkEnabledChannelRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e24236a5e5d64d80, []int{0}
 }
-func (m *QueryCounterRequest) XXX_Unmarshal(b []byte) error {
+func (m *QueryLinkEnabledChannelRequest) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryCounterRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryLinkEnabledChannelRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryCounterRequest.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryLinkEnabledChannelRequest.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -59,44 +61,51 @@ func (m *QueryCounterRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return b[:n], nil
 	}
 }
-func (m *QueryCounterRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryCounterRequest.Merge(m, src)
+func (m *QueryLinkEnabledChannelRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryLinkEnabledChannelRequest.Merge(m, src)
 }
-func (m *QueryCounterRequest) XXX_Size() int {
+func (m *QueryLinkEnabledChannelRequest) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryCounterRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryCounterRequest.DiscardUnknown(m)
+func (m *QueryLinkEnabledChannelRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryLinkEnabledChannelRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryCounterRequest proto.InternalMessageInfo
+var xxx_messageInfo_QueryLinkEnabledChannelRequest proto.InternalMessageInfo
 
-func (m *QueryCounterRequest) GetAddress() string {
+func (m *QueryLinkEnabledChannelRequest) GetPortId() string {
 	if m != nil {
-		return m.Address
+		return m.PortId
 	}
 	return ""
 }
 
-// QueryCounterResponse is the response type for the Query/Counter RPC
-// method.
-type QueryCounterResponse struct {
-	// counter defines the current counter for the sender.
-	Counter uint64 `protobuf:"varint,1,opt,name=counter,proto3" json:"counter,omitempty"`
+func (m *QueryLinkEnabledChannelRequest) GetChannelId() string {
+	if m != nil {
+		return m.ChannelId
+	}
+	return ""
 }
 
-func (m *QueryCounterResponse) Reset()         { *m = QueryCounterResponse{} }
-func (m *QueryCounterResponse) String() string { return proto.CompactTextString(m) }
-func (*QueryCounterResponse) ProtoMessage()    {}
-func (*QueryCounterResponse) Descriptor() ([]byte, []int) {
+// QueryLinkEnabledChannelResponse is the response type for the Query/LinkEnabledChannel RPC
+// method.
+type QueryLinkEnabledChannelResponse struct {
+	// boolean flag representing the link enabled channel status
+	LinkEnabled bool `protobuf:"varint,1,opt,name=link_enabled,json=linkEnabled,proto3" json:"link_enabled,omitempty"`
+}
+
+func (m *QueryLinkEnabledChannelResponse) Reset()         { *m = QueryLinkEnabledChannelResponse{} }
+func (m *QueryLinkEnabledChannelResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryLinkEnabledChannelResponse) ProtoMessage()    {}
+func (*QueryLinkEnabledChannelResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_e24236a5e5d64d80, []int{1}
 }
-func (m *QueryCounterResponse) XXX_Unmarshal(b []byte) error {
+func (m *QueryLinkEnabledChannelResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *QueryCounterResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *QueryLinkEnabledChannelResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_QueryCounterResponse.Marshal(b, m, deterministic)
+		return xxx_messageInfo_QueryLinkEnabledChannelResponse.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -106,23 +115,23 @@ func (m *QueryCounterResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte
 		return b[:n], nil
 	}
 }
-func (m *QueryCounterResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_QueryCounterResponse.Merge(m, src)
+func (m *QueryLinkEnabledChannelResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryLinkEnabledChannelResponse.Merge(m, src)
 }
-func (m *QueryCounterResponse) XXX_Size() int {
+func (m *QueryLinkEnabledChannelResponse) XXX_Size() int {
 	return m.Size()
 }
-func (m *QueryCounterResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_QueryCounterResponse.DiscardUnknown(m)
+func (m *QueryLinkEnabledChannelResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryLinkEnabledChannelResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_QueryCounterResponse proto.InternalMessageInfo
+var xxx_messageInfo_QueryLinkEnabledChannelResponse proto.InternalMessageInfo
 
-func (m *QueryCounterResponse) GetCounter() uint64 {
+func (m *QueryLinkEnabledChannelResponse) GetLinkEnabled() bool {
 	if m != nil {
-		return m.Counter
+		return m.LinkEnabled
 	}
-	return 0
+	return false
 }
 
 // QueryParamsRequest is the request type for the Query/Params RPC method.
@@ -209,8 +218,8 @@ func (m *QueryParamsResponse) GetParams() Params {
 }
 
 func init() {
-	proto.RegisterType((*QueryCounterRequest)(nil), "srdtrk.linkedpackets.v1.QueryCounterRequest")
-	proto.RegisterType((*QueryCounterResponse)(nil), "srdtrk.linkedpackets.v1.QueryCounterResponse")
+	proto.RegisterType((*QueryLinkEnabledChannelRequest)(nil), "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest")
+	proto.RegisterType((*QueryLinkEnabledChannelResponse)(nil), "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse")
 	proto.RegisterType((*QueryParamsRequest)(nil), "srdtrk.linkedpackets.v1.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "srdtrk.linkedpackets.v1.QueryParamsResponse")
 }
@@ -220,32 +229,35 @@ func init() {
 }
 
 var fileDescriptor_e24236a5e5d64d80 = []byte{
-	// 391 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x2e, 0x2e, 0x4a, 0x29,
-	0x29, 0xca, 0xd6, 0xcf, 0xc9, 0xcc, 0xcb, 0x4e, 0x4d, 0x29, 0x48, 0x4c, 0xce, 0x4e, 0x2d, 0x29,
-	0xd6, 0x2f, 0x33, 0xd4, 0x2f, 0x2c, 0x4d, 0x2d, 0xaa, 0xd4, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17,
-	0x12, 0x87, 0x28, 0xd2, 0x43, 0x51, 0xa4, 0x57, 0x66, 0x28, 0x85, 0x53, 0x77, 0x49, 0x65, 0x41,
-	0x6a, 0x31, 0x44, 0xb7, 0x94, 0x4c, 0x7a, 0x7e, 0x7e, 0x7a, 0x4e, 0xaa, 0x7e, 0x62, 0x41, 0xa6,
-	0x7e, 0x62, 0x5e, 0x5e, 0x7e, 0x49, 0x62, 0x49, 0x66, 0x7e, 0x1e, 0x4c, 0x56, 0x3a, 0x39, 0xbf,
-	0x38, 0x37, 0xbf, 0x18, 0x62, 0x1f, 0x9a, 0xc5, 0x52, 0x82, 0x89, 0xb9, 0x99, 0x79, 0xf9, 0xfa,
-	0x60, 0x12, 0x2a, 0x24, 0x92, 0x9e, 0x9f, 0x9e, 0x0f, 0x66, 0xea, 0x83, 0x58, 0x10, 0x51, 0x25,
-	0x7d, 0x2e, 0xe1, 0x40, 0x90, 0x3e, 0xe7, 0xfc, 0xd2, 0xbc, 0x92, 0xd4, 0xa2, 0xa0, 0xd4, 0xc2,
-	0xd2, 0xd4, 0xe2, 0x12, 0x21, 0x09, 0x2e, 0xf6, 0xc4, 0x94, 0x94, 0xa2, 0xd4, 0xe2, 0x62, 0x09,
-	0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x18, 0x57, 0xc9, 0x80, 0x4b, 0x04, 0x55, 0x43, 0x71, 0x41,
-	0x7e, 0x5e, 0x71, 0x2a, 0x48, 0x47, 0x32, 0x44, 0x08, 0xac, 0x83, 0x25, 0x08, 0xc6, 0x55, 0x12,
-	0xe1, 0x12, 0x02, 0xeb, 0x08, 0x48, 0x2c, 0x4a, 0xcc, 0x2d, 0x86, 0xda, 0xa0, 0x14, 0x09, 0xb5,
-	0x18, 0x26, 0x0a, 0x35, 0xc6, 0x89, 0x8b, 0xad, 0x00, 0x2c, 0x02, 0x36, 0x85, 0xdb, 0x48, 0x5e,
-	0x0f, 0x47, 0x10, 0xea, 0x41, 0x34, 0x3a, 0x71, 0x9e, 0xb8, 0x27, 0xcf, 0xb0, 0xe2, 0xf9, 0x06,
-	0x2d, 0xc6, 0x20, 0xa8, 0x4e, 0xa3, 0x1d, 0x4c, 0x5c, 0xac, 0x60, 0xb3, 0x85, 0xe6, 0x33, 0x72,
-	0xb1, 0x43, 0x1d, 0x2a, 0xa4, 0x83, 0xd3, 0x24, 0x2c, 0x01, 0x20, 0xa5, 0x4b, 0xa4, 0x6a, 0x88,
-	0xb3, 0x95, 0xcc, 0x3b, 0x40, 0x2e, 0x68, 0xba, 0xfc, 0x64, 0x32, 0x93, 0x8e, 0x90, 0x96, 0x3e,
-	0xae, 0xd8, 0x85, 0x06, 0x89, 0x7e, 0x35, 0x34, 0x34, 0x6b, 0x85, 0x7a, 0x18, 0xb9, 0xd8, 0x20,
-	0x3e, 0x11, 0xd2, 0xc6, 0x6f, 0x25, 0x4a, 0xf0, 0x49, 0xe9, 0x10, 0xa7, 0x18, 0xea, 0x3c, 0x75,
-	0xb0, 0xcb, 0x14, 0x85, 0xe4, 0x71, 0xba, 0x0c, 0x12, 0x74, 0x4e, 0x96, 0x27, 0x1e, 0xc9, 0x31,
-	0x5e, 0x78, 0x24, 0xc7, 0xf8, 0xe0, 0x91, 0x1c, 0xe3, 0x84, 0xc7, 0x72, 0x0c, 0x17, 0x1e, 0xcb,
-	0x31, 0xdc, 0x78, 0x2c, 0xc7, 0x10, 0x25, 0x9f, 0x9e, 0x59, 0x92, 0x51, 0x9a, 0xa4, 0x97, 0x9c,
-	0x9f, 0x8b, 0xd5, 0x90, 0x24, 0x36, 0x70, 0x82, 0x32, 0x06, 0x04, 0x00, 0x00, 0xff, 0xff, 0xb0,
-	0x0f, 0x64, 0xec, 0x19, 0x03, 0x00, 0x00,
+	// 442 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x52, 0xb1, 0xae, 0xd3, 0x30,
+	0x14, 0x8d, 0x2b, 0x11, 0xa8, 0x1f, 0x0b, 0xe6, 0x49, 0x0f, 0x05, 0x48, 0x78, 0x61, 0x00, 0x01,
+	0x8a, 0xf5, 0xca, 0x00, 0xac, 0x05, 0x86, 0x0a, 0x90, 0x20, 0x53, 0x61, 0xa9, 0xdc, 0xc4, 0x4a,
+	0xa3, 0x24, 0x76, 0x1a, 0xbb, 0x95, 0xaa, 0xaa, 0x0b, 0x13, 0x03, 0x03, 0x12, 0x3f, 0xc1, 0xc8,
+	0x67, 0x74, 0xac, 0xc4, 0xc2, 0x84, 0xa0, 0x45, 0xe2, 0x1f, 0x98, 0x50, 0x6c, 0xa3, 0x52, 0x20,
+	0x15, 0x2c, 0x91, 0x73, 0xee, 0x3d, 0xc7, 0xc7, 0xe7, 0x5e, 0x78, 0x55, 0x54, 0xb1, 0xac, 0x32,
+	0x9c, 0xa7, 0x2c, 0xa3, 0x71, 0x49, 0xa2, 0x8c, 0x4a, 0x81, 0xa7, 0x27, 0x78, 0x3c, 0xa1, 0xd5,
+	0x2c, 0x28, 0x2b, 0x2e, 0x39, 0x3a, 0xd2, 0x4d, 0xc1, 0x4e, 0x53, 0x30, 0x3d, 0x71, 0x1a, 0xd9,
+	0x72, 0x56, 0x52, 0xa1, 0xd9, 0xce, 0xa5, 0x84, 0xf3, 0x24, 0xa7, 0x98, 0x94, 0x29, 0x26, 0x8c,
+	0x71, 0x49, 0x64, 0xca, 0xd9, 0xcf, 0xea, 0xc5, 0x88, 0x8b, 0x82, 0x0b, 0x7d, 0xdf, 0x6f, 0x17,
+	0x3b, 0xe7, 0x48, 0x91, 0x32, 0x8e, 0xd5, 0xd7, 0x40, 0x87, 0x09, 0x4f, 0xb8, 0x3a, 0xe2, 0xfa,
+	0xa4, 0x51, 0xbf, 0x0f, 0xdd, 0x67, 0x35, 0xef, 0x71, 0xca, 0xb2, 0x87, 0x8c, 0x0c, 0x73, 0x1a,
+	0xdf, 0x1f, 0x11, 0xc6, 0x68, 0x1e, 0xd2, 0xf1, 0x84, 0x0a, 0x89, 0x8e, 0xe0, 0xe9, 0x92, 0x57,
+	0x72, 0x90, 0xc6, 0x17, 0xc0, 0x15, 0x70, 0xbd, 0x1d, 0xda, 0xf5, 0x6f, 0x2f, 0x46, 0x97, 0x21,
+	0x8c, 0x74, 0x6b, 0x5d, 0x6b, 0xa9, 0x5a, 0xdb, 0x20, 0xbd, 0xd8, 0x7f, 0x00, 0xbd, 0x46, 0x65,
+	0x51, 0x72, 0x26, 0x28, 0x3a, 0x86, 0x67, 0xeb, 0x00, 0x06, 0x54, 0x97, 0x95, 0xfe, 0x99, 0xf0,
+	0x20, 0xdf, 0x32, 0xfc, 0x43, 0x88, 0x94, 0xca, 0x53, 0x52, 0x91, 0x42, 0x18, 0x4f, 0xfe, 0x73,
+	0x78, 0x7e, 0x07, 0x35, 0x7a, 0x5d, 0x68, 0x97, 0x0a, 0x51, 0x4a, 0x07, 0x1d, 0x2f, 0x68, 0xc8,
+	0x3f, 0xd0, 0xc4, 0x6e, 0x7b, 0xf9, 0xc9, 0xb3, 0xde, 0x7d, 0x7b, 0x7f, 0x03, 0x84, 0x86, 0xd9,
+	0xf9, 0xde, 0x82, 0xa7, 0x94, 0x36, 0xfa, 0x02, 0x20, 0xfa, 0xd3, 0x3c, 0xba, 0xd3, 0x28, 0xba,
+	0x3f, 0x48, 0xe7, 0xee, 0xff, 0x13, 0xf5, 0xbb, 0xfc, 0xfe, 0xab, 0xda, 0xe2, 0xcb, 0x0f, 0x5f,
+	0xdf, 0xb6, 0x9e, 0xa0, 0x47, 0xb8, 0x69, 0x77, 0x4c, 0xf6, 0x02, 0xcf, 0xb7, 0x73, 0x59, 0xe0,
+	0x7a, 0x5a, 0x02, 0xcf, 0xcd, 0x0c, 0x17, 0xf8, 0xd7, 0xc4, 0xd1, 0x6b, 0x00, 0x6d, 0x9d, 0x05,
+	0xba, 0xb9, 0xdf, 0xde, 0xce, 0x00, 0x9c, 0x5b, 0xff, 0xd6, 0x6c, 0xfc, 0x5f, 0x53, 0xd6, 0x8f,
+	0x91, 0xd7, 0x68, 0x5d, 0x87, 0xdf, 0xbd, 0xb7, 0x5c, 0xbb, 0x60, 0xb5, 0x76, 0xc1, 0xe7, 0xb5,
+	0x0b, 0xde, 0x6c, 0x5c, 0x6b, 0xb5, 0x71, 0xad, 0x8f, 0x1b, 0xd7, 0x7a, 0xe1, 0x25, 0xa9, 0x1c,
+	0x4d, 0x86, 0x41, 0xc4, 0x8b, 0xbf, 0x8a, 0x0c, 0x6d, 0xb5, 0xcf, 0xb7, 0x7f, 0x04, 0x00, 0x00,
+	0xff, 0xff, 0xf4, 0xa4, 0xc1, 0x59, 0x98, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -260,8 +272,8 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type QueryClient interface {
-	// Counter returns the current counter value.
-	Counter(ctx context.Context, in *QueryCounterRequest, opts ...grpc.CallOption) (*QueryCounterResponse, error)
+	// LinkEnabledChannel returns whether the channel allows linked packets or not.
+	LinkEnabledChannel(ctx context.Context, in *QueryLinkEnabledChannelRequest, opts ...grpc.CallOption) (*QueryLinkEnabledChannelResponse, error)
 	// Params returns the module parameters.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
 }
@@ -274,9 +286,9 @@ func NewQueryClient(cc grpc1.ClientConn) QueryClient {
 	return &queryClient{cc}
 }
 
-func (c *queryClient) Counter(ctx context.Context, in *QueryCounterRequest, opts ...grpc.CallOption) (*QueryCounterResponse, error) {
-	out := new(QueryCounterResponse)
-	err := c.cc.Invoke(ctx, "/srdtrk.linkedpackets.v1.Query/Counter", in, out, opts...)
+func (c *queryClient) LinkEnabledChannel(ctx context.Context, in *QueryLinkEnabledChannelRequest, opts ...grpc.CallOption) (*QueryLinkEnabledChannelResponse, error) {
+	out := new(QueryLinkEnabledChannelResponse)
+	err := c.cc.Invoke(ctx, "/srdtrk.linkedpackets.v1.Query/LinkEnabledChannel", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -294,8 +306,8 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 
 // QueryServer is the server API for Query service.
 type QueryServer interface {
-	// Counter returns the current counter value.
-	Counter(context.Context, *QueryCounterRequest) (*QueryCounterResponse, error)
+	// LinkEnabledChannel returns whether the channel allows linked packets or not.
+	LinkEnabledChannel(context.Context, *QueryLinkEnabledChannelRequest) (*QueryLinkEnabledChannelResponse, error)
 	// Params returns the module parameters.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
 }
@@ -304,8 +316,8 @@ type QueryServer interface {
 type UnimplementedQueryServer struct {
 }
 
-func (*UnimplementedQueryServer) Counter(ctx context.Context, req *QueryCounterRequest) (*QueryCounterResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Counter not implemented")
+func (*UnimplementedQueryServer) LinkEnabledChannel(ctx context.Context, req *QueryLinkEnabledChannelRequest) (*QueryLinkEnabledChannelResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LinkEnabledChannel not implemented")
 }
 func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
@@ -315,20 +327,20 @@ func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
 	s.RegisterService(&_Query_serviceDesc, srv)
 }
 
-func _Query_Counter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(QueryCounterRequest)
+func _Query_LinkEnabledChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryLinkEnabledChannelRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(QueryServer).Counter(ctx, in)
+		return srv.(QueryServer).LinkEnabledChannel(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/srdtrk.linkedpackets.v1.Query/Counter",
+		FullMethod: "/srdtrk.linkedpackets.v1.Query/LinkEnabledChannel",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(QueryServer).Counter(ctx, req.(*QueryCounterRequest))
+		return srv.(QueryServer).LinkEnabledChannel(ctx, req.(*QueryLinkEnabledChannelRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -356,8 +368,8 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*QueryServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Counter",
-			Handler:    _Query_Counter_Handler,
+			MethodName: "LinkEnabledChannel",
+			Handler:    _Query_LinkEnabledChannel_Handler,
 		},
 		{
 			MethodName: "Params",
@@ -368,7 +380,7 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 	Metadata: "srdtrk/linkedpackets/v1/query.proto",
 }
 
-func (m *QueryCounterRequest) Marshal() (dAtA []byte, err error) {
+func (m *QueryLinkEnabledChannelRequest) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -378,27 +390,34 @@ func (m *QueryCounterRequest) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryCounterRequest) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryLinkEnabledChannelRequest) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryCounterRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryLinkEnabledChannelRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if len(m.Address) > 0 {
-		i -= len(m.Address)
-		copy(dAtA[i:], m.Address)
-		i = encodeVarintQuery(dAtA, i, uint64(len(m.Address)))
+	if len(m.ChannelId) > 0 {
+		i -= len(m.ChannelId)
+		copy(dAtA[i:], m.ChannelId)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.ChannelId)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.PortId) > 0 {
+		i -= len(m.PortId)
+		copy(dAtA[i:], m.PortId)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.PortId)))
 		i--
 		dAtA[i] = 0xa
 	}
 	return len(dAtA) - i, nil
 }
 
-func (m *QueryCounterResponse) Marshal() (dAtA []byte, err error) {
+func (m *QueryLinkEnabledChannelResponse) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -408,18 +427,23 @@ func (m *QueryCounterResponse) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *QueryCounterResponse) MarshalTo(dAtA []byte) (int, error) {
+func (m *QueryLinkEnabledChannelResponse) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *QueryCounterResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *QueryLinkEnabledChannelResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
 	_ = l
-	if m.Counter != 0 {
-		i = encodeVarintQuery(dAtA, i, uint64(m.Counter))
+	if m.LinkEnabled {
+		i--
+		if m.LinkEnabled {
+			dAtA[i] = 1
+		} else {
+			dAtA[i] = 0
+		}
 		i--
 		dAtA[i] = 0x8
 	}
@@ -493,27 +517,31 @@ func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-func (m *QueryCounterRequest) Size() (n int) {
+func (m *QueryLinkEnabledChannelRequest) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = len(m.Address)
+	l = len(m.PortId)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	l = len(m.ChannelId)
 	if l > 0 {
 		n += 1 + l + sovQuery(uint64(l))
 	}
 	return n
 }
 
-func (m *QueryCounterResponse) Size() (n int) {
+func (m *QueryLinkEnabledChannelResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	if m.Counter != 0 {
-		n += 1 + sovQuery(uint64(m.Counter))
+	if m.LinkEnabled {
+		n += 2
 	}
 	return n
 }
@@ -544,7 +572,7 @@ func sovQuery(x uint64) (n int) {
 func sozQuery(x uint64) (n int) {
 	return sovQuery(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-func (m *QueryCounterRequest) Unmarshal(dAtA []byte) error {
+func (m *QueryLinkEnabledChannelRequest) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -567,15 +595,15 @@ func (m *QueryCounterRequest) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryCounterRequest: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryLinkEnabledChannelRequest: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryCounterRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryLinkEnabledChannelRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Address", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field PortId", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -603,7 +631,39 @@ func (m *QueryCounterRequest) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.Address = string(dAtA[iNdEx:postIndex])
+			m.PortId = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ChannelId", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ChannelId = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		default:
 			iNdEx = preIndex
@@ -626,7 +686,7 @@ func (m *QueryCounterRequest) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *QueryCounterResponse) Unmarshal(dAtA []byte) error {
+func (m *QueryLinkEnabledChannelResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -649,17 +709,17 @@ func (m *QueryCounterResponse) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: QueryCounterResponse: wiretype end group for non-group")
+			return fmt.Errorf("proto: QueryLinkEnabledChannelResponse: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: QueryCounterResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: QueryLinkEnabledChannelResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Counter", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field LinkEnabled", wireType)
 			}
-			m.Counter = 0
+			var v int
 			for shift := uint(0); ; shift += 7 {
 				if shift >= 64 {
 					return ErrIntOverflowQuery
@@ -669,11 +729,12 @@ func (m *QueryCounterResponse) Unmarshal(dAtA []byte) error {
 				}
 				b := dAtA[iNdEx]
 				iNdEx++
-				m.Counter |= uint64(b&0x7F) << shift
+				v |= int(b&0x7F) << shift
 				if b < 0x80 {
 					break
 				}
 			}
+			m.LinkEnabled = bool(v != 0)
 		default:
 			iNdEx = preIndex
 			skippy, err := skipQuery(dAtA[iNdEx:])

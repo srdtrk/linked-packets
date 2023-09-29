@@ -17,25 +17,27 @@ import (
 )
 
 var (
-	md_QueryCounterRequest         protoreflect.MessageDescriptor
-	fd_QueryCounterRequest_address protoreflect.FieldDescriptor
+	md_QueryLinkEnabledChannelRequest            protoreflect.MessageDescriptor
+	fd_QueryLinkEnabledChannelRequest_port_id    protoreflect.FieldDescriptor
+	fd_QueryLinkEnabledChannelRequest_channel_id protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_srdtrk_linkedpackets_v1_query_proto_init()
-	md_QueryCounterRequest = File_srdtrk_linkedpackets_v1_query_proto.Messages().ByName("QueryCounterRequest")
-	fd_QueryCounterRequest_address = md_QueryCounterRequest.Fields().ByName("address")
+	md_QueryLinkEnabledChannelRequest = File_srdtrk_linkedpackets_v1_query_proto.Messages().ByName("QueryLinkEnabledChannelRequest")
+	fd_QueryLinkEnabledChannelRequest_port_id = md_QueryLinkEnabledChannelRequest.Fields().ByName("port_id")
+	fd_QueryLinkEnabledChannelRequest_channel_id = md_QueryLinkEnabledChannelRequest.Fields().ByName("channel_id")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryCounterRequest)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryLinkEnabledChannelRequest)(nil)
 
-type fastReflection_QueryCounterRequest QueryCounterRequest
+type fastReflection_QueryLinkEnabledChannelRequest QueryLinkEnabledChannelRequest
 
-func (x *QueryCounterRequest) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryCounterRequest)(x)
+func (x *QueryLinkEnabledChannelRequest) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryLinkEnabledChannelRequest)(x)
 }
 
-func (x *QueryCounterRequest) slowProtoReflect() protoreflect.Message {
+func (x *QueryLinkEnabledChannelRequest) slowProtoReflect() protoreflect.Message {
 	mi := &file_srdtrk_linkedpackets_v1_query_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -47,43 +49,43 @@ func (x *QueryCounterRequest) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryCounterRequest_messageType fastReflection_QueryCounterRequest_messageType
-var _ protoreflect.MessageType = fastReflection_QueryCounterRequest_messageType{}
+var _fastReflection_QueryLinkEnabledChannelRequest_messageType fastReflection_QueryLinkEnabledChannelRequest_messageType
+var _ protoreflect.MessageType = fastReflection_QueryLinkEnabledChannelRequest_messageType{}
 
-type fastReflection_QueryCounterRequest_messageType struct{}
+type fastReflection_QueryLinkEnabledChannelRequest_messageType struct{}
 
-func (x fastReflection_QueryCounterRequest_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryCounterRequest)(nil)
+func (x fastReflection_QueryLinkEnabledChannelRequest_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryLinkEnabledChannelRequest)(nil)
 }
-func (x fastReflection_QueryCounterRequest_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryCounterRequest)
+func (x fastReflection_QueryLinkEnabledChannelRequest_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryLinkEnabledChannelRequest)
 }
-func (x fastReflection_QueryCounterRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryCounterRequest
+func (x fastReflection_QueryLinkEnabledChannelRequest_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryLinkEnabledChannelRequest
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryCounterRequest) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryCounterRequest
+func (x *fastReflection_QueryLinkEnabledChannelRequest) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryLinkEnabledChannelRequest
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryCounterRequest) Type() protoreflect.MessageType {
-	return _fastReflection_QueryCounterRequest_messageType
+func (x *fastReflection_QueryLinkEnabledChannelRequest) Type() protoreflect.MessageType {
+	return _fastReflection_QueryLinkEnabledChannelRequest_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryCounterRequest) New() protoreflect.Message {
-	return new(fastReflection_QueryCounterRequest)
+func (x *fastReflection_QueryLinkEnabledChannelRequest) New() protoreflect.Message {
+	return new(fastReflection_QueryLinkEnabledChannelRequest)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryCounterRequest) Interface() protoreflect.ProtoMessage {
-	return (*QueryCounterRequest)(x)
+func (x *fastReflection_QueryLinkEnabledChannelRequest) Interface() protoreflect.ProtoMessage {
+	return (*QueryLinkEnabledChannelRequest)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -91,10 +93,16 @@ func (x *fastReflection_QueryCounterRequest) Interface() protoreflect.ProtoMessa
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryCounterRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Address != "" {
-		value := protoreflect.ValueOfString(x.Address)
-		if !f(fd_QueryCounterRequest_address, value) {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.PortId != "" {
+		value := protoreflect.ValueOfString(x.PortId)
+		if !f(fd_QueryLinkEnabledChannelRequest_port_id, value) {
+			return
+		}
+	}
+	if x.ChannelId != "" {
+		value := protoreflect.ValueOfString(x.ChannelId)
+		if !f(fd_QueryLinkEnabledChannelRequest_channel_id, value) {
 			return
 		}
 	}
@@ -111,15 +119,17 @@ func (x *fastReflection_QueryCounterRequest) Range(f func(protoreflect.FieldDesc
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryCounterRequest) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterRequest.address":
-		return x.Address != ""
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.port_id":
+		return x.PortId != ""
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.channel_id":
+		return x.ChannelId != ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -129,15 +139,17 @@ func (x *fastReflection_QueryCounterRequest) Has(fd protoreflect.FieldDescriptor
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryCounterRequest) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterRequest.address":
-		x.Address = ""
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.port_id":
+		x.PortId = ""
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.channel_id":
+		x.ChannelId = ""
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -147,16 +159,19 @@ func (x *fastReflection_QueryCounterRequest) Clear(fd protoreflect.FieldDescript
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryCounterRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterRequest.address":
-		value := x.Address
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.port_id":
+		value := x.PortId
+		return protoreflect.ValueOfString(value)
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.channel_id":
+		value := x.ChannelId
 		return protoreflect.ValueOfString(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterRequest does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -170,15 +185,17 @@ func (x *fastReflection_QueryCounterRequest) Get(descriptor protoreflect.FieldDe
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryCounterRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterRequest.address":
-		x.Address = value.Interface().(string)
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.port_id":
+		x.PortId = value.Interface().(string)
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.channel_id":
+		x.ChannelId = value.Interface().(string)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -192,40 +209,44 @@ func (x *fastReflection_QueryCounterRequest) Set(fd protoreflect.FieldDescriptor
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryCounterRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterRequest.address":
-		panic(fmt.Errorf("field address of message srdtrk.linkedpackets.v1.QueryCounterRequest is not mutable"))
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.port_id":
+		panic(fmt.Errorf("field port_id of message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest is not mutable"))
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.channel_id":
+		panic(fmt.Errorf("field channel_id of message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryCounterRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterRequest.address":
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.port_id":
+		return protoreflect.ValueOfString("")
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest.channel_id":
 		return protoreflect.ValueOfString("")
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterRequest"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterRequest does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryCounterRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in srdtrk.linkedpackets.v1.QueryCounterRequest", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -233,7 +254,7 @@ func (x *fastReflection_QueryCounterRequest) WhichOneof(d protoreflect.OneofDesc
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryCounterRequest) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -244,7 +265,7 @@ func (x *fastReflection_QueryCounterRequest) GetUnknown() protoreflect.RawFields
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryCounterRequest) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -256,7 +277,7 @@ func (x *fastReflection_QueryCounterRequest) SetUnknown(fields protoreflect.RawF
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryCounterRequest) IsValid() bool {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) IsValid() bool {
 	return x != nil
 }
 
@@ -266,9 +287,9 @@ func (x *fastReflection_QueryCounterRequest) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryCounterRequest) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryLinkEnabledChannelRequest) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryCounterRequest)
+		x := input.Message.Interface().(*QueryLinkEnabledChannelRequest)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -280,7 +301,11 @@ func (x *fastReflection_QueryCounterRequest) ProtoMethods() *protoiface.Methods 
 		var n int
 		var l int
 		_ = l
-		l = len(x.Address)
+		l = len(x.PortId)
+		if l > 0 {
+			n += 1 + l + runtime.Sov(uint64(l))
+		}
+		l = len(x.ChannelId)
 		if l > 0 {
 			n += 1 + l + runtime.Sov(uint64(l))
 		}
@@ -294,7 +319,7 @@ func (x *fastReflection_QueryCounterRequest) ProtoMethods() *protoiface.Methods 
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryCounterRequest)
+		x := input.Message.Interface().(*QueryLinkEnabledChannelRequest)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -313,10 +338,17 @@ func (x *fastReflection_QueryCounterRequest) ProtoMethods() *protoiface.Methods 
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if len(x.Address) > 0 {
-			i -= len(x.Address)
-			copy(dAtA[i:], x.Address)
-			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.Address)))
+		if len(x.ChannelId) > 0 {
+			i -= len(x.ChannelId)
+			copy(dAtA[i:], x.ChannelId)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.ChannelId)))
+			i--
+			dAtA[i] = 0x12
+		}
+		if len(x.PortId) > 0 {
+			i -= len(x.PortId)
+			copy(dAtA[i:], x.PortId)
+			i = runtime.EncodeVarint(dAtA, i, uint64(len(x.PortId)))
 			i--
 			dAtA[i] = 0xa
 		}
@@ -331,7 +363,7 @@ func (x *fastReflection_QueryCounterRequest) ProtoMethods() *protoiface.Methods 
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryCounterRequest)
+		x := input.Message.Interface().(*QueryLinkEnabledChannelRequest)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -363,15 +395,15 @@ func (x *fastReflection_QueryCounterRequest) ProtoMethods() *protoiface.Methods 
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryCounterRequest: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryLinkEnabledChannelRequest: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryCounterRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryLinkEnabledChannelRequest: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
 				if wireType != 2 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Address", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field PortId", wireType)
 				}
 				var stringLen uint64
 				for shift := uint(0); ; shift += 7 {
@@ -399,7 +431,39 @@ func (x *fastReflection_QueryCounterRequest) ProtoMethods() *protoiface.Methods 
 				if postIndex > l {
 					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
 				}
-				x.Address = string(dAtA[iNdEx:postIndex])
+				x.PortId = string(dAtA[iNdEx:postIndex])
+				iNdEx = postIndex
+			case 2:
+				if wireType != 2 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field ChannelId", wireType)
+				}
+				var stringLen uint64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
+					}
+					if iNdEx >= l {
+						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					stringLen |= uint64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				intStringLen := int(stringLen)
+				if intStringLen < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				postIndex := iNdEx + intStringLen
+				if postIndex < 0 {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrInvalidLength
+				}
+				if postIndex > l {
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, io.ErrUnexpectedEOF
+				}
+				x.ChannelId = string(dAtA[iNdEx:postIndex])
 				iNdEx = postIndex
 			default:
 				iNdEx = preIndex
@@ -437,25 +501,25 @@ func (x *fastReflection_QueryCounterRequest) ProtoMethods() *protoiface.Methods 
 }
 
 var (
-	md_QueryCounterResponse         protoreflect.MessageDescriptor
-	fd_QueryCounterResponse_counter protoreflect.FieldDescriptor
+	md_QueryLinkEnabledChannelResponse              protoreflect.MessageDescriptor
+	fd_QueryLinkEnabledChannelResponse_link_enabled protoreflect.FieldDescriptor
 )
 
 func init() {
 	file_srdtrk_linkedpackets_v1_query_proto_init()
-	md_QueryCounterResponse = File_srdtrk_linkedpackets_v1_query_proto.Messages().ByName("QueryCounterResponse")
-	fd_QueryCounterResponse_counter = md_QueryCounterResponse.Fields().ByName("counter")
+	md_QueryLinkEnabledChannelResponse = File_srdtrk_linkedpackets_v1_query_proto.Messages().ByName("QueryLinkEnabledChannelResponse")
+	fd_QueryLinkEnabledChannelResponse_link_enabled = md_QueryLinkEnabledChannelResponse.Fields().ByName("link_enabled")
 }
 
-var _ protoreflect.Message = (*fastReflection_QueryCounterResponse)(nil)
+var _ protoreflect.Message = (*fastReflection_QueryLinkEnabledChannelResponse)(nil)
 
-type fastReflection_QueryCounterResponse QueryCounterResponse
+type fastReflection_QueryLinkEnabledChannelResponse QueryLinkEnabledChannelResponse
 
-func (x *QueryCounterResponse) ProtoReflect() protoreflect.Message {
-	return (*fastReflection_QueryCounterResponse)(x)
+func (x *QueryLinkEnabledChannelResponse) ProtoReflect() protoreflect.Message {
+	return (*fastReflection_QueryLinkEnabledChannelResponse)(x)
 }
 
-func (x *QueryCounterResponse) slowProtoReflect() protoreflect.Message {
+func (x *QueryLinkEnabledChannelResponse) slowProtoReflect() protoreflect.Message {
 	mi := &file_srdtrk_linkedpackets_v1_query_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -467,43 +531,43 @@ func (x *QueryCounterResponse) slowProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-var _fastReflection_QueryCounterResponse_messageType fastReflection_QueryCounterResponse_messageType
-var _ protoreflect.MessageType = fastReflection_QueryCounterResponse_messageType{}
+var _fastReflection_QueryLinkEnabledChannelResponse_messageType fastReflection_QueryLinkEnabledChannelResponse_messageType
+var _ protoreflect.MessageType = fastReflection_QueryLinkEnabledChannelResponse_messageType{}
 
-type fastReflection_QueryCounterResponse_messageType struct{}
+type fastReflection_QueryLinkEnabledChannelResponse_messageType struct{}
 
-func (x fastReflection_QueryCounterResponse_messageType) Zero() protoreflect.Message {
-	return (*fastReflection_QueryCounterResponse)(nil)
+func (x fastReflection_QueryLinkEnabledChannelResponse_messageType) Zero() protoreflect.Message {
+	return (*fastReflection_QueryLinkEnabledChannelResponse)(nil)
 }
-func (x fastReflection_QueryCounterResponse_messageType) New() protoreflect.Message {
-	return new(fastReflection_QueryCounterResponse)
+func (x fastReflection_QueryLinkEnabledChannelResponse_messageType) New() protoreflect.Message {
+	return new(fastReflection_QueryLinkEnabledChannelResponse)
 }
-func (x fastReflection_QueryCounterResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryCounterResponse
+func (x fastReflection_QueryLinkEnabledChannelResponse_messageType) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryLinkEnabledChannelResponse
 }
 
 // Descriptor returns message descriptor, which contains only the protobuf
 // type information for the message.
-func (x *fastReflection_QueryCounterResponse) Descriptor() protoreflect.MessageDescriptor {
-	return md_QueryCounterResponse
+func (x *fastReflection_QueryLinkEnabledChannelResponse) Descriptor() protoreflect.MessageDescriptor {
+	return md_QueryLinkEnabledChannelResponse
 }
 
 // Type returns the message type, which encapsulates both Go and protobuf
 // type information. If the Go type information is not needed,
 // it is recommended that the message descriptor be used instead.
-func (x *fastReflection_QueryCounterResponse) Type() protoreflect.MessageType {
-	return _fastReflection_QueryCounterResponse_messageType
+func (x *fastReflection_QueryLinkEnabledChannelResponse) Type() protoreflect.MessageType {
+	return _fastReflection_QueryLinkEnabledChannelResponse_messageType
 }
 
 // New returns a newly allocated and mutable empty message.
-func (x *fastReflection_QueryCounterResponse) New() protoreflect.Message {
-	return new(fastReflection_QueryCounterResponse)
+func (x *fastReflection_QueryLinkEnabledChannelResponse) New() protoreflect.Message {
+	return new(fastReflection_QueryLinkEnabledChannelResponse)
 }
 
 // Interface unwraps the message reflection interface and
 // returns the underlying ProtoMessage interface.
-func (x *fastReflection_QueryCounterResponse) Interface() protoreflect.ProtoMessage {
-	return (*QueryCounterResponse)(x)
+func (x *fastReflection_QueryLinkEnabledChannelResponse) Interface() protoreflect.ProtoMessage {
+	return (*QueryLinkEnabledChannelResponse)(x)
 }
 
 // Range iterates over every populated field in an undefined order,
@@ -511,10 +575,10 @@ func (x *fastReflection_QueryCounterResponse) Interface() protoreflect.ProtoMess
 // Range returns immediately if f returns false.
 // While iterating, mutating operations may only be performed
 // on the current field descriptor.
-func (x *fastReflection_QueryCounterResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
-	if x.Counter != uint64(0) {
-		value := protoreflect.ValueOfUint64(x.Counter)
-		if !f(fd_QueryCounterResponse_counter, value) {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) Range(f func(protoreflect.FieldDescriptor, protoreflect.Value) bool) {
+	if x.LinkEnabled != false {
+		value := protoreflect.ValueOfBool(x.LinkEnabled)
+		if !f(fd_QueryLinkEnabledChannelResponse_link_enabled, value) {
 			return
 		}
 	}
@@ -531,15 +595,15 @@ func (x *fastReflection_QueryCounterResponse) Range(f func(protoreflect.FieldDes
 // In other cases (aside from the nullable cases above),
 // a proto3 scalar field is populated if it contains a non-zero value, and
 // a repeated field is populated if it is non-empty.
-func (x *fastReflection_QueryCounterResponse) Has(fd protoreflect.FieldDescriptor) bool {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) Has(fd protoreflect.FieldDescriptor) bool {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterResponse.counter":
-		return x.Counter != uint64(0)
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse.link_enabled":
+		return x.LinkEnabled != false
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -549,15 +613,15 @@ func (x *fastReflection_QueryCounterResponse) Has(fd protoreflect.FieldDescripto
 // associated with the given field number.
 //
 // Clear is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryCounterResponse) Clear(fd protoreflect.FieldDescriptor) {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) Clear(fd protoreflect.FieldDescriptor) {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterResponse.counter":
-		x.Counter = uint64(0)
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse.link_enabled":
+		x.LinkEnabled = false
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -567,16 +631,16 @@ func (x *fastReflection_QueryCounterResponse) Clear(fd protoreflect.FieldDescrip
 // the default value of a bytes scalar is guaranteed to be a copy.
 // For unpopulated composite types, it returns an empty, read-only view
 // of the value; to obtain a mutable reference, use Mutable.
-func (x *fastReflection_QueryCounterResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) Get(descriptor protoreflect.FieldDescriptor) protoreflect.Value {
 	switch descriptor.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterResponse.counter":
-		value := x.Counter
-		return protoreflect.ValueOfUint64(value)
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse.link_enabled":
+		value := x.LinkEnabled
+		return protoreflect.ValueOfBool(value)
 	default:
 		if descriptor.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterResponse does not contain field %s", descriptor.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse does not contain field %s", descriptor.FullName()))
 	}
 }
 
@@ -590,15 +654,15 @@ func (x *fastReflection_QueryCounterResponse) Get(descriptor protoreflect.FieldD
 // empty, read-only value, then it panics.
 //
 // Set is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryCounterResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) Set(fd protoreflect.FieldDescriptor, value protoreflect.Value) {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterResponse.counter":
-		x.Counter = value.Uint()
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse.link_enabled":
+		x.LinkEnabled = value.Bool()
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse does not contain field %s", fd.FullName()))
 	}
 }
 
@@ -612,40 +676,40 @@ func (x *fastReflection_QueryCounterResponse) Set(fd protoreflect.FieldDescripto
 // It panics if the field does not contain a composite type.
 //
 // Mutable is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryCounterResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) Mutable(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterResponse.counter":
-		panic(fmt.Errorf("field counter of message srdtrk.linkedpackets.v1.QueryCounterResponse is not mutable"))
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse.link_enabled":
+		panic(fmt.Errorf("field link_enabled of message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse is not mutable"))
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // NewField returns a new value that is assignable to the field
 // for the given descriptor. For scalars, this returns the default value.
 // For lists, maps, and messages, this returns a new, empty, mutable value.
-func (x *fastReflection_QueryCounterResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) NewField(fd protoreflect.FieldDescriptor) protoreflect.Value {
 	switch fd.FullName() {
-	case "srdtrk.linkedpackets.v1.QueryCounterResponse.counter":
-		return protoreflect.ValueOfUint64(uint64(0))
+	case "srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse.link_enabled":
+		return protoreflect.ValueOfBool(false)
 	default:
 		if fd.IsExtension() {
-			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryCounterResponse"))
+			panic(fmt.Errorf("proto3 declared messages do not support extensions: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse"))
 		}
-		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryCounterResponse does not contain field %s", fd.FullName()))
+		panic(fmt.Errorf("message srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse does not contain field %s", fd.FullName()))
 	}
 }
 
 // WhichOneof reports which field within the oneof is populated,
 // returning nil if none are populated.
 // It panics if the oneof descriptor does not belong to this message.
-func (x *fastReflection_QueryCounterResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) WhichOneof(d protoreflect.OneofDescriptor) protoreflect.FieldDescriptor {
 	switch d.FullName() {
 	default:
-		panic(fmt.Errorf("%s is not a oneof field in srdtrk.linkedpackets.v1.QueryCounterResponse", d.FullName()))
+		panic(fmt.Errorf("%s is not a oneof field in srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse", d.FullName()))
 	}
 	panic("unreachable")
 }
@@ -653,7 +717,7 @@ func (x *fastReflection_QueryCounterResponse) WhichOneof(d protoreflect.OneofDes
 // GetUnknown retrieves the entire list of unknown fields.
 // The caller may only mutate the contents of the RawFields
 // if the mutated bytes are stored back into the message with SetUnknown.
-func (x *fastReflection_QueryCounterResponse) GetUnknown() protoreflect.RawFields {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) GetUnknown() protoreflect.RawFields {
 	return x.unknownFields
 }
 
@@ -664,7 +728,7 @@ func (x *fastReflection_QueryCounterResponse) GetUnknown() protoreflect.RawField
 // An empty RawFields may be passed to clear the fields.
 //
 // SetUnknown is a mutating operation and unsafe for concurrent use.
-func (x *fastReflection_QueryCounterResponse) SetUnknown(fields protoreflect.RawFields) {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) SetUnknown(fields protoreflect.RawFields) {
 	x.unknownFields = fields
 }
 
@@ -676,7 +740,7 @@ func (x *fastReflection_QueryCounterResponse) SetUnknown(fields protoreflect.Raw
 // message type, but the details are implementation dependent.
 // Validity is not part of the protobuf data model, and may not
 // be preserved in marshaling or other operations.
-func (x *fastReflection_QueryCounterResponse) IsValid() bool {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) IsValid() bool {
 	return x != nil
 }
 
@@ -686,9 +750,9 @@ func (x *fastReflection_QueryCounterResponse) IsValid() bool {
 // The returned methods type is identical to
 // "google.golang.org/protobuf/runtime/protoiface".Methods.
 // Consult the protoiface package documentation for details.
-func (x *fastReflection_QueryCounterResponse) ProtoMethods() *protoiface.Methods {
+func (x *fastReflection_QueryLinkEnabledChannelResponse) ProtoMethods() *protoiface.Methods {
 	size := func(input protoiface.SizeInput) protoiface.SizeOutput {
-		x := input.Message.Interface().(*QueryCounterResponse)
+		x := input.Message.Interface().(*QueryLinkEnabledChannelResponse)
 		if x == nil {
 			return protoiface.SizeOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -700,8 +764,8 @@ func (x *fastReflection_QueryCounterResponse) ProtoMethods() *protoiface.Methods
 		var n int
 		var l int
 		_ = l
-		if x.Counter != 0 {
-			n += 1 + runtime.Sov(uint64(x.Counter))
+		if x.LinkEnabled {
+			n += 2
 		}
 		if x.unknownFields != nil {
 			n += len(x.unknownFields)
@@ -713,7 +777,7 @@ func (x *fastReflection_QueryCounterResponse) ProtoMethods() *protoiface.Methods
 	}
 
 	marshal := func(input protoiface.MarshalInput) (protoiface.MarshalOutput, error) {
-		x := input.Message.Interface().(*QueryCounterResponse)
+		x := input.Message.Interface().(*QueryLinkEnabledChannelResponse)
 		if x == nil {
 			return protoiface.MarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -732,8 +796,13 @@ func (x *fastReflection_QueryCounterResponse) ProtoMethods() *protoiface.Methods
 			i -= len(x.unknownFields)
 			copy(dAtA[i:], x.unknownFields)
 		}
-		if x.Counter != 0 {
-			i = runtime.EncodeVarint(dAtA, i, uint64(x.Counter))
+		if x.LinkEnabled {
+			i--
+			if x.LinkEnabled {
+				dAtA[i] = 1
+			} else {
+				dAtA[i] = 0
+			}
 			i--
 			dAtA[i] = 0x8
 		}
@@ -748,7 +817,7 @@ func (x *fastReflection_QueryCounterResponse) ProtoMethods() *protoiface.Methods
 		}, nil
 	}
 	unmarshal := func(input protoiface.UnmarshalInput) (protoiface.UnmarshalOutput, error) {
-		x := input.Message.Interface().(*QueryCounterResponse)
+		x := input.Message.Interface().(*QueryLinkEnabledChannelResponse)
 		if x == nil {
 			return protoiface.UnmarshalOutput{
 				NoUnkeyedLiterals: input.NoUnkeyedLiterals,
@@ -780,17 +849,17 @@ func (x *fastReflection_QueryCounterResponse) ProtoMethods() *protoiface.Methods
 			fieldNum := int32(wire >> 3)
 			wireType := int(wire & 0x7)
 			if wireType == 4 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryCounterResponse: wiretype end group for non-group")
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryLinkEnabledChannelResponse: wiretype end group for non-group")
 			}
 			if fieldNum <= 0 {
-				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryCounterResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+				return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: QueryLinkEnabledChannelResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 			}
 			switch fieldNum {
 			case 1:
 				if wireType != 0 {
-					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field Counter", wireType)
+					return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, fmt.Errorf("proto: wrong wireType = %d for field LinkEnabled", wireType)
 				}
-				x.Counter = 0
+				var v int
 				for shift := uint(0); ; shift += 7 {
 					if shift >= 64 {
 						return protoiface.UnmarshalOutput{NoUnkeyedLiterals: input.NoUnkeyedLiterals, Flags: input.Flags}, runtime.ErrIntOverflow
@@ -800,11 +869,12 @@ func (x *fastReflection_QueryCounterResponse) ProtoMethods() *protoiface.Methods
 					}
 					b := dAtA[iNdEx]
 					iNdEx++
-					x.Counter |= uint64(b&0x7F) << shift
+					v |= int(b&0x7F) << shift
 					if b < 0x80 {
 						break
 					}
 				}
+				x.LinkEnabled = bool(v != 0)
 			default:
 				iNdEx = preIndex
 				skippy, err := runtime.Skip(dAtA[iNdEx:])
@@ -1644,19 +1714,21 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// QueryCounterRequest is the request type for the Query/Counter RPC
+// QueryLinkEnabledChannelRequest is the request type for the Query/LinkEnabledChannel RPC
 // method.
-type QueryCounterRequest struct {
+type QueryLinkEnabledChannelRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// address defines the address to query for the counter.
-	Address string `protobuf:"bytes,1,opt,name=address,proto3" json:"address,omitempty"`
+	// unique port identifier
+	PortId string `protobuf:"bytes,1,opt,name=port_id,json=portId,proto3" json:"port_id,omitempty"`
+	// unique channel identifier
+	ChannelId string `protobuf:"bytes,2,opt,name=channel_id,json=channelId,proto3" json:"channel_id,omitempty"`
 }
 
-func (x *QueryCounterRequest) Reset() {
-	*x = QueryCounterRequest{}
+func (x *QueryLinkEnabledChannelRequest) Reset() {
+	*x = QueryLinkEnabledChannelRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_srdtrk_linkedpackets_v1_query_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1664,37 +1736,44 @@ func (x *QueryCounterRequest) Reset() {
 	}
 }
 
-func (x *QueryCounterRequest) String() string {
+func (x *QueryLinkEnabledChannelRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryCounterRequest) ProtoMessage() {}
+func (*QueryLinkEnabledChannelRequest) ProtoMessage() {}
 
-// Deprecated: Use QueryCounterRequest.ProtoReflect.Descriptor instead.
-func (*QueryCounterRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryLinkEnabledChannelRequest.ProtoReflect.Descriptor instead.
+func (*QueryLinkEnabledChannelRequest) Descriptor() ([]byte, []int) {
 	return file_srdtrk_linkedpackets_v1_query_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *QueryCounterRequest) GetAddress() string {
+func (x *QueryLinkEnabledChannelRequest) GetPortId() string {
 	if x != nil {
-		return x.Address
+		return x.PortId
 	}
 	return ""
 }
 
-// QueryCounterResponse is the response type for the Query/Counter RPC
+func (x *QueryLinkEnabledChannelRequest) GetChannelId() string {
+	if x != nil {
+		return x.ChannelId
+	}
+	return ""
+}
+
+// QueryLinkEnabledChannelResponse is the response type for the Query/LinkEnabledChannel RPC
 // method.
-type QueryCounterResponse struct {
+type QueryLinkEnabledChannelResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	// counter defines the current counter for the sender.
-	Counter uint64 `protobuf:"varint,1,opt,name=counter,proto3" json:"counter,omitempty"`
+	// boolean flag representing the link enabled channel status
+	LinkEnabled bool `protobuf:"varint,1,opt,name=link_enabled,json=linkEnabled,proto3" json:"link_enabled,omitempty"`
 }
 
-func (x *QueryCounterResponse) Reset() {
-	*x = QueryCounterResponse{}
+func (x *QueryLinkEnabledChannelResponse) Reset() {
+	*x = QueryLinkEnabledChannelResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_srdtrk_linkedpackets_v1_query_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -1702,22 +1781,22 @@ func (x *QueryCounterResponse) Reset() {
 	}
 }
 
-func (x *QueryCounterResponse) String() string {
+func (x *QueryLinkEnabledChannelResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*QueryCounterResponse) ProtoMessage() {}
+func (*QueryLinkEnabledChannelResponse) ProtoMessage() {}
 
-// Deprecated: Use QueryCounterResponse.ProtoReflect.Descriptor instead.
-func (*QueryCounterResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use QueryLinkEnabledChannelResponse.ProtoReflect.Descriptor instead.
+func (*QueryLinkEnabledChannelResponse) Descriptor() ([]byte, []int) {
 	return file_srdtrk_linkedpackets_v1_query_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *QueryCounterResponse) GetCounter() uint64 {
+func (x *QueryLinkEnabledChannelResponse) GetLinkEnabled() bool {
 	if x != nil {
-		return x.Counter
+		return x.LinkEnabled
 	}
-	return 0
+	return false
 }
 
 // QueryParamsRequest is the request type for the Query/Params RPC method.
@@ -1799,56 +1878,64 @@ var file_srdtrk_linkedpackets_v1_query_proto_rawDesc = []byte{
 	0x76, 0x31, 0x2f, 0x71, 0x75, 0x65, 0x72, 0x79, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x11,
 	0x61, 0x6d, 0x69, 0x6e, 0x6f, 0x2f, 0x61, 0x6d, 0x69, 0x6e, 0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x1a, 0x14, 0x67, 0x6f, 0x67, 0x6f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x67,
-	0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x2f, 0x0a, 0x13, 0x51, 0x75, 0x65, 0x72, 0x79,
-	0x43, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x18,
-	0x0a, 0x07, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x07, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x22, 0x30, 0x0a, 0x14, 0x51, 0x75, 0x65, 0x72,
-	0x79, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x12, 0x18, 0x0a, 0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x04, 0x52, 0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x22, 0x14, 0x0a, 0x12, 0x51, 0x75,
-	0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x22, 0x59, 0x0a, 0x13, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x42, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d,
-	0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b,
-	0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76,
-	0x31, 0x2e, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0x09, 0xc8, 0xde, 0x1f, 0x00, 0xa8, 0xe7,
-	0xb0, 0x2a, 0x01, 0x52, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x32, 0xb8, 0x02, 0x0a, 0x05,
-	0x51, 0x75, 0x65, 0x72, 0x79, 0x12, 0x9f, 0x01, 0x0a, 0x07, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x65,
-	0x72, 0x12, 0x2c, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65,
-	0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72,
-	0x79, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x2d, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70,
-	0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x43,
-	0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x37,
-	0x88, 0xe7, 0xb0, 0x2a, 0x01, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2c, 0x12, 0x2a, 0x2f, 0x73, 0x72,
-	0x64, 0x74, 0x72, 0x6b, 0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65,
-	0x74, 0x73, 0x2f, 0x76, 0x31, 0x2f, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x65, 0x72, 0x2f, 0x7b, 0x61,
-	0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x7d, 0x12, 0x8c, 0x01, 0x0a, 0x06, 0x50, 0x61, 0x72, 0x61,
-	0x6d, 0x73, 0x12, 0x2b, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b,
+	0x6f, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x58, 0x0a, 0x1e, 0x51, 0x75, 0x65, 0x72, 0x79,
+	0x4c, 0x69, 0x6e, 0x6b, 0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x43, 0x68, 0x61, 0x6e, 0x6e,
+	0x65, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x6f, 0x72,
+	0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x70, 0x6f, 0x72, 0x74,
+	0x49, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x5f, 0x69, 0x64,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x63, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x49,
+	0x64, 0x22, 0x44, 0x0a, 0x1f, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4c, 0x69, 0x6e, 0x6b, 0x45, 0x6e,
+	0x61, 0x62, 0x6c, 0x65, 0x64, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x6c, 0x69, 0x6e, 0x6b, 0x5f, 0x65, 0x6e, 0x61,
+	0x62, 0x6c, 0x65, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0b, 0x6c, 0x69, 0x6e, 0x6b,
+	0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x22, 0x14, 0x0a, 0x12, 0x51, 0x75, 0x65, 0x72, 0x79,
+	0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x59, 0x0a,
+	0x13, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x42, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69,
+	0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x50,
+	0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0x09, 0xc8, 0xde, 0x1f, 0x00, 0xa8, 0xe7, 0xb0, 0x2a, 0x01,
+	0x52, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x32, 0xfa, 0x02, 0x0a, 0x05, 0x51, 0x75, 0x65,
+	0x72, 0x79, 0x12, 0xe1, 0x01, 0x0a, 0x12, 0x4c, 0x69, 0x6e, 0x6b, 0x45, 0x6e, 0x61, 0x62, 0x6c,
+	0x65, 0x64, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x12, 0x37, 0x2e, 0x73, 0x72, 0x64, 0x74,
+	0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73,
+	0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x4c, 0x69, 0x6e, 0x6b, 0x45, 0x6e, 0x61,
+	0x62, 0x6c, 0x65, 0x64, 0x43, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x38, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b,
 	0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65,
-	0x72, 0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
-	0x2c, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70,
-	0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50,
-	0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x27, 0x82,
-	0xd3, 0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2f, 0x6c,
-	0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2f, 0x76, 0x31, 0x2f,
-	0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0xf4, 0x01, 0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x73,
-	0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b,
-	0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x42, 0x0a, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x72, 0x6f,
-	0x74, 0x6f, 0x50, 0x01, 0x5a, 0x4b, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d,
-	0x2f, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61,
-	0x63, 0x6b, 0x65, 0x74, 0x73, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b,
-	0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2f, 0x76,
-	0x31, 0x3b, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x76,
-	0x31, 0xa2, 0x02, 0x03, 0x53, 0x4c, 0x58, 0xaa, 0x02, 0x17, 0x53, 0x72, 0x64, 0x74, 0x72, 0x6b,
-	0x2e, 0x4c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x56,
-	0x31, 0xca, 0x02, 0x17, 0x53, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x5c, 0x4c, 0x69, 0x6e, 0x6b, 0x65,
-	0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x23, 0x53, 0x72,
-	0x64, 0x74, 0x72, 0x6b, 0x5c, 0x4c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65,
-	0x74, 0x73, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74,
-	0x61, 0xea, 0x02, 0x19, 0x53, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x3a, 0x3a, 0x4c, 0x69, 0x6e, 0x6b,
-	0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x72, 0x79, 0x4c, 0x69, 0x6e, 0x6b, 0x45, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x43, 0x68, 0x61,
+	0x6e, 0x6e, 0x65, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x58, 0x88, 0xe7,
+	0xb0, 0x2a, 0x01, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x4d, 0x12, 0x4b, 0x2f, 0x73, 0x72, 0x64, 0x74,
+	0x72, 0x6b, 0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73,
+	0x2f, 0x76, 0x31, 0x2f, 0x63, 0x68, 0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x73, 0x2f, 0x7b, 0x63, 0x68,
+	0x61, 0x6e, 0x6e, 0x65, 0x6c, 0x5f, 0x69, 0x64, 0x7d, 0x2f, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x2f,
+	0x7b, 0x70, 0x6f, 0x72, 0x74, 0x5f, 0x69, 0x64, 0x7d, 0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x5f, 0x65,
+	0x6e, 0x61, 0x62, 0x6c, 0x65, 0x64, 0x12, 0x8c, 0x01, 0x0a, 0x06, 0x50, 0x61, 0x72, 0x61, 0x6d,
+	0x73, 0x12, 0x2b, 0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65,
+	0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72,
+	0x79, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2c,
+	0x2e, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61,
+	0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x76, 0x31, 0x2e, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x61,
+	0x72, 0x61, 0x6d, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x27, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x21, 0x12, 0x1f, 0x2f, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2f, 0x6c, 0x69,
+	0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2f, 0x76, 0x31, 0x2f, 0x70,
+	0x61, 0x72, 0x61, 0x6d, 0x73, 0x42, 0xf4, 0x01, 0x0a, 0x1b, 0x63, 0x6f, 0x6d, 0x2e, 0x73, 0x72,
+	0x64, 0x74, 0x72, 0x6b, 0x2e, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65,
+	0x74, 0x73, 0x2e, 0x76, 0x31, 0x42, 0x0a, 0x51, 0x75, 0x65, 0x72, 0x79, 0x50, 0x72, 0x6f, 0x74,
+	0x6f, 0x50, 0x01, 0x5a, 0x4b, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f,
+	0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63,
+	0x6b, 0x65, 0x74, 0x73, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x73, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2f,
+	0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2f, 0x76, 0x31,
+	0x3b, 0x6c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x76, 0x31,
+	0xa2, 0x02, 0x03, 0x53, 0x4c, 0x58, 0xaa, 0x02, 0x17, 0x53, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x2e,
+	0x4c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x2e, 0x56, 0x31,
+	0xca, 0x02, 0x17, 0x53, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x5c, 0x4c, 0x69, 0x6e, 0x6b, 0x65, 0x64,
+	0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x23, 0x53, 0x72, 0x64,
+	0x74, 0x72, 0x6b, 0x5c, 0x4c, 0x69, 0x6e, 0x6b, 0x65, 0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74,
+	0x73, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61,
+	0xea, 0x02, 0x19, 0x53, 0x72, 0x64, 0x74, 0x72, 0x6b, 0x3a, 0x3a, 0x4c, 0x69, 0x6e, 0x6b, 0x65,
+	0x64, 0x70, 0x61, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1865,17 +1952,17 @@ func file_srdtrk_linkedpackets_v1_query_proto_rawDescGZIP() []byte {
 
 var file_srdtrk_linkedpackets_v1_query_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_srdtrk_linkedpackets_v1_query_proto_goTypes = []interface{}{
-	(*QueryCounterRequest)(nil),  // 0: srdtrk.linkedpackets.v1.QueryCounterRequest
-	(*QueryCounterResponse)(nil), // 1: srdtrk.linkedpackets.v1.QueryCounterResponse
-	(*QueryParamsRequest)(nil),   // 2: srdtrk.linkedpackets.v1.QueryParamsRequest
-	(*QueryParamsResponse)(nil),  // 3: srdtrk.linkedpackets.v1.QueryParamsResponse
-	(*Params)(nil),               // 4: srdtrk.linkedpackets.v1.Params
+	(*QueryLinkEnabledChannelRequest)(nil),  // 0: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest
+	(*QueryLinkEnabledChannelResponse)(nil), // 1: srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse
+	(*QueryParamsRequest)(nil),              // 2: srdtrk.linkedpackets.v1.QueryParamsRequest
+	(*QueryParamsResponse)(nil),             // 3: srdtrk.linkedpackets.v1.QueryParamsResponse
+	(*Params)(nil),                          // 4: srdtrk.linkedpackets.v1.Params
 }
 var file_srdtrk_linkedpackets_v1_query_proto_depIdxs = []int32{
 	4, // 0: srdtrk.linkedpackets.v1.QueryParamsResponse.params:type_name -> srdtrk.linkedpackets.v1.Params
-	0, // 1: srdtrk.linkedpackets.v1.Query.Counter:input_type -> srdtrk.linkedpackets.v1.QueryCounterRequest
+	0, // 1: srdtrk.linkedpackets.v1.Query.LinkEnabledChannel:input_type -> srdtrk.linkedpackets.v1.QueryLinkEnabledChannelRequest
 	2, // 2: srdtrk.linkedpackets.v1.Query.Params:input_type -> srdtrk.linkedpackets.v1.QueryParamsRequest
-	1, // 3: srdtrk.linkedpackets.v1.Query.Counter:output_type -> srdtrk.linkedpackets.v1.QueryCounterResponse
+	1, // 3: srdtrk.linkedpackets.v1.Query.LinkEnabledChannel:output_type -> srdtrk.linkedpackets.v1.QueryLinkEnabledChannelResponse
 	3, // 4: srdtrk.linkedpackets.v1.Query.Params:output_type -> srdtrk.linkedpackets.v1.QueryParamsResponse
 	3, // [3:5] is the sub-list for method output_type
 	1, // [1:3] is the sub-list for method input_type
@@ -1892,7 +1979,7 @@ func file_srdtrk_linkedpackets_v1_query_proto_init() {
 	file_srdtrk_linkedpackets_v1_types_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_srdtrk_linkedpackets_v1_query_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryCounterRequest); i {
+			switch v := v.(*QueryLinkEnabledChannelRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1904,7 +1991,7 @@ func file_srdtrk_linkedpackets_v1_query_proto_init() {
 			}
 		}
 		file_srdtrk_linkedpackets_v1_query_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*QueryCounterResponse); i {
+			switch v := v.(*QueryLinkEnabledChannelResponse); i {
 			case 0:
 				return &v.state
 			case 1:
