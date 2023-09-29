@@ -143,3 +143,36 @@ func (im IBCMiddleware) OnChanOpenTry(
 
 	return string(versionBytes), nil
 }
+
+// OnChanOpenAck implements the IBCMiddleware interface
+func (im IBCMiddleware) OnChanOpenAck(
+	ctx sdk.Context,
+	portID,
+	channelID string,
+	counterpartyChannelID string,
+	counterpartyVersion string,
+) error {
+	// If handshake was initialized with linked packets enabled it must complete with linked packets enabled.
+	// If handshake was initialized with linked packets disabled it must complete with linked packets disabled.
+	isLinkEnabled, err := im.keeper.LinkEnabled.Has(ctx, collections.Join(portID, channelID))
+	if err != nil {
+		return err
+	}
+	if isLinkEnabled {
+		versionMetadata, err := linkedpackets.MetadataFromVersion(counterpartyVersion)
+		if err != nil {
+			return errorsmod.Wrapf(err, "failed to unmarshal ICS29 counterparty version metadata: %s", counterpartyVersion)
+		}
+
+		if versionMetadata.LinkedPacketsVersion != linkedpackets.Version {
+			return errorsmod.Wrapf(linkedpackets.ErrInvalidVersion, "expected counterparty linked packets version: %s, got: %s", linkedpackets.Version, versionMetadata.LinkedPacketsVersion)
+		}
+
+		// call underlying app's OnChanOpenAck callback with the counterparty app version.
+		return im.app.OnChanOpenAck(ctx, portID, channelID, counterpartyChannelID, versionMetadata.AppVersion)
+	}
+
+	// call underlying app's OnChanOpenAck callback with the counterparty app version.
+	return im.app.OnChanOpenAck(ctx, portID, channelID, counterpartyChannelID, counterpartyVersion)
+}
+
