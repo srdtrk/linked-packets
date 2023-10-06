@@ -77,7 +77,7 @@ func (m *MsgInitLink) GetSender() string {
 	return ""
 }
 
-// MsgIncrementCounterResponse defines the Msg/IncrementCounter response type.
+// MsgInitLinkResponse defines the Msg/InitLink response type.
 type MsgInitLinkResponse struct {
 }
 
@@ -114,6 +114,89 @@ func (m *MsgInitLinkResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgInitLinkResponse proto.InternalMessageInfo
 
+// MsgStopLink defines the message stopping packet linking.
+type MsgStopLink struct {
+	// sender is the message sender.
+	Sender string `protobuf:"bytes,1,opt,name=sender,proto3" json:"sender,omitempty"`
+}
+
+func (m *MsgStopLink) Reset()         { *m = MsgStopLink{} }
+func (m *MsgStopLink) String() string { return proto.CompactTextString(m) }
+func (*MsgStopLink) ProtoMessage()    {}
+func (*MsgStopLink) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2dd60cf9e8ce3e36, []int{2}
+}
+func (m *MsgStopLink) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgStopLink) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgStopLink.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgStopLink) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgStopLink.Merge(m, src)
+}
+func (m *MsgStopLink) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgStopLink) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgStopLink.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgStopLink proto.InternalMessageInfo
+
+func (m *MsgStopLink) GetSender() string {
+	if m != nil {
+		return m.Sender
+	}
+	return ""
+}
+
+// MsgStopLinkResponse defines the Msg/StopLink response type.
+type MsgStopLinkResponse struct {
+}
+
+func (m *MsgStopLinkResponse) Reset()         { *m = MsgStopLinkResponse{} }
+func (m *MsgStopLinkResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgStopLinkResponse) ProtoMessage()    {}
+func (*MsgStopLinkResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2dd60cf9e8ce3e36, []int{3}
+}
+func (m *MsgStopLinkResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgStopLinkResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgStopLinkResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgStopLinkResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgStopLinkResponse.Merge(m, src)
+}
+func (m *MsgStopLinkResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgStopLinkResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgStopLinkResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgStopLinkResponse proto.InternalMessageInfo
+
 // MsgUpdateParams is the Msg/UpdateParams request type.
 type MsgUpdateParams struct {
 	// authority is the address that controls the module
@@ -128,7 +211,7 @@ func (m *MsgUpdateParams) Reset()         { *m = MsgUpdateParams{} }
 func (m *MsgUpdateParams) String() string { return proto.CompactTextString(m) }
 func (*MsgUpdateParams) ProtoMessage()    {}
 func (*MsgUpdateParams) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2dd60cf9e8ce3e36, []int{2}
+	return fileDescriptor_2dd60cf9e8ce3e36, []int{4}
 }
 func (m *MsgUpdateParams) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -180,7 +263,7 @@ func (m *MsgUpdateParamsResponse) Reset()         { *m = MsgUpdateParamsResponse
 func (m *MsgUpdateParamsResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgUpdateParamsResponse) ProtoMessage()    {}
 func (*MsgUpdateParamsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2dd60cf9e8ce3e36, []int{3}
+	return fileDescriptor_2dd60cf9e8ce3e36, []int{5}
 }
 func (m *MsgUpdateParamsResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -212,6 +295,8 @@ var xxx_messageInfo_MsgUpdateParamsResponse proto.InternalMessageInfo
 func init() {
 	proto.RegisterType((*MsgInitLink)(nil), "srdtrk.linkedpackets.v1.MsgInitLink")
 	proto.RegisterType((*MsgInitLinkResponse)(nil), "srdtrk.linkedpackets.v1.MsgInitLinkResponse")
+	proto.RegisterType((*MsgStopLink)(nil), "srdtrk.linkedpackets.v1.MsgStopLink")
+	proto.RegisterType((*MsgStopLinkResponse)(nil), "srdtrk.linkedpackets.v1.MsgStopLinkResponse")
 	proto.RegisterType((*MsgUpdateParams)(nil), "srdtrk.linkedpackets.v1.MsgUpdateParams")
 	proto.RegisterType((*MsgUpdateParamsResponse)(nil), "srdtrk.linkedpackets.v1.MsgUpdateParamsResponse")
 }
@@ -219,7 +304,7 @@ func init() {
 func init() { proto.RegisterFile("srdtrk/linkedpackets/v1/tx.proto", fileDescriptor_2dd60cf9e8ce3e36) }
 
 var fileDescriptor_2dd60cf9e8ce3e36 = []byte{
-	// 412 bytes of a gzipped FileDescriptorProto
+	// 442 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x28, 0x2e, 0x4a, 0x29,
 	0x29, 0xca, 0xd6, 0xcf, 0xc9, 0xcc, 0xcb, 0x4e, 0x4d, 0x29, 0x48, 0x4c, 0xce, 0x4e, 0x2d, 0x29,
 	0xd6, 0x2f, 0x33, 0xd4, 0x2f, 0xa9, 0xd0, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x12, 0x87, 0xa8,
@@ -231,21 +316,23 @@ var fileDescriptor_2dd60cf9e8ce3e36 = []byte{
 	0x33, 0x2f, 0x5b, 0x48, 0x8c, 0x8b, 0xad, 0x38, 0x35, 0x2f, 0x25, 0xb5, 0x48, 0x82, 0x51, 0x81,
 	0x51, 0x83, 0x33, 0x08, 0xca, 0xb3, 0x32, 0x68, 0x7a, 0xbe, 0x41, 0x0b, 0xca, 0xe9, 0x7a, 0xbe,
 	0x41, 0x0b, 0xbb, 0x9f, 0x91, 0x4c, 0x52, 0x12, 0xe5, 0x12, 0x46, 0xe2, 0x06, 0xa5, 0x16, 0x17,
-	0xe4, 0xe7, 0x15, 0xa7, 0x2a, 0x1d, 0x63, 0xe4, 0xe2, 0xf7, 0x2d, 0x4e, 0x0f, 0x2d, 0x48, 0x49,
-	0x2c, 0x49, 0x0d, 0x48, 0x2c, 0x4a, 0xcc, 0x2d, 0x16, 0x32, 0xe3, 0xe2, 0x4c, 0x2c, 0x2d, 0xc9,
-	0xc8, 0x2f, 0xca, 0x2c, 0xa9, 0x84, 0xd8, 0xeb, 0x24, 0x71, 0x69, 0x8b, 0xae, 0x08, 0xd4, 0xa1,
+	0xe4, 0xe7, 0x15, 0xa7, 0x42, 0xed, 0x0b, 0x2e, 0xc9, 0x2f, 0xa0, 0x8e, 0x7d, 0x30, 0x93, 0xa0,
+	0xf6, 0xc1, 0xb8, 0x70, 0xfb, 0x8e, 0x31, 0x72, 0xf1, 0xfb, 0x16, 0xa7, 0x87, 0x16, 0xa4, 0x24,
+	0x96, 0xa4, 0x06, 0x24, 0x16, 0x25, 0xe6, 0x16, 0x0b, 0x99, 0x71, 0x71, 0x26, 0x96, 0x96, 0x64,
+	0xe4, 0x17, 0x65, 0x96, 0x54, 0x42, 0xec, 0x75, 0x92, 0xb8, 0xb4, 0x45, 0x57, 0x04, 0x1a, 0x30,
 	0x8e, 0x29, 0x29, 0x45, 0xa9, 0xc5, 0xc5, 0xc1, 0x25, 0x45, 0x99, 0x79, 0xe9, 0x41, 0x08, 0xa5,
 	0x42, 0x4e, 0x5c, 0x6c, 0x05, 0x60, 0x13, 0x24, 0x98, 0x14, 0x18, 0x35, 0xb8, 0x8d, 0xe4, 0xf5,
-	0x70, 0x84, 0xb3, 0x1e, 0xc4, 0x22, 0x27, 0xce, 0x13, 0xf7, 0xe4, 0x19, 0x56, 0x3c, 0xdf, 0xa0,
+	0x70, 0xc4, 0xab, 0x1e, 0xc4, 0x22, 0x27, 0xce, 0x13, 0xf7, 0xe4, 0x19, 0x56, 0x3c, 0xdf, 0xa0,
 	0xc5, 0x18, 0x04, 0xd5, 0x69, 0x65, 0x0e, 0xf2, 0x18, 0xc2, 0x4c, 0x90, 0xdf, 0x54, 0x70, 0xf9,
-	0x0d, 0xd9, 0xd1, 0x4a, 0x92, 0x5c, 0xe2, 0x68, 0x42, 0x30, 0x3f, 0x1a, 0xdd, 0x60, 0xe4, 0x62,
-	0xf6, 0x2d, 0x4e, 0x17, 0x8a, 0xe3, 0xe2, 0x80, 0x07, 0xac, 0x0a, 0x4e, 0xb7, 0x21, 0x85, 0x92,
-	0x94, 0x0e, 0x31, 0xaa, 0x60, 0xf6, 0x08, 0x65, 0x71, 0xf1, 0xa0, 0x84, 0xa3, 0x06, 0x3e, 0xdd,
-	0xc8, 0x2a, 0xa5, 0x0c, 0x88, 0x55, 0x09, 0xb3, 0x4b, 0x8a, 0xb5, 0x01, 0x14, 0x6c, 0x4e, 0x96,
-	0x27, 0x1e, 0xc9, 0x31, 0x5e, 0x78, 0x24, 0xc7, 0xf8, 0xe0, 0x91, 0x1c, 0xe3, 0x84, 0xc7, 0x72,
-	0x0c, 0x17, 0x1e, 0xcb, 0x31, 0xdc, 0x78, 0x2c, 0xc7, 0x10, 0x25, 0x9f, 0x9e, 0x59, 0x92, 0x51,
-	0x9a, 0xa4, 0x97, 0x9c, 0x9f, 0xab, 0x8f, 0x2d, 0x00, 0x93, 0xd8, 0xc0, 0x09, 0xce, 0x18, 0x10,
-	0x00, 0x00, 0xff, 0xff, 0x9d, 0x95, 0xa4, 0xfe, 0x2f, 0x03, 0x00, 0x00,
+	0x0d, 0xd9, 0xd1, 0x4a, 0x92, 0x5c, 0xe2, 0x68, 0x42, 0x30, 0x3f, 0x1a, 0xed, 0x60, 0xe2, 0x62,
+	0xf6, 0x2d, 0x4e, 0x17, 0x8a, 0xe3, 0xe2, 0x80, 0x47, 0xa4, 0x0a, 0x4e, 0xb7, 0x21, 0xc5, 0x8a,
+	0x94, 0x0e, 0x31, 0xaa, 0x60, 0xf6, 0x80, 0xcc, 0x87, 0x47, 0x1c, 0x5e, 0xf3, 0x61, 0xaa, 0xf0,
+	0x9b, 0x8f, 0x1e, 0x57, 0x42, 0x59, 0x5c, 0x3c, 0x28, 0xf1, 0xa4, 0x81, 0x4f, 0x37, 0xb2, 0x4a,
+	0x29, 0x03, 0x62, 0x55, 0xc2, 0xec, 0x92, 0x62, 0x6d, 0x00, 0x45, 0x8b, 0x93, 0xe5, 0x89, 0x47,
+	0x72, 0x8c, 0x17, 0x1e, 0xc9, 0x31, 0x3e, 0x78, 0x24, 0xc7, 0x38, 0xe1, 0xb1, 0x1c, 0xc3, 0x85,
+	0xc7, 0x72, 0x0c, 0x37, 0x1e, 0xcb, 0x31, 0x44, 0xc9, 0xa7, 0x67, 0x96, 0x64, 0x94, 0x26, 0xe9,
+	0x25, 0xe7, 0xe7, 0xea, 0x63, 0x8b, 0xa0, 0x24, 0x36, 0x70, 0x06, 0x32, 0x06, 0x04, 0x00, 0x00,
+	0xff, 0xff, 0x0a, 0x50, 0x69, 0xba, 0xff, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -262,6 +349,8 @@ const _ = grpc.SupportPackageIsVersion4
 type MsgClient interface {
 	// InitLink starts the packet linking with this Tx.
 	InitLink(ctx context.Context, in *MsgInitLink, opts ...grpc.CallOption) (*MsgInitLinkResponse, error)
+	// StopLink stops the packet linking with this Tx.
+	StopLink(ctx context.Context, in *MsgStopLink, opts ...grpc.CallOption) (*MsgStopLinkResponse, error)
 	// UpdateParams updates the module parameters.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
 }
@@ -283,6 +372,15 @@ func (c *msgClient) InitLink(ctx context.Context, in *MsgInitLink, opts ...grpc.
 	return out, nil
 }
 
+func (c *msgClient) StopLink(ctx context.Context, in *MsgStopLink, opts ...grpc.CallOption) (*MsgStopLinkResponse, error) {
+	out := new(MsgStopLinkResponse)
+	err := c.cc.Invoke(ctx, "/srdtrk.linkedpackets.v1.Msg/StopLink", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error) {
 	out := new(MsgUpdateParamsResponse)
 	err := c.cc.Invoke(ctx, "/srdtrk.linkedpackets.v1.Msg/UpdateParams", in, out, opts...)
@@ -296,6 +394,8 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 type MsgServer interface {
 	// InitLink starts the packet linking with this Tx.
 	InitLink(context.Context, *MsgInitLink) (*MsgInitLinkResponse, error)
+	// StopLink stops the packet linking with this Tx.
+	StopLink(context.Context, *MsgStopLink) (*MsgStopLinkResponse, error)
 	// UpdateParams updates the module parameters.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
 }
@@ -306,6 +406,9 @@ type UnimplementedMsgServer struct {
 
 func (*UnimplementedMsgServer) InitLink(ctx context.Context, req *MsgInitLink) (*MsgInitLinkResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InitLink not implemented")
+}
+func (*UnimplementedMsgServer) StopLink(ctx context.Context, req *MsgStopLink) (*MsgStopLinkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StopLink not implemented")
 }
 func (*UnimplementedMsgServer) UpdateParams(ctx context.Context, req *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
@@ -329,6 +432,24 @@ func _Msg_InitLink_Handler(srv interface{}, ctx context.Context, dec func(interf
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(MsgServer).InitLink(ctx, req.(*MsgInitLink))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_StopLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgStopLink)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).StopLink(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/srdtrk.linkedpackets.v1.Msg/StopLink",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).StopLink(ctx, req.(*MsgStopLink))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -358,6 +479,10 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "InitLink",
 			Handler:    _Msg_InitLink_Handler,
+		},
+		{
+			MethodName: "StopLink",
+			Handler:    _Msg_StopLink_Handler,
 		},
 		{
 			MethodName: "UpdateParams",
@@ -414,6 +539,59 @@ func (m *MsgInitLinkResponse) MarshalTo(dAtA []byte) (int, error) {
 }
 
 func (m *MsgInitLinkResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgStopLink) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgStopLink) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgStopLink) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Sender) > 0 {
+		i -= len(m.Sender)
+		copy(dAtA[i:], m.Sender)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Sender)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgStopLinkResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgStopLinkResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgStopLinkResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -509,6 +687,28 @@ func (m *MsgInitLink) Size() (n int) {
 }
 
 func (m *MsgInitLinkResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgStopLink) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Sender)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgStopLinkResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -656,6 +856,138 @@ func (m *MsgInitLinkResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgInitLinkResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgStopLink) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgStopLink: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgStopLink: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Sender", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Sender = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgStopLinkResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgStopLinkResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgStopLinkResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:

@@ -20,6 +20,7 @@ const _ = grpc.SupportPackageIsVersion7
 
 const (
 	Msg_InitLink_FullMethodName     = "/srdtrk.linkedpackets.v1.Msg/InitLink"
+	Msg_StopLink_FullMethodName     = "/srdtrk.linkedpackets.v1.Msg/StopLink"
 	Msg_UpdateParams_FullMethodName = "/srdtrk.linkedpackets.v1.Msg/UpdateParams"
 )
 
@@ -29,6 +30,8 @@ const (
 type MsgClient interface {
 	// InitLink starts the packet linking with this Tx.
 	InitLink(ctx context.Context, in *MsgInitLink, opts ...grpc.CallOption) (*MsgInitLinkResponse, error)
+	// StopLink stops the packet linking with this Tx.
+	StopLink(ctx context.Context, in *MsgStopLink, opts ...grpc.CallOption) (*MsgStopLinkResponse, error)
 	// UpdateParams updates the module parameters.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
 }
@@ -50,6 +53,15 @@ func (c *msgClient) InitLink(ctx context.Context, in *MsgInitLink, opts ...grpc.
 	return out, nil
 }
 
+func (c *msgClient) StopLink(ctx context.Context, in *MsgStopLink, opts ...grpc.CallOption) (*MsgStopLinkResponse, error) {
+	out := new(MsgStopLinkResponse)
+	err := c.cc.Invoke(ctx, Msg_StopLink_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error) {
 	out := new(MsgUpdateParamsResponse)
 	err := c.cc.Invoke(ctx, Msg_UpdateParams_FullMethodName, in, out, opts...)
@@ -65,6 +77,8 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 type MsgServer interface {
 	// InitLink starts the packet linking with this Tx.
 	InitLink(context.Context, *MsgInitLink) (*MsgInitLinkResponse, error)
+	// StopLink stops the packet linking with this Tx.
+	StopLink(context.Context, *MsgStopLink) (*MsgStopLinkResponse, error)
 	// UpdateParams updates the module parameters.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
 	mustEmbedUnimplementedMsgServer()
@@ -76,6 +90,9 @@ type UnimplementedMsgServer struct {
 
 func (UnimplementedMsgServer) InitLink(context.Context, *MsgInitLink) (*MsgInitLinkResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InitLink not implemented")
+}
+func (UnimplementedMsgServer) StopLink(context.Context, *MsgStopLink) (*MsgStopLinkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StopLink not implemented")
 }
 func (UnimplementedMsgServer) UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
@@ -111,6 +128,24 @@ func _Msg_InitLink_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_StopLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgStopLink)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).StopLink(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_StopLink_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).StopLink(ctx, req.(*MsgStopLink))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Msg_UpdateParams_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(MsgUpdateParams)
 	if err := dec(in); err != nil {
@@ -139,6 +174,10 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "InitLink",
 			Handler:    _Msg_InitLink_Handler,
+		},
+		{
+			MethodName: "StopLink",
+			Handler:    _Msg_StopLink_Handler,
 		},
 		{
 			MethodName: "UpdateParams",

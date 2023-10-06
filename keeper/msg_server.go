@@ -33,6 +33,20 @@ func (ms msgServer) InitLink(ctx context.Context, msg *linkedpackets.MsgInitLink
 	return &linkedpackets.MsgInitLinkResponse{}, nil
 }
 
+// StopLink defines the handler for the MsgStopLink message.
+func (ms msgServer) StopLink(ctx context.Context, msg *linkedpackets.MsgStopLink) (*linkedpackets.MsgStopLinkResponse, error) {
+	if _, err := ms.k.addressCodec.StringToBytes(msg.Sender); err != nil {
+		return nil, fmt.Errorf("invalid sender address: %w", err)
+	}
+
+	err := ms.k.Linking.Set(ctx, false)
+	if err != nil {
+		return nil, err
+	}
+
+	return &linkedpackets.MsgStopLinkResponse{}, nil
+}
+
 // UpdateParams params is defining the handler for the MsgUpdateParams message.
 func (ms msgServer) UpdateParams(ctx context.Context, msg *linkedpackets.MsgUpdateParams) (*linkedpackets.MsgUpdateParamsResponse, error) {
 	if _, err := ms.k.addressCodec.StringToBytes(msg.Authority); err != nil {

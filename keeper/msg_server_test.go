@@ -89,6 +89,51 @@ func TestInitLink(t *testing.T) {
 				require.ErrorContains(err, tc.expectErrMsg)
 			} else {
 				require.NoError(err)
+				val, err := f.k.Linking.Get(f.ctx)
+				require.NoError(err)
+				require.Equal(true, val)
+			}
+		})
+	}
+}
+
+func TestStopLink(t *testing.T) {
+	f := initFixture(t)
+	require := require.New(t)
+
+	testCases := []struct {
+		name         string
+		request      *linkedpackets.MsgStopLink
+		expectErrMsg string
+	}{
+		{
+			name: "set invalid sender (not an address)",
+			request: &linkedpackets.MsgStopLink{
+				Sender: "foo",
+			},
+			expectErrMsg: "invalid sender address",
+		},
+		{
+			name: "set valid sender",
+			request: &linkedpackets.MsgStopLink{
+				Sender: "cosmos139f7kncmglres2nf3h4hc4tade85ekfr8sulz5",
+			},
+			expectErrMsg: "",
+		},
+	}
+
+	for _, tc := range testCases {
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := f.msgServer.StopLink(f.ctx, tc.request)
+			if tc.expectErrMsg != "" {
+				require.Error(err)
+				require.ErrorContains(err, tc.expectErrMsg)
+			} else {
+				require.NoError(err)
+				val, err := f.k.Linking.Get(f.ctx)
+				require.NoError(err)
+				require.Equal(false, val)
 			}
 		})
 	}

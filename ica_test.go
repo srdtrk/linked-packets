@@ -19,9 +19,9 @@ import (
 func (s *LinkedPacketsTestSuite) TestICACallbacks() {
 	// Destination callbacks are not supported for ICA packets
 	testCases := []struct {
-		name        string
-		icaMemo     string
-		expSuccess  bool
+		name       string
+		icaMemo    string
+		expSuccess bool
 	}{
 		{
 			"success: send ica tx with no memo",
@@ -44,9 +44,9 @@ func (s *LinkedPacketsTestSuite) TestICACallbacks() {
 func (s *LinkedPacketsTestSuite) TestICATimeoutCallbacks() {
 	// ICA channels are closed after a timeout packet is executed
 	testCases := []struct {
-		name        string
-		icaMemo     string
-		expSuccess  bool
+		name       string
+		icaMemo    string
+		expSuccess bool
 	}{
 		{
 			"success: send ica tx timeout with no memo",

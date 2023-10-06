@@ -7,8 +7,8 @@ const (
 
 	// StoreKey is the string store representation
 	StoreKey = ModuleName
-	
-	Version    = "ics29-1"
+
+	Version = "ics29-1"
 )
 
 var (

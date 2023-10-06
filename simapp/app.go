@@ -133,8 +133,8 @@ import (
 	ibctestingtypes "github.com/cosmos/ibc-go/v8/testing/types"
 
 	"github.com/srdtrk/linkedpackets"
-	linkedpacketsmod "github.com/srdtrk/linkedpackets/module"
 	linkedpacketskeeper "github.com/srdtrk/linkedpackets/keeper"
+	linkedpacketsmod "github.com/srdtrk/linkedpackets/module"
 )
 
 const appName = "SimApp"
@@ -454,7 +454,7 @@ func NewSimApp(
 		appCodec, authcodec.NewBech32Codec(sdk.GetConfig().GetBech32AccountAddrPrefix()),
 		runtime.NewKVStoreService(keys[linkedpackets.StoreKey]),
 		authtypes.NewModuleAddress(govtypes.ModuleName).String(),
-	)	
+	)
 
 	// ICA Controller keeper
 	app.ICAControllerKeeper = icacontrollerkeeper.NewKeeper(

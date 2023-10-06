@@ -25,7 +25,7 @@ type Keeper struct {
 	Params collections.Item[linkedpackets.Params]
 	// LinkEnabled is a KeySet of (portID, channelID) that indicates whether linked packets are enabled for a given channel.
 	LinkEnabled collections.KeySet[collections.Pair[string, string]]
-	Linking collections.Item[bool]
+	Linking     collections.Item[bool]
 }
 
 // NewKeeper creates a new Keeper instance
