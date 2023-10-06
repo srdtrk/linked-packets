@@ -542,6 +542,9 @@ func NewSimApp(
 	var icaHostStack porttypes.IBCModule
 	icaHostStack = icahost.NewIBCModule(app.ICAHostKeeper)
 	icaHostStack = ibcfee.NewIBCMiddleware(icaHostStack, app.IBCFeeKeeper)
+	icaHostStack = linkedpacketsmod.NewIBCMiddleware(icaHostStack, app.IBCFeeKeeper, app.LinkedPacketsKeeper)
+	// Since the linked packets middleware itself is an ics4wrapper, it needs to be passed to the ica host keeper
+	app.ICAHostKeeper.WithICS4Wrapper(icaHostStack.(porttypes.ICS4Wrapper))
 
 	// Add host, controller & ica auth modules to IBC router
 	ibcRouter.

@@ -26,7 +26,7 @@ func (s *LinkedPacketsTestSuite) TestTransfer() {
 	for _, tc := range testCases {
 		tc := tc
 		s.Run(tc.name, func() {
-			s.SetupTransferTest()
+			s.SetupLinkedPacketsTransferTest()
 
 			s.ExecuteTransfer(tc.transferMemo)
 		})
@@ -49,7 +49,7 @@ func (s *LinkedPacketsTestSuite) TestTransferTimeout() {
 	for _, tc := range testCases {
 		tc := tc
 		s.Run(tc.name, func() {
-			s.SetupTransferTest()
+			s.SetupLinkedPacketsTransferTest()
 
 			s.ExecuteTransferTimeout(tc.transferMemo)
 		})

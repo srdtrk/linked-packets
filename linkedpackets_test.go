@@ -8,6 +8,7 @@ import (
 	dbm "github.com/cosmos/cosmos-db"
 	"github.com/stretchr/testify/suite"
 
+	"cosmossdk.io/collections"
 	"cosmossdk.io/log"
 	sdkmath "cosmossdk.io/math"
 
@@ -17,11 +18,10 @@ import (
 
 	icacontrollertypes "github.com/cosmos/ibc-go/v8/modules/apps/27-interchain-accounts/controller/types"
 	icatypes "github.com/cosmos/ibc-go/v8/modules/apps/27-interchain-accounts/types"
-	feetypes "github.com/cosmos/ibc-go/v8/modules/apps/29-fee/types"
 	transfertypes "github.com/cosmos/ibc-go/v8/modules/apps/transfer/types"
 	ibctesting "github.com/cosmos/ibc-go/v8/testing"
-	ibcmock "github.com/cosmos/ibc-go/v8/testing/mock"
 
+	"github.com/srdtrk/linkedpackets"
 	"github.com/srdtrk/linkedpackets/simapp"
 )
 
@@ -79,26 +79,26 @@ func (s *LinkedPacketsTestSuite) SetupTransferTest() {
 }
 
 // SetupFeeTransferTest sets up a fee middleware enabled transfer channel between chainA and chainB
-func (s *LinkedPacketsTestSuite) SetupFeeTransferTest() {
+func (s *LinkedPacketsTestSuite) SetupLinkedPacketsTransferTest() {
 	s.setupChains()
 
-	feeTransferVersion := string(feetypes.ModuleCdc.MustMarshalJSON(&feetypes.Metadata{FeeVersion: feetypes.Version, AppVersion: transfertypes.Version}))
-	s.path.EndpointA.ChannelConfig.Version = feeTransferVersion
-	s.path.EndpointB.ChannelConfig.Version = feeTransferVersion
+	byteVersion, err := json.Marshal(linkedpackets.Metadata{LinkedPacketsVersion: linkedpackets.Version, AppVersion: transfertypes.Version})
+	s.Require().NoError(err)
+
+	linkedTransferVersion := string(byteVersion)
+	s.path.EndpointA.ChannelConfig.Version = linkedTransferVersion
+	s.path.EndpointB.ChannelConfig.Version = linkedTransferVersion
 	s.path.EndpointA.ChannelConfig.PortID = transfertypes.PortID
 	s.path.EndpointB.ChannelConfig.PortID = transfertypes.PortID
 
 	s.coordinator.Setup(s.path)
-}
 
-func (s *LinkedPacketsTestSuite) SetupMockFeeTest() {
-	s.setupChains()
-
-	mockFeeVersion := string(feetypes.ModuleCdc.MustMarshalJSON(&feetypes.Metadata{FeeVersion: feetypes.Version, AppVersion: ibcmock.Version}))
-	s.path.EndpointA.ChannelConfig.Version = mockFeeVersion
-	s.path.EndpointB.ChannelConfig.Version = mockFeeVersion
-	s.path.EndpointA.ChannelConfig.PortID = ibctesting.MockFeePort
-	s.path.EndpointB.ChannelConfig.PortID = ibctesting.MockFeePort
+	isEnabled, err := GetSimApp(s.chainA).LinkedPacketsKeeper.LinkEnabled.Has(
+		s.chainA.GetContext(),
+		collections.Join(s.path.EndpointA.ChannelConfig.PortID, s.path.EndpointA.ChannelID),
+	)
+	s.Require().NoError(err)
+	s.Require().True(isEnabled)
 }
 
 // SetupICATest sets up an interchain accounts channel between chainA (controller) and chainB (host).
@@ -108,8 +108,11 @@ func (s *LinkedPacketsTestSuite) SetupICATest() string {
 	s.coordinator.SetupConnections(s.path)
 
 	icaOwner := s.chainA.SenderAccount.GetAddress().String()
+	defaultIcaVersion := icatypes.NewDefaultMetadataString(s.path.EndpointA.ConnectionID, s.path.EndpointB.ConnectionID)
 	// ICAVersion defines a interchain accounts version string
-	icaVersion := icatypes.NewDefaultMetadataString(s.path.EndpointA.ConnectionID, s.path.EndpointB.ConnectionID)
+	icaVersionBytes, err := json.Marshal(linkedpackets.Metadata{LinkedPacketsVersion: linkedpackets.Version, AppVersion: defaultIcaVersion})
+	s.Require().NoError(err)
+	icaVersion := string(icaVersionBytes)
 	icaControllerPortID, err := icatypes.NewControllerPortID(icaOwner)
 	s.Require().NoError(err)
 
@@ -118,6 +121,12 @@ func (s *LinkedPacketsTestSuite) SetupICATest() string {
 	s.path.EndpointB.ChannelConfig.PortID = icatypes.HostPortID
 	s.path.EndpointA.ChannelConfig.Version = icaVersion
 	s.path.EndpointB.ChannelConfig.Version = icaVersion
+
+	err = GetSimApp(s.chainA).LinkedPacketsKeeper.LinkEnabled.Set(
+		s.chainA.GetContext(),
+		collections.Join(s.path.EndpointA.ChannelConfig.PortID, s.path.EndpointA.ChannelID),
+	)
+	s.Require().NoError(err)
 
 	s.RegisterInterchainAccount(icaOwner)
 	// open chan init must be skipped. So we cannot use .CreateChannels()
