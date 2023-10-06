@@ -159,6 +159,6 @@ func (s *LinkedPacketsTestSuite) RegisterInterchainAccount(owner string) {
 	s.path.EndpointA.ChannelID = channelID
 }
 
-func TestIBCCallbacksTestSuite(t *testing.T) {
+func TestIBCLinkedPacketsTestSuite(t *testing.T) {
 	suite.Run(t, new(LinkedPacketsTestSuite))
 }

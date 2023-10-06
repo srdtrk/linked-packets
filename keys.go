@@ -4,6 +4,10 @@ import "cosmossdk.io/collections"
 
 const (
 	ModuleName = "linkedpackets"
+
+	// StoreKey is the string store representation
+	StoreKey = ModuleName
+	
 	Version    = "ics29-1"
 )
 
