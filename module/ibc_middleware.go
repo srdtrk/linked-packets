@@ -11,10 +11,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	capabilitytypes "github.com/cosmos/ibc-go/modules/capability/types"
-	channeltypes "github.com/cosmos/ibc-go/v8/modules/core/04-channel/types"
 	clienttypes "github.com/cosmos/ibc-go/v8/modules/core/02-client/types"
-	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
+	channeltypes "github.com/cosmos/ibc-go/v8/modules/core/04-channel/types"
 	porttypes "github.com/cosmos/ibc-go/v8/modules/core/05-port/types"
+	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 
 	"github.com/srdtrk/linkedpackets"
 	"github.com/srdtrk/linkedpackets/keeper"
@@ -216,7 +216,6 @@ func (im IBCMiddleware) OnRecvPacket(
 ) ibcexported.Acknowledgement {
 	// call underlying app's OnRecvPacket callback.
 	return im.app.OnRecvPacket(ctx, packet, relayer)
-	// TODO: maybe add additional logic to eliminate incorrect link order
 }
 
 // OnAcknowledgementPacket implements the IBCMiddleware interface
@@ -268,4 +267,3 @@ func (im IBCMiddleware) WriteAcknowledgement(
 func (im IBCMiddleware) GetAppVersion(ctx sdk.Context, portID, channelID string) (string, bool) {
 	return im.ics4Wrapper.GetAppVersion(ctx, portID, channelID)
 }
-
