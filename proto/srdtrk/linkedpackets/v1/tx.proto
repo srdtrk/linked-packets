@@ -16,6 +16,9 @@ service Msg {
   // InitLink starts the packet linking with this Tx.
   rpc InitLink(MsgInitLink) returns (MsgInitLinkResponse);
 
+  // StopLink stops the packet linking with this Tx.
+  rpc StopLink(MsgStopLink) returns (MsgStopLinkResponse);
+
   // UpdateParams updates the module parameters.
   rpc UpdateParams(MsgUpdateParams) returns (MsgUpdateParamsResponse);
 }
@@ -29,8 +32,20 @@ message MsgInitLink {
   string sender = 1;
 }
 
-// MsgIncrementCounterResponse defines the Msg/IncrementCounter response type.
+// MsgInitLinkResponse defines the Msg/InitLink response type.
 message MsgInitLinkResponse {}
+
+// MsgStopLink defines the message stopping packet linking.
+message MsgStopLink {
+  option (cosmos.msg.v1.signer) = "sender";
+  option (amino.name) = "srdtrk/linkedpackets/MsgStopLink";
+
+  // sender is the message sender.
+  string sender = 1;
+}
+
+// MsgStopLinkResponse defines the Msg/StopLink response type.
+message MsgStopLinkResponse {}
 
 // MsgUpdateParams is the Msg/UpdateParams request type.
 message MsgUpdateParams {
