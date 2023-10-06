@@ -25,7 +25,10 @@ func (ms msgServer) InitLink(ctx context.Context, msg *linkedpackets.MsgInitLink
 		return nil, fmt.Errorf("invalid sender address: %w", err)
 	}
 
-	// TODO: add init link logic here
+	err := ms.k.Linking.Set(ctx, true)
+	if err != nil {
+		return nil, err
+	}
 
 	return &linkedpackets.MsgInitLinkResponse{}, nil
 }

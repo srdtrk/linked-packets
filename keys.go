@@ -14,4 +14,5 @@ const (
 var (
 	ParamsKey      = collections.NewPrefix(0)
 	LinkEnabledKey = collections.NewPrefix(1)
+	LinkingKey     = collections.NewPrefix(2)
 )

@@ -25,6 +25,7 @@ type Keeper struct {
 	Params collections.Item[linkedpackets.Params]
 	// LinkEnabled is a KeySet of (portID, channelID) that indicates whether linked packets are enabled for a given channel.
 	LinkEnabled collections.KeySet[collections.Pair[string, string]]
+	Linking collections.Item[bool]
 }
 
 // NewKeeper creates a new Keeper instance
@@ -42,6 +43,7 @@ func NewKeeper(cdc codec.BinaryCodec, addressCodec address.Codec, storeService s
 		LinkEnabled: collections.NewKeySet(
 			sb, linkedpackets.LinkEnabledKey, "link_enabled", collections.PairKeyCodec(collections.StringKey, collections.StringKey),
 		),
+		Linking: collections.NewItem(sb, linkedpackets.LinkingKey, "linking", collections.BoolValue),
 	}
 
 	schema, err := sb.Build()
