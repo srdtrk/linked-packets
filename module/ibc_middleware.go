@@ -12,6 +12,8 @@ import (
 
 	capabilitytypes "github.com/cosmos/ibc-go/modules/capability/types"
 	channeltypes "github.com/cosmos/ibc-go/v8/modules/core/04-channel/types"
+	clienttypes "github.com/cosmos/ibc-go/v8/modules/core/02-client/types"
+	ibcexported "github.com/cosmos/ibc-go/v8/modules/core/exported"
 	porttypes "github.com/cosmos/ibc-go/v8/modules/core/05-port/types"
 
 	"github.com/srdtrk/linkedpackets"
@@ -184,5 +186,86 @@ func (im IBCMiddleware) OnChanOpenConfirm(
 ) error {
 	// call underlying app's OnChanOpenConfirm callback.
 	return im.app.OnChanOpenConfirm(ctx, portID, channelID)
+}
+
+// OnChanCloseInit implements the IBCMiddleware interface
+func (im IBCMiddleware) OnChanCloseInit(
+	ctx sdk.Context,
+	portID,
+	channelID string,
+) error {
+	// call underlying app's OnChanCloseInit callback.
+	return im.app.OnChanCloseInit(ctx, portID, channelID)
+}
+
+// OnChanCloseConfirm implements the IBCMiddleware interface
+func (im IBCMiddleware) OnChanCloseConfirm(
+	ctx sdk.Context,
+	portID,
+	channelID string,
+) error {
+	// call underlying app's OnChanCloseConfirm callback.
+	return im.app.OnChanCloseConfirm(ctx, portID, channelID)
+}
+
+// OnRecvPacket implements the IBCMiddleware interface.
+func (im IBCMiddleware) OnRecvPacket(
+	ctx sdk.Context,
+	packet channeltypes.Packet,
+	relayer sdk.AccAddress,
+) ibcexported.Acknowledgement {
+	// call underlying app's OnRecvPacket callback.
+	return im.app.OnRecvPacket(ctx, packet, relayer)
+	// TODO: maybe add additional logic to eliminate incorrect link order
+}
+
+// OnAcknowledgementPacket implements the IBCMiddleware interface
+func (im IBCMiddleware) OnAcknowledgementPacket(
+	ctx sdk.Context,
+	packet channeltypes.Packet,
+	acknowledgement []byte,
+	relayer sdk.AccAddress,
+) error {
+	// call underlying app's OnAcknowledgementPacket callback.
+	return im.app.OnAcknowledgementPacket(ctx, packet, acknowledgement, relayer)
+}
+
+// OnTimeoutPacket implements the IBCMiddleware interface
+// If fees are not enabled, this callback will default to the ibc-core packet callback
+func (im IBCMiddleware) OnTimeoutPacket(
+	ctx sdk.Context,
+	packet channeltypes.Packet,
+	relayer sdk.AccAddress,
+) error {
+	// call underlying app's OnTimeoutPacket callback.
+	return im.app.OnTimeoutPacket(ctx, packet, relayer)
+}
+
+// SendPacket implements the ICS4 Wrapper interface
+func (im IBCMiddleware) SendPacket(
+	ctx sdk.Context,
+	chanCap *capabilitytypes.Capability,
+	sourcePort string,
+	sourceChannel string,
+	timeoutHeight clienttypes.Height,
+	timeoutTimestamp uint64,
+	data []byte,
+) (uint64, error) {
+	return im.ics4Wrapper.SendPacket(ctx, chanCap, sourcePort, sourceChannel, timeoutHeight, timeoutTimestamp, data)
+}
+
+// WriteAcknowledgement implements the ICS4 Wrapper interface
+func (im IBCMiddleware) WriteAcknowledgement(
+	ctx sdk.Context,
+	chanCap *capabilitytypes.Capability,
+	packet ibcexported.PacketI,
+	ack ibcexported.Acknowledgement,
+) error {
+	return im.ics4Wrapper.WriteAcknowledgement(ctx, chanCap, packet, ack)
+}
+
+// GetAppVersion returns the application version of the underlying application
+func (im IBCMiddleware) GetAppVersion(ctx sdk.Context, portID, channelID string) (string, bool) {
+	return im.ics4Wrapper.GetAppVersion(ctx, portID, channelID)
 }
 
