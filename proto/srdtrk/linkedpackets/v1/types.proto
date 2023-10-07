@@ -42,3 +42,10 @@ message GenesisState {
   Params params = 2
       [ (gogoproto.nullable) = false, (amino.dont_omitempty) = true ];
 }
+
+// PacketIdentifier is the identifier for a packet.
+message PacketIdentifier {
+  string port_id = 1;
+  string channel_id = 2;
+  string seq = 3;
+}

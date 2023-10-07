@@ -15,4 +15,6 @@ var (
 	ParamsKey      = collections.NewPrefix(0)
 	LinkEnabledKey = collections.NewPrefix(1)
 	LinkingKey     = collections.NewPrefix(2)
+	PrevPacketKey  = collections.NewPrefix(3)
+	LinkIdKey      = collections.NewPrefix(4)
 )

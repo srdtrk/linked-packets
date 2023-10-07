@@ -3,6 +3,7 @@ package module
 import (
 	"encoding/json"
 	"errors"
+	"strconv"
 	"strings"
 
 	"cosmossdk.io/collections"
@@ -11,6 +12,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
 	capabilitytypes "github.com/cosmos/ibc-go/modules/capability/types"
+	icatypes "github.com/cosmos/ibc-go/v8/modules/apps/27-interchain-accounts/types"
+	transfertypes "github.com/cosmos/ibc-go/v8/modules/apps/transfer/types"
 	clienttypes "github.com/cosmos/ibc-go/v8/modules/core/02-client/types"
 	channeltypes "github.com/cosmos/ibc-go/v8/modules/core/04-channel/types"
 	porttypes "github.com/cosmos/ibc-go/v8/modules/core/05-port/types"
@@ -37,6 +40,11 @@ func NewIBCMiddleware(app porttypes.IBCModule, ics4Wrapper porttypes.ICS4Wrapper
 
 	if ics4Wrapper == nil {
 		panic(errors.New("ICS4Wrapper cannot be nil"))
+	}
+
+	_, ok := app.(porttypes.PacketDataUnmarshaler)
+	if !ok {
+		panic(errors.New("IBCModule must implement PacketDataUnmarshaler"))
 	}
 
 	return IBCMiddleware{
@@ -250,7 +258,112 @@ func (im IBCMiddleware) SendPacket(
 	timeoutTimestamp uint64,
 	data []byte,
 ) (uint64, error) {
-	return im.ics4Wrapper.SendPacket(ctx, chanCap, sourcePort, sourceChannel, timeoutHeight, timeoutTimestamp, data)
+	isLinking, err := im.keeper.Linking.Get(ctx)
+	if err != nil || !isLinking {
+		return im.ics4Wrapper.SendPacket(ctx, chanCap, sourcePort, sourceChannel, timeoutHeight, timeoutTimestamp, data)
+	}
+
+	isLinkEnabled, err := im.keeper.LinkEnabled.Has(ctx, collections.Join(sourcePort, sourceChannel))
+	if err != nil || !isLinkEnabled {
+		return im.ics4Wrapper.SendPacket(ctx, chanCap, sourcePort, sourceChannel, timeoutHeight, timeoutTimestamp, data)
+	}
+
+	// If the channel is link enabled, then we modify the memo
+	packetDataUnmarshaler, ok := im.app.(porttypes.PacketDataUnmarshaler)
+	if !ok {
+		panic(errors.New("IBCModule must implement PacketDataUnmarshaler"))
+	}
+
+	packetData, err := packetDataUnmarshaler.UnmarshalPacketData(data)
+	if err != nil {
+		return 0, err
+	}
+
+	linkId, err := im.keeper.LinkId.Get(ctx)
+	if err != nil {
+		return 0, err
+	}
+
+	prevPacket, err := im.keeper.PrevPacket.Get(ctx)
+	if err != nil {
+		prevPacket = linkedpackets.PacketIdentifier{}
+	}
+
+	var newData []byte
+	var isLastPacket bool
+	if transferPacket, ok := packetData.(transfertypes.FungibleTokenPacketData); ok {
+		isLastPacket = strings.Contains(transferPacket.Memo, linkedpackets.LastLinkMemoKey)
+		linkData := linkedpackets.LinkData{
+			LinkID:         linkId,
+			PrevPacket:     prevPacket,
+			IsLastPacket:   isLastPacket,
+			IsInitalPacket: prevPacket == linkedpackets.PacketIdentifier{},
+		}
+
+		linkDataBytes, err := json.Marshal(linkData)
+		if err != nil {
+			return 0, err
+		}
+
+		linkDataMemo := string(linkDataBytes)
+		transferPacket.Memo = linkDataMemo
+
+		newData = transferPacket.GetBytes()
+	} else if icaPacket, ok := packetData.(icatypes.InterchainAccountPacketData); ok {
+		isLastPacket = strings.Contains(icaPacket.Memo, linkedpackets.LastLinkMemoKey)
+
+		linkData := linkedpackets.LinkData{
+			LinkID:         linkId,
+			PrevPacket:     prevPacket,
+			IsLastPacket:   isLastPacket,
+			IsInitalPacket: prevPacket == linkedpackets.PacketIdentifier{},
+		}
+
+		linkDataBytes, err := json.Marshal(linkData)
+		if err != nil {
+			return 0, err
+		}
+
+		linkDataMemo := string(linkDataBytes)
+		icaPacket.Memo = linkDataMemo
+
+		newData = icaPacket.GetBytes()
+	} else {
+		return 0, errorsmod.Wrapf(linkedpackets.ErrInvalidPacketData, "packet data type: %T", packetData)
+	}
+
+	seq, err := im.ics4Wrapper.SendPacket(ctx, chanCap, sourcePort, sourceChannel, timeoutHeight, timeoutTimestamp, newData)
+	if err != nil {
+		return 0, err
+	}
+
+	if isLastPacket {
+		err = im.keeper.PrevPacket.Remove(ctx)
+		if err != nil {
+			return 0, err
+		}
+
+		err = im.keeper.LinkId.Remove(ctx)
+		if err != nil {
+			return 0, err
+		}
+
+		err = im.keeper.Linking.Set(ctx, false)
+		if err != nil {
+			return 0, err
+		}
+	} else {
+		err = im.keeper.PrevPacket.Set(ctx, linkedpackets.PacketIdentifier{
+			PortId:    sourcePort,
+			ChannelId: sourceChannel,
+			Seq:       strconv.FormatUint(seq, 10),
+		})
+		if err != nil {
+			return 0, err
+		}
+	}
+
+	return seq, nil
 }
 
 // WriteAcknowledgement implements the ICS4 Wrapper interface

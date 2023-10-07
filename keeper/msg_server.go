@@ -30,6 +30,8 @@ func (ms msgServer) InitLink(ctx context.Context, msg *linkedpackets.MsgInitLink
 		return nil, err
 	}
 
+	err = ms.k.LinkId.Set(ctx, msg.LinkId)
+
 	return &linkedpackets.MsgInitLinkResponse{}, nil
 }
 
@@ -40,6 +42,16 @@ func (ms msgServer) StopLink(ctx context.Context, msg *linkedpackets.MsgStopLink
 	}
 
 	err := ms.k.Linking.Set(ctx, false)
+	if err != nil {
+		return nil, err
+	}
+
+	err = ms.k.PrevPacket.Remove(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	err = ms.k.LinkId.Remove(ctx)
 	if err != nil {
 		return nil, err
 	}

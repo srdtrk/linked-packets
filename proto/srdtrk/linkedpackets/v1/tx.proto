@@ -30,6 +30,9 @@ message MsgInitLink {
 
   // sender is the message sender.
   string sender = 1;
+
+  // link_id is the link identifier.
+  string link_id = 2;
 }
 
 // MsgInitLinkResponse defines the Msg/InitLink response type.

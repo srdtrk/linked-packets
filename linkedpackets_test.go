@@ -168,6 +168,16 @@ func (s *LinkedPacketsTestSuite) RegisterInterchainAccount(owner string) {
 	s.path.EndpointA.ChannelID = channelID
 }
 
+func (s *LinkedPacketsTestSuite) ExecuteInitLink(linkId string) {
+	msg := linkedpackets.MsgInitLink{
+		Sender: s.chainA.SenderAccount.GetAddress().String(),
+		LinkId: linkId,
+	}
+	res, err := s.chainA.SendMsgs(&msg)
+	s.Require().NotEmpty(res)
+	s.Require().NoError(err)
+}
+
 func TestIBCLinkedPacketsTestSuite(t *testing.T) {
 	suite.Run(t, new(LinkedPacketsTestSuite))
 }
