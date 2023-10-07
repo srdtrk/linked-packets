@@ -114,3 +114,15 @@ func handleSdkMsg(msg sdk.Msg) (bool, string, uint64, bool) {
 	}
 
 }
+
+func (h *ProcessProposalHandler) ProcessProposalHandler() sdk.ProcessProposalHandler {
+	return func(ctx sdk.Context, req *abci.RequestProcessProposal) (resp *abci.ResponseProcessProposal, err error) {
+		h.Logger.Info(fmt.Sprintf("⚙️ :: Process Proposal"))
+
+		for i, tx := range req.Txs {
+			h.Logger.Info(fmt.Sprintf("⚙️:: Transaction No %v :: %v", i, tx))
+		}
+
+		return &abci.ResponseProcessProposal{Status: abci.ResponseProcessProposal_ACCEPT}, nil
+	}
+}

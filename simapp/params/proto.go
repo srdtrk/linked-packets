@@ -6,6 +6,7 @@ package params
 import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	"github.com/cosmos/cosmos-sdk/codec/types"
+	"github.com/cosmos/cosmos-sdk/types/module/testutil"
 	"github.com/cosmos/cosmos-sdk/x/auth/tx"
 )
 
@@ -13,12 +14,12 @@ import (
 // This function should be used only internally (in the SDK).
 // App user should'nt create new codecs - use the app.AppCodec instead.
 // [DEPRECATED]
-func MakeTestEncodingConfig() EncodingConfig {
+func MakeTestEncodingConfig() *testutil.TestEncodingConfig {
 	cdc := codec.NewLegacyAmino()
 	interfaceRegistry := types.NewInterfaceRegistry()
 	protoCdc := codec.NewProtoCodec(interfaceRegistry)
 
-	return EncodingConfig{
+	return &testutil.TestEncodingConfig{
 		InterfaceRegistry: interfaceRegistry,
 		Codec:             protoCdc,
 		TxConfig:          tx.NewTxConfig(protoCdc, tx.DefaultSignModes),
