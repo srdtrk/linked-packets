@@ -289,6 +289,11 @@ func (im IBCMiddleware) SendPacket(
 		prevPacket = linkedpackets.PacketIdentifier{}
 	}
 
+	linkIndex, err := im.keeper.LinkIndex.Get(ctx, linkId)
+	if err != nil {
+		linkIndex = 0
+	}
+
 	var newData []byte
 	var isLastPacket bool
 	if transferPacket, ok := packetData.(transfertypes.FungibleTokenPacketData); ok {
@@ -298,6 +303,7 @@ func (im IBCMiddleware) SendPacket(
 			PrevPacket:     prevPacket,
 			IsLastPacket:   isLastPacket,
 			IsInitalPacket: prevPacket == linkedpackets.PacketIdentifier{},
+			LinkIndex:      strconv.FormatUint(linkIndex, 10),
 		}
 
 		linkDataBytes, err := json.Marshal(linkData)
@@ -352,12 +358,22 @@ func (im IBCMiddleware) SendPacket(
 		if err != nil {
 			return 0, err
 		}
+
+		err = im.keeper.LinkIndex.Remove(ctx, linkId)
+		if err != nil {
+			return 0, err
+		}
 	} else {
 		err = im.keeper.PrevPacket.Set(ctx, linkedpackets.PacketIdentifier{
 			PortId:    sourcePort,
 			ChannelId: sourceChannel,
 			Seq:       strconv.FormatUint(seq, 10),
 		})
+		if err != nil {
+			return 0, err
+		}
+
+		err = im.keeper.LinkIndex.Set(ctx, linkId, linkIndex+1)
 		if err != nil {
 			return 0, err
 		}

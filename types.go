@@ -9,6 +9,7 @@ type LinkData struct {
 	PrevPacket     PacketIdentifier `json:"prev_packet"`
 	IsLastPacket   bool             `json:"last_packet"`
 	IsInitalPacket bool             `json:"initial_packet"`
+	LinkIndex      string		`json:"link_index"`
 }
 
 func (ld LinkData) String() string {

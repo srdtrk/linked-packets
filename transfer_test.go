@@ -42,19 +42,19 @@ func (s *LinkedPacketsTestSuite) TestLinkSuccess() {
 
 	packetOne := s.ExecuteTransfer("1")
 	s.Require().NotNil(packetOne)
-	s.Require().Equal(`{"link_id":"mylinkid","prev_packet":{},"last_packet":false,"initial_packet":true}`, packetOne.Memo)
+	s.Require().Equal(`{"link_id":"mylinkid","prev_packet":{},"last_packet":false,"initial_packet":true,"link_index":"0"}`, packetOne.Memo)
 
 	packetTwo := s.ExecuteTransfer("2")
 	s.Require().NotNil(packetTwo)
-	s.Require().Equal(`{"link_id":"mylinkid","prev_packet":{"port_id":"transfer","channel_id":"channel-0","seq":"1"},"last_packet":false,"initial_packet":false}`, packetTwo.Memo)
+	s.Require().Equal(`{"link_id":"mylinkid","prev_packet":{"port_id":"transfer","channel_id":"channel-0","seq":"1"},"last_packet":false,"initial_packet":false,"link_index":"1"}`, packetTwo.Memo)
 
 	packetThree := s.ExecuteTransfer("3")
 	s.Require().NotNil(packetThree)
-	s.Require().Equal(`{"link_id":"mylinkid","prev_packet":{"port_id":"transfer","channel_id":"channel-0","seq":"2"},"last_packet":false,"initial_packet":false}`, packetThree.Memo)
+	s.Require().Equal(`{"link_id":"mylinkid","prev_packet":{"port_id":"transfer","channel_id":"channel-0","seq":"2"},"last_packet":false,"initial_packet":false,"link_index":"2"}`, packetThree.Memo)
 
 	packetFinal := s.ExecuteTransfer(linkedpackets.LastLinkMemoKey)
 	s.Require().NotNil(packetFinal)
-	s.Require().Equal(`{"link_id":"mylinkid","prev_packet":{"port_id":"transfer","channel_id":"channel-0","seq":"3"},"last_packet":true,"initial_packet":false}`, packetFinal.Memo)
+	s.Require().Equal(`{"link_id":"mylinkid","prev_packet":{"port_id":"transfer","channel_id":"channel-0","seq":"3"},"last_packet":true,"initial_packet":false,"link_index":"3"}`, packetFinal.Memo)
 
 	found, err := GetSimApp(s.chainA).LinkedPacketsKeeper.LinkId.Has(s.chainA.GetContext())
 	s.Require().NoError(err)
@@ -67,6 +67,9 @@ func (s *LinkedPacketsTestSuite) TestLinkSuccess() {
 	isLinking, err := GetSimApp(s.chainA).LinkedPacketsKeeper.Linking.Get(s.chainA.GetContext())
 	s.Require().NoError(err)
 	s.Require().False(isLinking)
+
+	_, err = GetSimApp(s.chainA).LinkedPacketsKeeper.LinkIndex.Get(s.chainA.GetContext(), "mylinkid")
+	s.Require().Error(err)
 }
 
 func (s *LinkedPacketsTestSuite) TestTransferTimeout() {

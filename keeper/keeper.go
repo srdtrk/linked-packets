@@ -28,6 +28,7 @@ type Keeper struct {
 	Linking     collections.Item[bool]
 	PrevPacket  collections.Item[linkedpackets.PacketIdentifier]
 	LinkId      collections.Item[string]
+	LinkIndex   collections.Map[string, uint64]
 }
 
 // NewKeeper creates a new Keeper instance
@@ -48,6 +49,7 @@ func NewKeeper(cdc codec.BinaryCodec, addressCodec address.Codec, storeService s
 		Linking:    collections.NewItem(sb, linkedpackets.LinkingKey, "linking", collections.BoolValue),
 		PrevPacket: collections.NewItem(sb, linkedpackets.PrevPacketKey, "prev_packet", codec.CollValue[linkedpackets.PacketIdentifier](cdc)),
 		LinkId:     collections.NewItem(sb, linkedpackets.LinkIdKey, "link_id", collections.StringValue),
+		LinkIndex:  collections.NewMap(sb, linkedpackets.LinkIndexKey, "link_index", collections.StringKey, collections.Uint64Value),
 	}
 
 	schema, err := sb.Build()

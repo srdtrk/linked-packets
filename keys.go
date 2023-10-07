@@ -17,4 +17,5 @@ var (
 	LinkingKey     = collections.NewPrefix(2)
 	PrevPacketKey  = collections.NewPrefix(3)
 	LinkIdKey      = collections.NewPrefix(4)
+	LinkIndexKey   = collections.NewPrefix(5)
 )
