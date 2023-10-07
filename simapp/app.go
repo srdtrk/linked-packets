@@ -48,6 +48,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/std"
 	"github.com/cosmos/cosmos-sdk/testutil/testdata/testpb"
 	sdk "github.com/cosmos/cosmos-sdk/types"
+	"github.com/cosmos/cosmos-sdk/types/mempool"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/types/msgservice"
 	"github.com/cosmos/cosmos-sdk/version"
@@ -133,6 +134,7 @@ import (
 	ibctestingtypes "github.com/cosmos/ibc-go/v8/testing/types"
 
 	"github.com/srdtrk/linkedpackets"
+	linkedpacketsabci "github.com/srdtrk/linkedpackets/abci"
 	linkedpacketskeeper "github.com/srdtrk/linkedpackets/keeper"
 	linkedpacketsmod "github.com/srdtrk/linkedpackets/module"
 )
@@ -296,11 +298,19 @@ func NewSimApp(
 	// }
 	// baseAppOptions = append(baseAppOptions, prepareOpt)
 
+	mempool := mempool.NewSenderNonceMempool()
+	baseAppOptions = append(baseAppOptions, func(app *baseapp.BaseApp) {
+		app.SetMempool(mempool)
+	})
+
 	bApp := baseapp.NewBaseApp(appName, logger, db, txConfig.TxDecoder(), baseAppOptions...)
 	bApp.SetCommitMultiStoreTracer(traceStore)
 	bApp.SetVersion(version.Version)
 	bApp.SetInterfaceRegistry(interfaceRegistry)
 	bApp.SetTxEncoder(txConfig.TxEncoder())
+
+	preparePropHandler := linkedpacketsabci.NewPrepareProposalHandler(logger, txConfig, appCodec, mempool)
+	bApp.SetPrepareProposal(preparePropHandler.PrepareProposalHandler())
 
 	keys := storetypes.NewKVStoreKeys(
 		authtypes.StoreKey, banktypes.StoreKey, stakingtypes.StoreKey, crisistypes.StoreKey,
